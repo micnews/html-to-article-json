@@ -1,0 +1,26 @@
+{
+  "name": "content-editable-ng",
+  "version": "0.0.0",
+  "description": "A new take on contenteditable, virtual-dom style",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micnews/content-editable-ng.git"
+  },
+  "author": "mic.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/micnews/content-editable-ng/issues"
+  },
+  "homepage": "https://github.com/micnews/content-editable-ng#readme",
+  "devDependencies": {
+    "tape": "^4.2.0",
+    "vdom-to-html": "^2.1.1"
+  },
+  "dependencies": {
+    "virtual-dom": "^2.1.1"
+  }
+}
