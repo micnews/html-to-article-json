@@ -46,6 +46,44 @@ test('render() paragraphs & headers', function (t) {
   t.end();
 });
 
+test('render() text with italic, bold & links', function (t) {
+  var html = toHtml(render([{
+    type: 'paragraph',
+    text: [{
+      content: 'foo',
+      italic: true
+    }, {
+      content: 'bar',
+      bold: true
+    }, {
+      content: 'hey'
+    }, {
+      content: 'blip',
+      href: 'http://mic.com'
+    }]
+  }]));
+  var html2 = toHtml(render([{
+    type: 'paragraph',
+    text: [{
+      content: 'yeah',
+      italic: true,
+      bold: true,
+      href: 'http://disney.com'
+    }]
+  }]));
+
+  t.equal(html, expected(
+    '<p>' +
+      '<i>foo</i>' +
+      '<b>bar</b>' +
+      'hey' +
+      '<a href="http://mic.com">blip</a>' +
+    '</p>'));
+  t.equal(html2, expected('<p><b><i><a href="http://disney.com">yeah</a></i></b></p>'))
+
+  t.end();
+});
+
 function expected (str) {
   return '<div contenteditable="true">' + str + '</div>';
 }
