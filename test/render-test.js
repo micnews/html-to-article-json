@@ -79,7 +79,7 @@ test('render() text with italic, bold & links', function (t) {
       'hey' +
       '<a href="http://mic.com">blip</a>' +
     '</p>'));
-  t.equal(html2, expected('<p><b><i><a href="http://disney.com">yeah</a></i></b></p>'))
+  t.equal(html2, expected('<p><b><i><a href="http://disney.com">yeah</a></i></b></p>'));
 
   t.end();
 });

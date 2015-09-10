@@ -4,7 +4,7 @@
   "description": "A new take on contenteditable, virtual-dom style",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/test.js"
+    "test": "semistandard && tape test/*-test.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/micnews/content-editable-ng#readme",
   "devDependencies": {
+    "pre-commit": "^1.1.1",
+    "semistandard": "^7.0.2",
     "tape": "^4.2.0",
     "vdom-to-html": "^2.1.1"
   },
