@@ -84,6 +84,14 @@ test('render() text with italic, bold & links', function (t) {
   t.end();
 });
 
+test('render() ignore unkown type(s)', function (t) {
+  t.equal(toHtml(render([{
+    type: 'beepboop'
+  }])), expected(''));
+
+  t.end();
+});
+
 function expected (str) {
   return '<div contenteditable="true">' + str + '</div>';
 }
