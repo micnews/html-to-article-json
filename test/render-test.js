@@ -12,28 +12,32 @@ test('render() empty', function (t) {
 test('render() paragraphs & headers', function (t) {
   var paragraph = {
     type: 'paragraph',
-    text: [{
+    children: [{
+      type: 'text',
       content: 'beepboop'
     }]
   };
   var header1 = {
     type: 'header',
     level: 1,
-    text: [{
+    children: [{
+      type: 'text',
       content: 'foo'
     }]
   };
   var header2 = {
     type: 'header',
     level: 2,
-    text: [{
+    children: [{
+      type: 'text',
       content: 'bar'
     }]
   };
   var header3 = {
     type: 'header',
     level: 3,
-    text: [{
+    children: [{
+      type: 'text',
       content: 'blipblop'
     }]
   };
@@ -49,22 +53,27 @@ test('render() paragraphs & headers', function (t) {
 test('render() text with italic, bold & links', function (t) {
   var html = toHtml(render([{
     type: 'paragraph',
-    text: [{
+    children: [{
+      type: 'text',
       content: 'foo',
       italic: true
     }, {
+      type: 'text',
       content: 'bar',
       bold: true
     }, {
+      type: 'text',
       content: 'hey'
     }, {
+      type: 'text',
       content: 'blip',
       href: 'http://mic.com'
     }]
   }]));
   var html2 = toHtml(render([{
     type: 'paragraph',
-    text: [{
+    children: [{
+      type: 'text',
       content: 'yeah',
       italic: true,
       bold: true,
