@@ -98,6 +98,21 @@ test('render() ignore unkown type(s)', function (t) {
     type: 'beepboop'
   }])), expected(''));
 
+  t.equal(toHtml(render([{
+    type: 'paragraph',
+    children: [{
+      type: 'text',
+      content: 'beep'
+    }, {
+      type: 'range-start'
+    }, {
+      type: 'range-end'
+    }, {
+      type: 'text',
+      content: 'boop'
+    }]
+  }])), expected('<p>beepboop</p>'));
+
   t.end();
 });
 
