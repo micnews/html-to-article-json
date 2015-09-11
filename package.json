@@ -17,12 +17,14 @@
   },
   "homepage": "https://github.com/micnews/content-editable-ng#readme",
   "devDependencies": {
+    "jsdom": "^6.3.0",
     "pre-commit": "^1.1.1",
     "semistandard": "^7.0.2",
     "tape": "^4.2.0",
     "vdom-to-html": "^2.1.1"
   },
   "dependencies": {
+    "dom-events": "^0.1.1",
     "virtual-dom": "^2.1.1"
   }
 }
