@@ -19,24 +19,21 @@ test('render() paragraphs & headers', function (t) {
     }]
   };
   var header1 = {
-    type: 'header',
-    level: 1,
+    type: 'header1',
     children: [{
       type: 'text',
       content: 'foo'
     }]
   };
   var header2 = {
-    type: 'header',
-    level: 2,
+    type: 'header2',
     children: [{
       type: 'text',
       content: 'bar'
     }]
   };
   var header3 = {
-    type: 'header',
-    level: 3,
+    type: 'header3',
     children: [{
       type: 'text',
       content: 'blipblop'
