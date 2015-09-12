@@ -1,11 +1,12 @@
 'use strict';
 
-var render = require('../lib/render');
+var renderToVdom = require('../lib/render');
 var test = require('tape');
 var toHtml = require('vdom-to-html');
+var Immutable = require('immutable');
 
 test('render() empty', function (t) {
-  t.equal(toHtml(render([])), '<div contenteditable="true"><p></p></div>');
+  t.equal(render([]), '<div contenteditable="true"><p></p></div>');
   t.end();
 });
 
@@ -42,16 +43,16 @@ test('render() paragraphs & headers', function (t) {
     }]
   };
 
-  t.equal(toHtml(render([paragraph])), expected('<p>beepboop</p>'));
-  t.equal(toHtml(render([header1])), expected('<h1>foo</h1>'));
-  t.equal(toHtml(render([header2])), expected('<h2>bar</h2>'));
-  t.equal(toHtml(render([header3])), expected('<h3>blipblop</h3>'));
+  t.equal(render([paragraph]), expected('<p>beepboop</p>'));
+  t.equal(render([header1]), expected('<h1>foo</h1>'));
+  t.equal(render([header2]), expected('<h2>bar</h2>'));
+  t.equal(render([header3]), expected('<h3>blipblop</h3>'));
 
   t.end();
 });
 
 test('render() text with italic, bold & links', function (t) {
-  var html = toHtml(render([{
+  var html = render([{
     type: 'paragraph',
     children: [{
       type: 'text',
@@ -69,8 +70,8 @@ test('render() text with italic, bold & links', function (t) {
       content: 'blip',
       href: 'http://mic.com'
     }]
-  }]));
-  var html2 = toHtml(render([{
+  }]);
+  var html2 = render([{
     type: 'paragraph',
     children: [{
       type: 'text',
@@ -79,7 +80,7 @@ test('render() text with italic, bold & links', function (t) {
       bold: true,
       href: 'http://disney.com'
     }]
-  }]));
+  }]);
 
   t.equal(html, expected(
     '<p>' +
@@ -94,11 +95,11 @@ test('render() text with italic, bold & links', function (t) {
 });
 
 test('render() ignore unkown type(s)', function (t) {
-  t.equal(toHtml(render([{
+  t.equal(render([{
     type: 'beepboop'
-  }])), expected(''));
+  }]), expected(''));
 
-  t.equal(toHtml(render([{
+  t.equal(render([{
     type: 'paragraph',
     children: [{
       type: 'text',
@@ -111,10 +112,14 @@ test('render() ignore unkown type(s)', function (t) {
       type: 'text',
       content: 'boop'
     }]
-  }])), expected('<p>beepboop</p>'));
+  }]), expected('<p>beepboop</p>'));
 
   t.end();
 });
+
+function render (list) {
+  return toHtml(renderToVdom(Immutable.fromJS(list)));
+}
 
 function expected (str) {
   return '<div contenteditable="true">' + str + '</div>';

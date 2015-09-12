@@ -10,16 +10,17 @@ var render = require('../lib/render');
 var collectKeyboardEvents = require('../lib/keyboard-events');
 var createElement = require('virtual-dom/create-element');
 var dom = require('dom-events');
+var Immutable = require('immutable');
 
 test('collectKeyboardEvents() simple keyboard example', function (t) {
-  var data = [{
+  var data = Immutable.fromJS([{
     type: 'paragraph',
     children: [{
       type: 'range-start'
     }, {
       type: 'range-end'
     }]
-  }];
+  }]);
   var expected = [{
     type: 'paragraph',
     children: [{
@@ -31,9 +32,17 @@ test('collectKeyboardEvents() simple keyboard example', function (t) {
       type: 'range-end'
     }]
   }];
-  var elm = document.body.appendChild(createElement(render([])));
+  var elm = document.body.appendChild(
+    createElement(render(Immutable.fromJS([])))
+  );
 
-  collectKeyboardEvents(elm, data);
+  var results = data;
+  function getData () {
+    return results;
+  }
+  collectKeyboardEvents(elm, getData, function (_results) {
+    results = _results;
+  });
 
   'beep boop'.split('').forEach(function (key) {
     dom.emit(elm, 'keypress', {
@@ -41,7 +50,7 @@ test('collectKeyboardEvents() simple keyboard example', function (t) {
     });
   });
 
-  t.deepEqual(data, expected);
+  t.deepEqual(results.toJS(), expected, 'correct results');
 
   t.end();
 });

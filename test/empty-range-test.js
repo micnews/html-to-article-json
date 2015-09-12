@@ -2,9 +2,10 @@
 
 var test = require('tape');
 var emptyRange = require('../lib/empty-range');
+var Immutable = require('immutable');
 
 test('emptyRange()', function (t) {
-  t.deepEqual(emptyRange([{
+  t.deepEqual(emptyRange(Immutable.fromJS([{
     type: 'paragraph',
     children: [
       {
@@ -22,7 +23,7 @@ test('emptyRange()', function (t) {
         content: 'three'
       }
     ]
-  }]), [{
+  }])).toJS(), [{
     type: 'paragraph',
     children: [
       {
@@ -39,7 +40,7 @@ test('emptyRange()', function (t) {
     ]
   }]);
 
-  t.deepEqual(emptyRange([
+  t.deepEqual(emptyRange(Immutable.fromJS([
     {
       type: 'paragraph',
       children: [
@@ -53,23 +54,28 @@ test('emptyRange()', function (t) {
           content: 'two'
         }
       ]
-    },
-    {
+    }, {
+      type: 'paragraph',
+      children: [{
+        type: 'text',
+        content: 'three'
+      }]
+    }, {
       type: 'header',
       level: 1,
       children: [
         {
           type: 'text',
-          content: 'three'
+          content: 'four'
         }, {
           type: 'range-end'
         }, {
           type: 'text',
-          content: 'four'
+          content: 'five'
         }
       ]
     }
-  ]), [
+  ])).toJS(), [
     {
       type: 'paragraph',
       children: [
@@ -89,7 +95,7 @@ test('emptyRange()', function (t) {
           type: 'range-end'
         }, {
           type: 'text',
-          content: 'four'
+          content: 'five'
         }
       ]
     }
