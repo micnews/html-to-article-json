@@ -56,3 +56,58 @@ test('addChar() add to existing', function (t) {
   t.deepEqual(actual.toJS(), expected);
   t.end();
 });
+
+test('addChar() between two text nodes', function (t) {
+  var data = Immutable.fromJS([
+    {
+      type: 'header',
+      level: 1,
+      children: [
+        {
+          type: 'text',
+          content: 'a'
+        }, {
+          type: 'range-start'
+        }, {
+          type: 'text',
+          content: 'b'
+        }
+      ]
+    }, {
+      type: 'paragraph',
+      children: [
+        {
+          type: 'text',
+          content: 'c'
+        }, {
+          type: 'range-end'
+        }, {
+          type: 'text',
+          content: 'b'
+        }
+      ]
+    }
+  ]);
+  var expected = [
+    {
+      type: 'header',
+      level: 1,
+      children: [
+        {
+          type: 'text',
+          content: 'a '
+        }, {
+          type: 'range-start'
+        }, {
+          type: 'range-end'
+        }, {
+          type: 'text',
+          content: 'b'
+        }
+      ]
+    }
+  ];
+  var actual = addChar(data, ' ');
+  t.deepEqual(actual.toJS(), expected);
+  t.end();
+});
