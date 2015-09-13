@@ -116,13 +116,13 @@ test('render() ignore unkown type(s)', function (t) {
 });
 
 function render (list) {
-  var document = jsdom('<html><body><div id="wrapper"></div></body></html>');
-  var elm = document.querySelector('#wrapper');
+  var document = jsdom('<html><body><div contenteditable="true"></div></body></html>');
+  var elm = document.querySelector('div');
   global.Element = document.defaultView.Element;
   patch(elm, function () {
     renderToIDom(Immutable.fromJS(list));
   });
-  return elm.innerHTML;
+  return elm.outerHTML;
 }
 
 function expected (str) {
