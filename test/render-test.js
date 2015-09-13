@@ -1,9 +1,10 @@
 'use strict';
 
-var renderToVdom = require('../lib/render');
+var renderToIDom = require('../lib/render');
 var test = require('tape');
-var toHtml = require('vdom-to-html');
 var Immutable = require('immutable');
+var jsdom = require('jsdom').jsdom;
+var patch = require('incremental-dom').patch;
 
 test('render() empty', function (t) {
   t.equal(render([]), '<div contenteditable="true"><p></p></div>');
@@ -115,7 +116,13 @@ test('render() ignore unkown type(s)', function (t) {
 });
 
 function render (list) {
-  return toHtml(renderToVdom(Immutable.fromJS(list)));
+  var document = jsdom('<html><body><div id="wrapper"></div></body></html>');
+  var elm = document.querySelector('#wrapper');
+  global.Element = document.defaultView.Element;
+  patch(elm, function () {
+    renderToIDom(Immutable.fromJS(list));
+  });
+  return elm.innerHTML;
 }
 
 function expected (str) {
