@@ -4,7 +4,8 @@
   "description": "A new take on contenteditable, virtual-dom style",
   "main": "index.js",
   "scripts": {
-    "test": "semistandard && tape test/*-test.js"
+    "test": "semistandard && tape test/*-test.js",
+    "example": "beefy example/client.js"
   },
   "repository": {
     "type": "git",
@@ -17,11 +18,13 @@
   },
   "homepage": "https://github.com/micnews/content-editable-ng#readme",
   "devDependencies": {
+    "beefy": "^2.1.5",
     "jsdom": "^6.3.0",
     "pre-commit": "^1.1.1",
     "semistandard": "^7.0.2",
     "tape": "^4.2.0",
-    "vdom-to-html": "^2.1.1"
+    "vdom-to-html": "^2.1.1",
+    "watchify": "^3.4.0"
   },
   "dependencies": {
     "immutable": "^3.7.5",
