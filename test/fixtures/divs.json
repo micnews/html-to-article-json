@@ -1,0 +1,39 @@
+[
+  {
+    "type": "paragraph",
+    "children": [{
+      "type": "text",
+      "content": "Divs are also text",
+      "href": null,
+      "bold": false,
+      "italic": false
+    }]
+  }, {
+    "type": "paragraph",
+    "children": [{
+      "type": "text",
+      "content": "Some text",
+      "href": null,
+      "bold": false,
+      "italic": false
+    }]
+  }, {
+    "type": "paragraph",
+    "children": [{
+      "type": "text",
+      "content": "Some text in a div",
+      "href": null,
+      "bold": false,
+      "italic": false
+    }]
+  }, {
+    "type": "header1",
+    "children": [{
+      "type": "text",
+      "content": "And a header",
+      "href": null,
+      "bold": false,
+      "italic": false
+    }]
+  }
+]

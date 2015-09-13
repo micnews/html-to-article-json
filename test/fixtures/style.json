@@ -1,0 +1,51 @@
+[
+  {
+    "type": "paragraph",
+    "children": [{
+      "type": "text",
+      "content": "This is a link",
+      "href": "link.com",
+      "bold": false,
+      "italic": false
+    }, {
+      "type": "text",
+      "content": " ",
+      "href": null,
+      "bold": false,
+      "italic": false
+    }, {
+      "type": "text",
+      "content": "This is a bold link",
+      "href": "link2.com",
+      "bold": true,
+      "italic": false
+    }, {
+      "type": "text",
+      "content": "This is also a bold link",
+      "href": "link3.com",
+      "bold": true,
+      "italic": false
+    }]
+  }, {
+    "type": "paragraph",
+    "children": [{
+      "type": "text",
+      "content": "This is italic and ",
+      "href": null,
+      "bold": false,
+      "italic": true
+    }, {
+      "type": "text",
+      "content": "this is a link",
+      "href": "link4.com",
+      "bold": false,
+      "italic": true
+    }, {
+      "type": "text",
+      "content": " foo bar",
+      "href": "link4.com",
+      "bold": false,
+      "italic": false
+    }]
+  }
+]
