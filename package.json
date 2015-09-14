@@ -21,6 +21,7 @@
     "beefy": "^2.1.5",
     "jsdom": "^6.3.0",
     "pre-commit": "^1.1.1",
+    "pretty-hrtime": "^1.0.0",
     "semistandard": "^7.0.2",
     "tape": "^4.2.0",
     "vdom-to-html": "^2.1.1",
