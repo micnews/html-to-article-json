@@ -1,12 +1,10 @@
 'use strict';
 
-var jsdom = require('jsdom');
+require('./browser');
+
 var test = require('tape');
 var fs = require('fs');
 var parseHtml = require('../lib/parse-html');
-var document = jsdom.jsdom(undefined, {
-  virtualConsole: jsdom.createVirtualConsole().sendTo(console)
-});
 
 ['basic', 'style', 'divs'].forEach(function (testName) {
   test('parseHtml() ' + testName, function (t) {

@@ -24,7 +24,8 @@
     "semistandard": "^7.0.2",
     "tape": "^4.2.0",
     "vdom-to-html": "^2.1.1",
-    "watchify": "^3.4.0"
+    "watchify": "^3.4.0",
+    "xtend": "^4.0.0"
   },
   "dependencies": {
     "immutable": "^3.7.5",

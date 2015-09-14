@@ -1,9 +1,10 @@
 'use strict';
 
+require('./browser');
+
 var renderToIDom = require('../lib/render');
 var test = require('tape');
 var Immutable = require('immutable');
-var jsdom = require('jsdom').jsdom;
 var patch = require('incremental-dom').patch;
 
 test('render() empty', function (t) {
@@ -116,9 +117,11 @@ test('render() ignore unkown type(s)', function (t) {
 });
 
 function render (list) {
-  var document = jsdom('<html><body><div contenteditable="true"></div></body></html>');
-  var elm = document.querySelector('div');
-  global.Element = document.defaultView.Element;
+  var elm = document.body.appendChild(document.createElement('div'));
+  // for some reason `elm.contentEditable = true` doesn't work in jsdom
+  elm.setAttribute('contenteditable', 'true');
+  elm.contentEditable = true;
+
   patch(elm, function () {
     renderToIDom(Immutable.fromJS(list));
   });
