@@ -18,3 +18,21 @@ var parseHtml = require('../lib/parse-html');
     t.end();
   });
 });
+
+test('parseHtml() Multiple text nodes', function (t) {
+  var elm = document.body.appendChild(document.createElement('div'));
+  elm.appendChild(document.createTextNode('foo'));
+  elm.appendChild(document.createTextNode('bar'));
+
+  t.deepEqual(parseHtml(elm), [{
+    type: 'paragraph',
+    children: [{
+      type: 'text',
+      content: 'foobar',
+      href: null,
+      bold: false,
+      italic: false
+    }]
+  }]);
+  t.end();
+});

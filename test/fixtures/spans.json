@@ -1,0 +1,21 @@
+[
+  {
+    "type": "paragraph",
+    "children": [{
+      "type": "text",
+      "content": "beep boop",
+      "href": null,
+      "bold": false,
+      "italic": false
+    }]
+  }, {
+    "type": "paragraph",
+    "children": [{
+      "type": "text",
+      "content": "foo bar Hello, world!",
+      "href": null,
+      "bold": false,
+      "italic": false
+    }]
+  }
+]
