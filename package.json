@@ -30,7 +30,6 @@
   },
   "dependencies": {
     "immutable": "^3.7.5",
-    "incremental-dom": "^0.1.0",
-    "unwrap-node": "^1.0.0"
+    "incremental-dom": "^0.1.0"
   }
 }

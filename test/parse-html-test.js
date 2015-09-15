@@ -21,8 +21,9 @@ var parseHtml = require('../lib/parse-html');
 
 test('parseHtml() Multiple text nodes', function (t) {
   var elm = document.body.appendChild(document.createElement('div'));
-  elm.appendChild(document.createTextNode('foo'));
-  elm.appendChild(document.createTextNode('bar'));
+  'foobar'.split('').forEach(function (char) {
+    elm.appendChild(document.createTextNode(char));
+  });
 
   t.deepEqual(parseHtml(elm), [{
     type: 'paragraph',
