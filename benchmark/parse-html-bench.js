@@ -15,4 +15,5 @@ for (var i = 0; i < 100; ++i) {
   parseHtml(text);
 }
 
-console.log('duration:', prettyHrtime(process.hrtime(start)));
+console.log('duration:', prettyHrtime(process.hrtime(start)),
+  '(100 iterations)');
