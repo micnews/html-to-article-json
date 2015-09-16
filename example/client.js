@@ -3,7 +3,6 @@
 var parseHtml = require('../lib/parse-html');
 var render = require('../lib/render');
 var patch = require('incremental-dom').patch;
-var Immutable = require('immutable');
 
 var wrapper = document.body.appendChild(document.createElement('div'));
 wrapper.className = 'wrapper';
@@ -12,7 +11,7 @@ elm.contentEditable = true;
 elm.innerHTML = 'beepboop';
 
 patch(elm, function () {
-  render(Immutable.fromJS(parseHtml(elm)));
+  render(parseHtml(elm));
 });
 elm.onkeypress = function () {
   process.nextTick(function () {

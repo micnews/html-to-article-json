@@ -4,7 +4,6 @@ require('./browser');
 
 var renderToIDom = require('../lib/render');
 var test = require('tape');
-var Immutable = require('immutable');
 var patch = require('incremental-dom').patch;
 
 test('render() empty', function (t) {
@@ -128,7 +127,7 @@ function render (list) {
   elm.className = 'wrapper';
 
   patch(elm, function () {
-    renderToIDom(Immutable.fromJS(list));
+    renderToIDom(list);
   });
   return elm.outerHTML;
 }

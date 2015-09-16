@@ -29,7 +29,6 @@
     "xtend": "^4.0.0"
   },
   "dependencies": {
-    "immutable": "^3.7.5",
     "incremental-dom": "^0.1.0"
   }
 }
