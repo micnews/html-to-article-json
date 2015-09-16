@@ -1,0 +1,29 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "content": "beep",
+        "href": null,
+        "bold": false,
+        "italic": false
+      }, {
+        "type": "linebreak"
+      }, {
+        "type": "text",
+        "content": "boop",
+        "href": null,
+        "bold": false,
+        "italic": false
+      }
+    ]
+  }, {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "linebreak"
+      }
+    ]
+  }
+]
