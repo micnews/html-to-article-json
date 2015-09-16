@@ -8,7 +8,7 @@ var Immutable = require('immutable');
 var patch = require('incremental-dom').patch;
 
 test('render() empty', function (t) {
-  t.equal(render([]), '<div contenteditable="true"><p></p></div>');
+  t.equal(render([]), expected('<p></p>'));
   t.end();
 });
 
@@ -118,9 +118,7 @@ test('render() ignore unkown type(s)', function (t) {
 
 function render (list) {
   var elm = document.body.appendChild(document.createElement('div'));
-  // for some reason `elm.contentEditable = true` doesn't work in jsdom
-  elm.setAttribute('contenteditable', 'true');
-  elm.contentEditable = true;
+  elm.className = 'wrapper';
 
   patch(elm, function () {
     renderToIDom(Immutable.fromJS(list));
@@ -129,5 +127,5 @@ function render (list) {
 }
 
 function expected (str) {
-  return '<div contenteditable="true">' + str + '</div>';
+  return '<div class="wrapper"><div contenteditable="true">' + str + '</div></div>';
 }
