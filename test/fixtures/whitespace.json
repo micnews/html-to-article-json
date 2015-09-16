@@ -1,7 +1,7 @@
 [
   {
     "type": "header1",
-    "content": [{
+    "children": [{
       "type": "text",
       "content": "Hello, world!",
       "href": null,
@@ -11,18 +11,18 @@
     }]
   }, {
     "type": "paragraph",
-    "content": [{
+    "children": [{
       "type": "text",
-      "content": "beepboop",
+      "content": " beepboop ",
       "href": null,
       "bold": false,
       "italic": false
     }]
   }, {
     "type": "paragraph",
-    "content": [{
+    "children": [{
       "type": "text",
-      "content": "foo",
+      "content": " foo",
       "href": null,
       "bold": false,
       "italic": false
@@ -44,12 +44,18 @@
       "href": null,
       "bold": false,
       "italic": true
+    }, {
+      "type": "text",
+      "content": " ",
+      "href": null,
+      "bold": false,
+      "italic": false
     }]
   }, {
     "type": "paragraph",
-    "content": [{
+    "children": [{
       "type": "text",
-      "content": "YEAH YEAH YEAHS",
+      "content": " YEAH YEAH YEAHS",
       "href": null,
       "bold": false,
       "italic": false
