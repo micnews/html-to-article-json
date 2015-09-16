@@ -116,6 +116,13 @@ test('render() ignore unkown type(s)', function (t) {
   t.end();
 });
 
+test('render() inline-elements', function (t) {
+  t.equal(render([{
+    type: 'linebreak'
+  }]), expected('<br>'));
+  t.end();
+});
+
 function render (list) {
   var elm = document.body.appendChild(document.createElement('div'));
   elm.className = 'wrapper';
