@@ -19,6 +19,22 @@ var parseHtml = require('../lib/parse-html');
   });
 });
 
+test('parseHtml() whitespace \t', function (t) {
+  var elm = document.body.appendChild(document.createElement('p'));
+  elm.appendChild(document.createTextNode('\tbeep\tboop\t'));
+  t.deepEqual(parseHtml(elm), [{
+    type: 'paragraph',
+    children: [{
+      type: 'text',
+      content: ' beep boop ',
+      href: null,
+      bold: false,
+      italic: false
+    }]
+  }]);
+  t.end();
+});
+
 test('parseHtml() Multiple text nodes', function (t) {
   var elm = document.body.appendChild(document.createElement('div'));
   'foobar'.split('').forEach(function (char) {
