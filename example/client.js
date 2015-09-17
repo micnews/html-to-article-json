@@ -1,8 +1,6 @@
 'use strict';
 
-var parseHtml = require('../lib/parse-html');
-var render = require('../lib/render');
-var patch = require('incremental-dom').patch;
+var update = require('../');
 
 var wrapper = document.body.appendChild(document.createElement('div'));
 wrapper.className = 'wrapper';
@@ -10,16 +8,14 @@ var elm = wrapper.appendChild(document.createElement('div'));
 elm.contentEditable = true;
 elm.innerHTML = 'beepboop';
 
-patch(elm, function () {
-  render(parseHtml(elm));
-});
-elm.onkeypress = function () {
+update(wrapper);
+wrapper.onkeypress = function () {
   process.nextTick(function () {
-    parseHtml(elm);
+    update(wrapper);
   });
 };
 
-window.parse = function () {
-  parseHtml(elm);
+window.update = function () {
+  update(elm);
 };
 window.elm = elm;
