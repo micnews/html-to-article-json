@@ -7,7 +7,7 @@ var test = require('tape');
 var patch = require('incremental-dom').patch;
 
 test('render() empty', function (t) {
-  t.equal(render([]), expected('<p></p>'));
+  t.equal(render([]), expected('<p><br></p>'));
   t.end();
 });
 
@@ -117,8 +117,11 @@ test('render() ignore unkown type(s)', function (t) {
 
 test('render() inline-elements', function (t) {
   t.equal(render([{
-    type: 'linebreak'
-  }]), expected('<br>'));
+    type: 'paragraph',
+    children: [{
+      type: 'linebreak'
+    }]
+  }]), expected('<p><br></p>'));
   t.end();
 });
 
