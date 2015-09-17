@@ -4,7 +4,7 @@ require('../test/browser');
 
 var prettyHrtime = require('pretty-hrtime');
 
-var parseHtml = require('../lib/parse-html');
+var parseHtml = require('../lib/parse');
 var fs = require('fs');
 var text = document.createElement('div');
 text.innerHTML = fs.readFileSync(__dirname + '/text.html', 'utf8');
