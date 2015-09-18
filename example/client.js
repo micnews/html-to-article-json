@@ -14,6 +14,11 @@ wrapper.onkeypress = function () {
     update(wrapper);
   });
 };
+wrapper.onpaste = function () {
+  process.nextTick(function () {
+    update(wrapper);
+  });
+};
 
 window.update = function () {
   update(wrapper);
