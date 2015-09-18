@@ -4,7 +4,6 @@ require('./browser');
 
 var renderToIDom = require('../lib/render');
 var test = require('tape');
-var patch = require('incremental-dom').patch;
 
 test('render() empty', function (t) {
   t.equal(render([]), expected('<p><br></p>'));
@@ -129,9 +128,8 @@ function render (list) {
   var elm = document.body.appendChild(document.createElement('div'));
   elm.className = 'wrapper';
 
-  patch(elm, function () {
-    renderToIDom(list);
-  });
+  renderToIDom(elm, list);
+
   return elm.outerHTML;
 }
 
