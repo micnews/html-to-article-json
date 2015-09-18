@@ -47,5 +47,20 @@
       "bold": false,
       "italic": false
     }]
+  }, {
+    "type": "paragraph",
+    "children": [{
+      "type": "text",
+      "content": "boldbold2bold3bold4",
+      "href": null,
+      "bold": true,
+      "italic": false
+    }, {
+      "type": "text",
+      "content": "italic",
+      "href": null,
+      "bold": false,
+      "italic": true
+    }]
   }
 ]
