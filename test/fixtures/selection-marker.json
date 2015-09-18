@@ -25,5 +25,20 @@
         "end": true
       }
     ]
+  },   {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "selection-marker",
+        "start": true
+      },
+      {
+        "type": "selection-marker",
+        "end": true
+      },
+      {
+        "type": "linebreak"
+      }
+    ]
   }
 ]
