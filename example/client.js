@@ -11,7 +11,11 @@ elm.innerHTML = 'beepboop';
 update(wrapper);
 wrapper.onkeypress = function () {
   process.nextTick(function () {
+    var range = window.getSelection().getRangeAt(0);
+    console.log(range.startContainer, range.startOffset);
     update(wrapper);
+    range = window.getSelection().getRangeAt(0);
+    console.log(range.startContainer, range.startOffset);
   });
 };
 
