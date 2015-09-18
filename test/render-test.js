@@ -124,6 +124,34 @@ test('render() inline-elements', function (t) {
   t.end();
 });
 
+test('render() selection-marker', function (t) {
+  t.equal(render([{
+    type: 'paragraph',
+    children: [{
+      type: 'text',
+      content: 'beep'
+    }, {
+      type: 'selection-marker',
+      start: true
+    }, {
+      type: 'text',
+      content: 'boop'
+    }, {
+      type: 'selection-marker',
+      end: true
+    }]
+  }]),
+    expected('<p>' +
+      'beep' +
+      '<span class="selection-marker-start"></span>' +
+      'boop' +
+      '<span class="selection-marker-end"></span>' +
+      '</p>'
+    )
+  );
+  t.end();
+});
+
 function render (list) {
   var elm = document.body.appendChild(document.createElement('div'));
   elm.className = 'wrapper';

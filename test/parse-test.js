@@ -6,7 +6,7 @@ var test = require('tape');
 var fs = require('fs');
 var parse = require('../lib/parse');
 
-['basic', 'style', 'divs', 'whitespace', 'linebreak'].forEach(function (testName) {
+['basic', 'style', 'divs', 'whitespace', 'linebreak', 'selection-marker'].forEach(function (testName) {
   test('parse() ' + testName, function (t) {
     var html = fs.readFileSync(__dirname + '/fixtures/' + testName + '.html');
     var elm = document.createElement('div');
