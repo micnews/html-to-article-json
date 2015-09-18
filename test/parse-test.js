@@ -53,3 +53,15 @@ test('parse() Multiple text nodes', function (t) {
   }]);
   t.end();
 });
+
+test('parse() empty text node', function (t) {
+  var elm = document.body.appendChild(document.createElement('div'));
+  var p = elm.appendChild(document.createElement('p'));
+  p.appendChild(document.createTextNode(''));
+
+  t.deepEqual(parse(elm), [{
+    type: 'paragraph',
+    children: []
+  }]);
+  t.end();
+});
