@@ -61,6 +61,18 @@
       "href": null,
       "bold": false,
       "italic": true
+    }, {
+      "type": "text",
+      "content": "STRONG",
+      "href": null,
+      "bold": true,
+      "italic": false
+    }, {
+      "type": "text",
+      "content": "EM",
+      "href": null,
+      "bold": false,
+      "italic": true
     }]
   }
 ]
