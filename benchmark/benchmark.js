@@ -2,31 +2,32 @@
 
 require('../test/browser');
 
-window.getSelection = function () {
-  return {
-    getRangeAt: function () {
-      return {};
-    },
-    removeAllRanges: function () {},
-    addRange: function () {}
+if (!process.browser) {
+  window.getSelection = function () {
+    return {
+      getRangeAt: function () {
+        return {};
+      },
+      removeAllRanges: function () {},
+      addRange: function () {}
+    };
   };
-};
 
-document.createRange = function () {
-
-};
-
-var prettyHrtime = require('pretty-hrtime');
+  document.createRange = function () {};
+}
 
 var update = require('../');
 var fs = require('fs');
 var text = document.createElement('div');
 text.innerHTML = fs.readFileSync(__dirname + '/text.html', 'utf8');
 
-var start = process.hrtime();
+var start = Date.now();
+var count = 0;
+var duration;
 
-for (var i = 0; i < 1000; ++i) {
+for (count = 0; count < 1000; ++count) {
   update(text);
 }
+duration = Date.now() - start;
 
-console.log(`duration: ${prettyHrtime(process.hrtime(start))} (1000 iterations)`);
+console.log((duration / count) + ' ms / iteration');
