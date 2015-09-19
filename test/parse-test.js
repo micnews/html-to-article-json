@@ -91,7 +91,9 @@ test('parse() empty text node', function (t) {
 
   t.deepEqual(parse(elm), [{
     type: 'paragraph',
-    children: []
+    children: [{
+      type: 'linebreak'
+    }]
   }]);
   t.end();
 });
