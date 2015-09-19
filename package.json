@@ -33,5 +33,8 @@
   },
   "dependencies": {
     "incremental-dom": "^0.1.0"
+  },
+  "browser": {
+    "jsdom": false
   }
 }
