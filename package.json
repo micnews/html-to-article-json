@@ -22,6 +22,7 @@
     "beefy": "^2.1.5",
     "brfs": "^1.4.1",
     "jsdom": "^6.3.0",
+    "keymaster": "^1.6.2",
     "pre-commit": "^1.1.1",
     "pretty-hrtime": "^1.0.0",
     "semistandard": "^7.0.2",

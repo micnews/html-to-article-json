@@ -8,12 +8,15 @@ var elm = wrapper.appendChild(document.createElement('div'));
 elm.contentEditable = true;
 elm.innerHTML = 'beepboop';
 
-update(wrapper);
-wrapper.onkeypress = function () {
+var key = require('keymaster');
+key('backspace, delete, enter, ⌘+b, ctrl+b, ⌘+i, ctrl+i', function () {
   process.nextTick(function () {
     update(wrapper);
   });
-};
+});
+
+update(wrapper);
+
 wrapper.onpaste = function () {
   process.nextTick(function () {
     update(wrapper);
