@@ -5,6 +5,7 @@ require('./browser');
 var test = require('tape');
 var fs = require('fs');
 var parse = require('../lib/parse');
+var normalize = require('../lib/normalize');
 
 createTest(
   'basic',
@@ -43,7 +44,7 @@ function createTest (testName, html, expected) {
     elm.contentEditable = true;
     elm.innerHTML = html.trim();
 
-    t.deepEqual(parse(elm), expected);
+    t.deepEqual(normalize(parse(elm)), expected);
 
     t.end();
   });
@@ -52,7 +53,7 @@ function createTest (testName, html, expected) {
 test('parse() whitespace \t', function (t) {
   var elm = document.body.appendChild(document.createElement('p'));
   elm.appendChild(document.createTextNode('\tbeep\tboop\t'));
-  t.deepEqual(parse(elm), [{
+  t.deepEqual(normalize(parse(elm)), [{
     type: 'paragraph',
     children: [{
       type: 'text',
@@ -71,7 +72,7 @@ test('parse() Multiple text nodes', function (t) {
     elm.appendChild(document.createTextNode(char));
   });
 
-  t.deepEqual(parse(elm), [{
+  t.deepEqual(normalize(parse(elm)), [{
     type: 'paragraph',
     children: [{
       type: 'text',
@@ -89,7 +90,7 @@ test('parse() empty text node', function (t) {
   var p = elm.appendChild(document.createElement('p'));
   p.appendChild(document.createTextNode(''));
 
-  t.deepEqual(parse(elm), [{
+  t.deepEqual(normalize(parse(elm)), [{
     type: 'paragraph',
     children: [{
       type: 'linebreak'

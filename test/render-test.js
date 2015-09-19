@@ -4,7 +4,7 @@ require('./browser');
 
 var renderToIDom = require('../lib/render');
 var test = require('tape');
-var normalize = require('../lib/parse/normalize');
+var normalize = require('../lib/normalize');
 
 test('render minimum', function (t) {
   t.equal(render(normalize([])), expected('<p><br></p>'));
