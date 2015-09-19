@@ -2,6 +2,20 @@
 
 require('../test/browser');
 
+window.getSelection = function () {
+  return {
+    getRangeAt: function () {
+      return {};
+    },
+    removeAllRanges: function () {},
+    addRange: function () {}
+  };
+};
+
+document.createRange = function () {
+
+};
+
 var prettyHrtime = require('pretty-hrtime');
 
 var update = require('../');
