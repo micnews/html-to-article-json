@@ -6,18 +6,48 @@ var test = require('tape');
 var fs = require('fs');
 var parse = require('../lib/parse');
 
-['basic', 'style', 'divs', 'whitespace', 'linebreak', 'selection-marker'].forEach(function (testName) {
+createTest(
+  'basic',
+  fs.readFileSync(__dirname + '/fixtures/basic.html', 'utf8'),
+  require('./fixtures/basic.json')
+);
+createTest(
+  'style',
+  fs.readFileSync(__dirname + '/fixtures/style.html', 'utf8'),
+  require('./fixtures/style.json')
+);
+createTest(
+  'divs',
+  fs.readFileSync(__dirname + '/fixtures/divs.html', 'utf8'),
+  require('./fixtures/divs.json')
+);
+createTest(
+  'whitespace',
+  fs.readFileSync(__dirname + '/fixtures/whitespace.html', 'utf8'),
+  require('./fixtures/whitespace.json')
+);
+createTest(
+  'linebreak',
+  fs.readFileSync(__dirname + '/fixtures/linebreak.html', 'utf8'),
+  require('./fixtures/linebreak.json')
+);
+createTest(
+  'selection-marker',
+  fs.readFileSync(__dirname + '/fixtures/selection-marker.html', 'utf8'),
+  require('./fixtures/selection-marker.json')
+);
+
+function createTest (testName, html, expected) {
   test('parse() ' + testName, function (t) {
-    var html = fs.readFileSync(__dirname + '/fixtures/' + testName + '.html');
     var elm = document.createElement('div');
     elm.contentEditable = true;
-    elm.innerHTML = html.toString().trim();
+    elm.innerHTML = html.trim();
 
-    t.deepEqual(parse(elm), require('./fixtures/' + testName + '.json'));
+    t.deepEqual(parse(elm), expected);
 
     t.end();
   });
-});
+}
 
 test('parse() whitespace \t', function (t) {
   var elm = document.body.appendChild(document.createElement('p'));

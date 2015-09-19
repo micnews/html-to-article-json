@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "semistandard && npm prune && tape test/*-test.js",
+    "zuul": "zuul --local 1337 -- ./test/*-test.js",
     "example": "beefy example/client.js"
   },
   "repository": {
@@ -19,13 +20,15 @@
   "homepage": "https://github.com/micnews/content-editable-ng#readme",
   "devDependencies": {
     "beefy": "^2.1.5",
+    "brfs": "^1.4.1",
     "jsdom": "^6.3.0",
     "pre-commit": "^1.1.1",
     "pretty-hrtime": "^1.0.0",
     "semistandard": "^7.0.2",
     "tape": "^4.2.0",
     "watchify": "^3.4.0",
-    "xtend": "^4.0.0"
+    "xtend": "^4.0.0",
+    "zuul": "^3.5.0"
   },
   "dependencies": {
     "incremental-dom": "^0.1.0"
