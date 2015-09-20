@@ -92,29 +92,6 @@ test('render() text with italic, bold & links', function (t) {
   t.end();
 });
 
-test('render() ignore unkown type(s)', function (t) {
-  t.equal(render([{
-    type: 'beepboop'
-  }]), expected(''));
-
-  t.equal(render([{
-    type: 'paragraph',
-    children: [{
-      type: 'text',
-      content: 'beep'
-    }, {
-      type: 'range-start'
-    }, {
-      type: 'range-end'
-    }, {
-      type: 'text',
-      content: 'boop'
-    }]
-  }]), expected('<p>beepboop</p>'));
-
-  t.end();
-});
-
 test('render() inline-elements', function (t) {
   t.equal(render([{
     type: 'paragraph',
