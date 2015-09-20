@@ -130,9 +130,31 @@ test('render() selection-marker', function (t) {
   t.end();
 });
 
-function render (list) {
-  var elm = document.body.appendChild(document.createElement('div'));
-  elm.className = 'wrapper';
+test('render() works with bad dom', function (t) {
+  var elm = document.createElement('div');
+  var input = [{
+    type: 'paragraph',
+    children: [{
+      type: 'text',
+      content: 'beep'
+    }]
+  }];
+  t.equal(render(input, elm), expected('<p>beep</p>'));
+  elm.innerHTML = '<p class="huh?">beep</p>';
+  t.equal(render(input, elm), expected('<p>beep</p>'));
+  elm.innerHTML = '<p foo="bar">beep</p>';
+  t.equal(render(input, elm), expected('<p>beep</p>'));
+  elm.innerHTML = '<p><i>beep</i></p>';
+  t.equal(render(input, elm), expected('<p>beep</p>'));
+  elm.innerHTML = '<p>boop</p>';
+  t.equal(render(input, elm), expected('<p>beep</p>'));
+  elm.innerHTML = '<p>foo</p><p>bar</p>';
+  t.equal(render(input, elm), expected('<p>beep</p>'));
+  t.end();
+});
+
+function render (list, elm) {
+  elm = elm || document.body.appendChild(document.createElement('div'));
 
   renderToIDom(elm, list);
 
@@ -140,5 +162,5 @@ function render (list) {
 }
 
 function expected (str) {
-  return '<div class="wrapper"><div contenteditable="true">' + str + '</div></div>';
+  return '<div contenteditable="true">' + str + '</div>';
 }
