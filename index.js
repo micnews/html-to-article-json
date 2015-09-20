@@ -8,6 +8,8 @@ var normalize = require('./lib/normalize');
 
 module.exports = function (elm) {
   saveSelection(elm);
+  // console.log(elm.outerHTML);
   render(elm, normalize(parse(elm)));
+  // console.log(elm.outerHTML);
   restoreSelection(elm);
 };
