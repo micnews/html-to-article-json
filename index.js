@@ -13,8 +13,7 @@ module.exports = function (elm, opts) {
     saveSelection(elm);
   }
 
-  var parsed = parse(elm);
-  render(elm, normalize(parsed.nodes), parsed.ids);
+  render(elm, normalize(parse(elm)));
 
   if (selection) {
     restoreSelection(elm);
