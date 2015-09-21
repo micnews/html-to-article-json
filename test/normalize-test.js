@@ -156,3 +156,29 @@ test('normalize() keep needed linebreaks', function (t) {
   t.deepEqual(normalize(tree7), tree7);
   t.end();
 });
+
+test('normalize() add br-tag to empty text-container', function (t) {
+  var tree = [{
+    type: 'paragraph',
+    children: []
+  }, {
+    type: 'paragraph',
+    children: [
+      { type: 'linebreak' }
+    ]
+  }];
+  var expected = [{
+    type: 'paragraph',
+    children: [
+      { type: 'linebreak' }
+    ]
+  }, {
+    type: 'paragraph',
+    children: [
+      { type: 'linebreak' }
+    ]
+  }];
+
+  t.deepEqual(normalize(tree), expected);
+  t.end();
+});
