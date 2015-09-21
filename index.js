@@ -6,9 +6,17 @@ var saveSelection = require('./lib/save-selection');
 var restoreSelection = require('./lib/restore-selection');
 var normalize = require('./lib/normalize');
 
-module.exports = function (elm) {
-  saveSelection(elm);
+module.exports = function (elm, opts) {
+  opts = opts || {};
+  var selection = typeof opts.saveSelection !== 'boolean' || opts.saveSelection;
+  if (selection) {
+    saveSelection(elm);
+  }
+
   var parsed = parse(elm);
   render(elm, normalize(parsed.nodes), parsed.ids);
-  restoreSelection(elm);
+
+  if (selection) {
+    restoreSelection(elm);
+  }
 };
