@@ -153,6 +153,36 @@ test('render() works with bad dom', function (t) {
   t.end();
 });
 
+test('render() works with rich (image)', function (t) {
+  var input = [{
+    type: 'rich',
+    category: 'image',
+    src: 'http://example.com/image.jpg'
+  }];
+  t.equal(
+    render(input),
+    expected('<figure>' +
+      '<img src="http://example.com/image.jpg">' +
+      '</figure>'));
+  t.end();
+});
+
+test('render() works with rich (image + caption)', function (t) {
+  var input = [{
+    type: 'rich',
+    category: 'image',
+    src: 'http://example.com/image.jpg',
+    caption: 'beep boop'
+  }];
+  t.equal(
+    render(input),
+    expected('<figure>' +
+      '<img src="http://example.com/image.jpg" alt="beep boop">' +
+      '<figcaption>beep boop</figcaption>' +
+      '</figure>'));
+  t.end();
+});
+
 function render (list, elm) {
   elm = elm || document.body.appendChild(document.createElement('div'));
 

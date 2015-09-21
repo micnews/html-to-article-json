@@ -5,7 +5,7 @@ require('./browser');
 var test = require('tape');
 var _update = require('../');
 
-test('update()', function (t) {
+test('update() text', function (t) {
   var elm;
   var child;
   var child2;
@@ -52,6 +52,15 @@ test('update() custom attributes on root div', function (t) {
   update(elm);
   t.notEqual(elm.getAttribute('foo'), 'bar');
   t.equal(elm.contentEditable, 'true');
+  t.end();
+});
+
+test('update() img', function (t) {
+  var elm = document.body.appendChild(document.createElement('div'));
+  var img = elm.appendChild(document.createElement('img'));
+  img.setAttribute('src', 'http://example.com/image.jpg');
+  update(elm);
+  t.equal(elm.innerHTML, '<figure><img src="http://example.com/image.jpg"></figure>');
   t.end();
 });
 
