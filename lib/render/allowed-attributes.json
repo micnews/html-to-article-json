@@ -1,7 +1,15 @@
 {
-  "contenteditable": true,
-  "class": true,
-  "href": true,
-  "src": true,
-  "alt": true
+  "span": [
+    "class"
+  ],
+  "a": [
+    "href"
+  ],
+  "div": [
+    "contenteditable"
+  ],
+  "img": [
+    "src",
+    "alt"
+  ]
 }
