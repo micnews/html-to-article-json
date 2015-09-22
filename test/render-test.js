@@ -157,7 +157,8 @@ test('render() works with rich (image)', function (t) {
   var input = [{
     type: 'rich',
     category: 'image',
-    src: 'http://example.com/image.jpg'
+    src: 'http://example.com/image.jpg',
+    caption: []
   }];
   t.equal(
     render(input),
@@ -171,14 +172,17 @@ test('render() works with rich (image + caption)', function (t) {
   var input = [{
     type: 'rich',
     category: 'image',
-    src: 'http://example.com/image.jpg',
-    caption: 'beep boop'
+    caption: [
+      { bold: false, content: 'beep', href: null, italic: false, type: 'text' },
+      { bold: true, content: 'boop', href: null, italic: false, type: 'text' }
+    ],
+    src: 'http://example.com/image.jpg'
   }];
   t.equal(
     render(input),
     expected('<figure>' +
-      '<img src="http://example.com/image.jpg" alt="beep boop">' +
-      '<figcaption>beep boop</figcaption>' +
+      '<img src="http://example.com/image.jpg" alt="beepboop">' +
+      '<figcaption>beep<strong>boop</strong></figcaption>' +
       '</figure>'));
   t.end();
 });

@@ -64,6 +64,21 @@ test('update() img', function (t) {
   t.end();
 });
 
+test('update() figure + img with figcaption', function (t) {
+  var elm = document.body.appendChild(document.createElement('div'));
+  elm.innerHTML = '<figure>' +
+      '<img src="http://example.com/image.jpg">' +
+      '<figcaption><b>Beep</b>peeB</figcaption>' +
+    '</figure>';
+  update(elm);
+  var expected = '<figure>' +
+      '<img src="http://example.com/image.jpg" alt="BeeppeeB">' +
+      '<figcaption><strong>Beep</strong>peeB</figcaption>' +
+    '</figure>';
+  t.equal(elm.innerHTML, expected);
+  t.end();
+});
+
 function update (elm) {
   _update(elm, { saveSelection: false });
 }
