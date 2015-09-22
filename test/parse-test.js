@@ -64,3 +64,22 @@ test('parse() figure + img', function (t) {
   }]);
   t.end();
 });
+
+test('parse() figure + img but no figcaption', function (t) {
+  var figure = document.createElement('figure');
+  var img = figure.appendChild(document.createElement('img'));
+  img.src = 'http://example.com/image.jpg';
+  t.deepEqual(parse(figure), [{
+    type: 'rich',
+    category: 'image',
+    caption: [],
+    src: 'http://example.com/image.jpg'
+  }]);
+  t.end();
+});
+
+test('parse() figure with unkown content', function (t) {
+  var figure = document.createElement('figure');
+  t.deepEqual(parse(figure), []);
+  t.end();
+});
