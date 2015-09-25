@@ -78,6 +78,32 @@ test('update() figure + img with figcaption', function (t) {
   t.end();
 });
 
+if (process.browser) {
+  test('update() with selection (default)', function (t) {
+    var elm = document.body.appendChild(document.createElement('div'));
+    elm.innerHTML = '<p>Beep</p>';
+    var text = elm.querySelector('p').childNodes[0];
+
+    var selection = window.getSelection();
+    selection.removeAllRanges();
+    var range = document.createRange();
+    range.setStart(text, 1);
+    range.setEnd(text, 3);
+    selection.addRange(range);
+
+    _update(elm);
+    elm.normalize();
+
+    var range2 = window.getSelection().getRangeAt(0);
+    t.notEqual(range, range2, 'different than the start rante');
+    t.equal(range2.startContainer, text, 'range2.startContainer');
+    t.equal(range2.startOffset, 1, 'range2.startOffset');
+    t.equal(range2.endContainer, text, 'range2.endContainer');
+    t.equal(range2.endOffset, 3, 'range2.endOffset');
+    t.end();
+  });
+}
+
 function update (elm) {
   _update(elm, { saveSelection: false });
 }

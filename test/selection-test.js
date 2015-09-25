@@ -9,6 +9,9 @@ if (!process.browser) {
 }
 
 test('saveSelection() no current selection', function (t) {
+  var selection = window.getSelection();
+  selection.removeAllRanges();
+
   var elm = document.body.appendChild(document.createElement('div'));
   elm.contentEditable = 'true';
   elm.setAttribute('contenteditable', 'true');
