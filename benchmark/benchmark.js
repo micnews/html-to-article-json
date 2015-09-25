@@ -30,4 +30,6 @@ for (count = 0; count < 1000; ++count) {
 }
 duration = Date.now() - start;
 
-console.log((duration / count) + ' ms / iteration');
+var msg = (duration / count) + ' ms / iteration';
+console.log(msg);
+document.body.appendChild(document.createTextNode(msg));
