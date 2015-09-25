@@ -187,6 +187,24 @@ test('render() works with rich (image + caption)', function (t) {
   t.end();
 });
 
+test('render() persist contenteditable === true', function (t) {
+  var div = document.createElement('div');
+  div.setAttribute('contenteditable', 'true');
+  div.contentEditable = 'true';
+  t.equal(render(normalize([]), div),
+    '<div contenteditable="true"><p><br></p></div>');
+  t.end();
+});
+
+test('render() persist contenteditable === false', function (t) {
+  var div = document.createElement('div');
+  div.setAttribute('contenteditable', 'false');
+  div.contentEditable = 'false';
+  t.equal(render(normalize([]), div),
+    '<div contenteditable="false"><p><br></p></div>');
+  t.end();
+});
+
 function render (list, elm) {
   elm = elm || document.body.appendChild(document.createElement('div'));
 
@@ -196,5 +214,5 @@ function render (list, elm) {
 }
 
 function expected (str) {
-  return '<div contenteditable="true">' + str + '</div>';
+  return '<div>' + str + '</div>';
 }

@@ -51,7 +51,6 @@ test('update() custom attributes on root div', function (t) {
 
   update(elm);
   t.notEqual(elm.getAttribute('foo'), 'bar');
-  t.equal(elm.contentEditable, 'true');
   t.end();
 });
 
