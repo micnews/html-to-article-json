@@ -3,15 +3,30 @@
 require('./browser');
 
 var test = require('tape');
-var setupUpdate = require('../');
-var updateWithoutSelection = setupUpdate({
+var init = require('../');
+var updateWithoutSelection = init({
   saveSelection: false
 });
-var updateWithSelection = setupUpdate({
+var updateWithSelection = init({
   saveSelection: true
 });
 
-test('update() text', function (t) {
+test('init() required opts', function (t) {
+  t.throws(function () {
+    init();
+  }, 'init() must have opts');
+  t.throws(function () {
+    init({});
+  }, 'init() must have opts.saveSelection');
+  t.throws(function () {
+    init({
+      saveSelection: null
+    });
+  }, 'init() must have opts.saveSelection that is a boolean');
+  t.end();
+});
+
+test('init({ saveSelection: false }) text', function (t) {
   var elm;
   var child;
   var child2;
@@ -50,7 +65,7 @@ test('update() text', function (t) {
   t.end();
 });
 
-test('update() custom attributes on root div', function (t) {
+test('init({ saveSelection: false }) custom attributes on root div', function (t) {
   var elm = document.body.appendChild(document.createElement('div'));
   elm.setAttribute('foo', 'bar');
 
@@ -59,7 +74,7 @@ test('update() custom attributes on root div', function (t) {
   t.end();
 });
 
-test('update() img', function (t) {
+test('init({ saveSelection: false }) img', function (t) {
   var elm = document.body.appendChild(document.createElement('div'));
   var img = elm.appendChild(document.createElement('img'));
   img.setAttribute('src', 'http://example.com/image.jpg');
@@ -68,7 +83,7 @@ test('update() img', function (t) {
   t.end();
 });
 
-test('update() figure + img with figcaption', function (t) {
+test('init({ saveSelection: false }) figure + img with figcaption', function (t) {
   var elm = document.body.appendChild(document.createElement('div'));
   elm.innerHTML = '<figure>' +
       '<img src="http://example.com/image.jpg">' +
@@ -84,7 +99,7 @@ test('update() figure + img with figcaption', function (t) {
 });
 
 if (process.browser) {
-  test('update() with selection (default)', function (t) {
+  test('init({ saveSelection: true }) with selection (default)', function (t) {
     var elm = document.body.appendChild(document.createElement('div'));
     elm.innerHTML = '<p>Beep</p>';
     var text = elm.querySelector('p').childNodes[0];

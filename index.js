@@ -5,10 +5,14 @@ var parse = require('./lib/parse');
 var saveSelection = require('./lib/save-selection');
 var restoreSelection = require('./lib/restore-selection');
 var normalize = require('./lib/normalize');
+var assert = require('assert');
 
 module.exports = function (opts) {
-  opts = opts || {};
-  var selection = typeof opts.saveSelection !== 'boolean' || opts.saveSelection;
+  assert(opts, 'required: opts');
+  assert(typeof opts.saveSelection === 'boolean',
+    'required: opts.saveSelection is boolean');
+
+  var selection = !!opts.saveSelection;
   return selection ? updateWithSelection : updateWithoutSelection;
 };
 

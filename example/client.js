@@ -1,6 +1,8 @@
 'use strict';
 
-var update = require('../')({});
+var update = require('../')({
+  saveSelection: true
+});
 
 var elm = document.body.appendChild(document.createElement('div'));
 elm.contentEditable = true;

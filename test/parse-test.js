@@ -83,3 +83,17 @@ test('parse() figure with unkown content', function (t) {
   t.deepEqual(parse(figure), []);
   t.end();
 });
+
+test('parse() figure + img and figcaption with no content', function (t) {
+  var figure = document.createElement('figure');
+  var img = figure.appendChild(document.createElement('img'));
+  img.src = 'http://example.com/image.jpg';
+  figure.appendChild(document.createElement('figcaption'));
+  t.deepEqual(parse(figure), [{
+    type: 'rich',
+    category: 'image',
+    caption: [],
+    src: 'http://example.com/image.jpg'
+  }]);
+  t.end();
+});
