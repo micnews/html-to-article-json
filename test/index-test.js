@@ -98,6 +98,24 @@ test('init({ saveSelection: false }) figure + img with figcaption', function (t)
   t.end();
 });
 
+test('init() custom parse', function (t) {
+  var elm = document.body.appendChild(document.createElement('div'));
+  elm.innerHTML = '<div class="header">This is aparently a header</div><p>foo</p>';
+  var update = init({
+    custom: {
+      parse: function (elm) {
+        if (elm.classList.contains('header')) {
+          return 'header1';
+        }
+      }
+    },
+    saveSelection: false
+  });
+  update(elm);
+  t.equal(elm.innerHTML, '<h1>This is aparently a header</h1><p>foo</p>');
+  t.end();
+});
+
 if (process.browser) {
   test('init({ saveSelection: true }) with selection (default)', function (t) {
     var elm = document.body.appendChild(document.createElement('div'));
