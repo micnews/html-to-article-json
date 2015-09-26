@@ -1,7 +1,7 @@
 'use strict';
 
 var render = require('./lib/render');
-var parse = require('./lib/parse');
+var setupParse = require('./lib/parse');
 var saveSelection = require('./lib/save-selection');
 var restoreSelection = require('./lib/restore-selection');
 var normalize = require('./lib/normalize');
@@ -12,16 +12,17 @@ module.exports = function (opts) {
   assert(typeof opts.saveSelection === 'boolean',
     'required: opts.saveSelection is boolean');
 
-  var selection = !!opts.saveSelection;
-  return selection ? updateWithSelection : updateWithoutSelection;
+  var parse = setupParse(opts);
+
+  return opts.saveSelection ? updateWithSelection : updateWithoutSelection;
+
+  function updateWithoutSelection (elm) {
+    render(elm, normalize(parse(elm)));
+  }
+
+  function updateWithSelection (elm) {
+    saveSelection(elm);
+    updateWithoutSelection(elm);
+    restoreSelection(elm);
+  }
 };
-
-function updateWithoutSelection (elm) {
-  render(elm, normalize(parse(elm)));
-}
-
-function updateWithSelection (elm) {
-  saveSelection(elm);
-  updateWithoutSelection(elm);
-  restoreSelection(elm);
-}

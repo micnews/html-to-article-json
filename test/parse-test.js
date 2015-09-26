@@ -3,7 +3,9 @@
 require('./mock-jsdom-browser');
 
 var test = require('tape');
-var parse = require('../lib/parse');
+var setupParse = require('../lib/parse');
+
+var parse = setupParse({});
 
 test('parse() single block element node', function (t) {
   var elm = document.createElement('p');
