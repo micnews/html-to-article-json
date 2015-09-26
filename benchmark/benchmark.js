@@ -16,7 +16,7 @@ if (!process.browser) {
   document.createRange = function () {};
 }
 
-var update = require('../');
+var update = require('../')({});
 var fs = require('fs');
 var text = document.createElement('div');
 text.innerHTML = fs.readFileSync(__dirname + '/text.html', 'utf8');

@@ -1,6 +1,6 @@
 'use strict';
 
-var update = require('../');
+var update = require('../')({});
 
 var elm = document.body.appendChild(document.createElement('div'));
 elm.contentEditable = true;
