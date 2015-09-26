@@ -6,7 +6,7 @@
   "scripts": {
     "test": "semistandard && npm prune && tape test/*-test.js",
     "zuul": "zuul --local 1337 -- ./test/*-test.js",
-    "example": "beefy --open example/client.js",
+    "example": "beefy example/client.js --open",
     "benchmark": "node benchmark/benchmark.js",
     "browser-benchmark": "beefy benchmark/benchmark.js --open -- --transform brfs"
   },
