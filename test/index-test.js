@@ -70,7 +70,7 @@ test('init({ saveSelection: false }) custom attributes on root div', function (t
   elm.setAttribute('foo', 'bar');
 
   updateWithoutSelection(elm);
-  t.notEqual(elm.getAttribute('foo'), 'bar');
+  t.equal(elm.getAttribute('foo'), 'bar', 'custom attribute is kept');
   t.end();
 });
 
