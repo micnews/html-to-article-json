@@ -1,12 +1,8 @@
 'use strict';
 
-var saveSelection = require('../lib/save-selection');
-var restoreSelection = require('../lib/restore-selection');
+var saveSelection = require('../../lib/save-selection');
+var restoreSelection = require('../../lib/restore-selection');
 var test = require('tape');
-
-if (!process.browser) {
-  test = function () {};
-}
 
 test('saveSelection() no current selection', function (t) {
   var selection = window.getSelection();

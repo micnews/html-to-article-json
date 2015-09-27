@@ -1,6 +1,6 @@
 'use strict';
 
-require('../test/browser');
+require('../test/mock-jsdom-browser');
 
 var update = require('../')({
   saveSelection: false

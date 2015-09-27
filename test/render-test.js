@@ -1,6 +1,6 @@
 'use strict';
 
-require('./browser');
+require('./mock-jsdom-browser');
 
 var renderToIDom = require('../lib/render');
 var test = require('tape');
