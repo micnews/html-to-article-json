@@ -45,6 +45,7 @@
   },
   "browser": {
     "jsdom": false,
-    "./mock-jsdom-browser": false
+    "./mock-jsdom-browser": false,
+    "../test/mock-jsdom-browser": false
   }
 }
