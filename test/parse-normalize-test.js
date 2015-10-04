@@ -4,10 +4,8 @@ require('./mock-jsdom-browser');
 
 var test = require('tape');
 var fs = require('fs');
-var setupParse = require('../lib/parse');
-var normalize = require('../lib/normalize');
-
-var parse = setupParse({});
+var normalize = require('../lib/normalize')({});
+var parse = require('../lib/parse')({});
 
 createTest(
   'basic',
