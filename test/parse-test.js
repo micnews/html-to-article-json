@@ -39,7 +39,7 @@ test('parse() img, with alt-attribute', function (t) {
     type: 'rich',
     category: 'image',
     caption: [
-      { bold: false, content: 'beep boop', href: null, italic: false, type: 'text' }
+      { content: 'beep boop', type: 'text' }
     ],
     src: 'http://example.com/image.jpg'
   }]);
