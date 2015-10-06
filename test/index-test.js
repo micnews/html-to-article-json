@@ -98,6 +98,23 @@ test('init({ saveSelection: false }) figure + img with figcaption', function (t)
   t.end();
 });
 
+test('init({ saveSelection: false }) figure + video with figcaption', function (t) {
+  var elm = document.createElement('figure');
+  var video = elm.appendChild(document.createElement('video'));
+  video.src = 'http://example.com/video.mp4';
+  var figcaption = elm.appendChild(document.createElement('figcaption'));
+  figcaption.innerHTML = '<strong>Beep</strong>peeB';
+  updateWithoutSelection(elm);
+  var expected = '<figure>' +
+      '<video>' +
+        '<source src="http://example.com/video.mp4">' +
+      '</video>' +
+      '<figcaption><strong>Beep</strong>peeB</figcaption>' +
+    '</figure>';
+  t.equal(elm.innerHTML, expected);
+  t.end();
+});
+
 if (process.browser) {
   test('init({ saveSelection: true }) with selection (default)', function (t) {
     var elm = document.body.appendChild(document.createElement('div'));

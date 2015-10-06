@@ -187,6 +187,58 @@ test('render() works with rich (image + caption)', function (t) {
   t.end();
 });
 
+test('render() works with rich (video)', function (t) {
+  var input = [{
+    type: 'rich',
+    category: 'video',
+    caption: [],
+    sources: [{
+      src: 'http://example.com/video.mp4',
+      type: null
+    }, {
+      src: 'http://example.com/video2.mp4',
+      type: 'video/mp4'
+    }]
+  }];
+  t.equal(
+    render(input),
+    expected('<figure>' +
+        '<video>' +
+          '<source src="http://example.com/video.mp4">' +
+          '<source src="http://example.com/video2.mp4" type="video/mp4">' +
+        '</video>' +
+      '</figure>'));
+  t.end();
+});
+
+test('render() works with rich (video + caption)', function (t) {
+  var input = [{
+    type: 'rich',
+    category: 'video',
+    caption: [
+      { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text' },
+      { bold: true, content: 'world', href: null, italic: false, type: 'text' }
+    ],
+    sources: [{
+      src: 'http://example.com/video.mp4',
+      type: null
+    }, {
+      src: 'http://example.com/video2.mp4',
+      type: 'video/mp4'
+    }]
+  }];
+  t.equal(
+    render(input),
+    expected('<figure>' +
+      '<video>' +
+        '<source src="http://example.com/video.mp4">' +
+        '<source src="http://example.com/video2.mp4" type="video/mp4">' +
+      '</video>' +
+      '<figcaption>Hello, <strong>world</strong></figcaption>' +
+      '</figure>'));
+  t.end();
+});
+
 test('render() persist contenteditable === true', function (t) {
   var div = document.createElement('div');
   div.setAttribute('contenteditable', 'true');
