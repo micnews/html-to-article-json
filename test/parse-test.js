@@ -136,3 +136,66 @@ test('parse() video with sources', function (t) {
   }]);
   t.end();
 });
+
+test('parse() figure + video with src', function (t) {
+  var figure = document.createElement('figure');
+  var video = figure.appendChild(document.createElement('video'));
+  video.src = 'http://example.com/video.mp4';
+  t.deepEqual(parse(figure), [{
+    type: 'rich',
+    category: 'video',
+    caption: [],
+    sources: [{
+      src: 'http://example.com/video.mp4',
+      type: null
+    }]
+  }]);
+  t.end();
+});
+
+test('parse() figure + video with sources', function (t) {
+  var figure = document.createElement('figure');
+  var video = figure.appendChild(document.createElement('video'));
+  var source1 = video.appendChild(document.createElement('source'));
+  source1.src = 'http://example.com/video.mp4';
+  var source2 = video.appendChild(document.createElement('source'));
+  source2.src = 'http://example.com/video2.mp4';
+  source2.type = 'video/mp4';
+  t.deepEqual(parse(figure), [{
+    type: 'rich',
+    category: 'video',
+    caption: [],
+    sources: [{
+      src: 'http://example.com/video.mp4',
+      type: null
+    }, {
+      src: 'http://example.com/video2.mp4',
+      type: 'video/mp4'
+    }]
+  }]);
+  t.end();
+});
+
+test('parse() figure + video with src & figcaption', function (t) {
+  var figure = document.createElement('figure');
+  var video = figure.appendChild(document.createElement('video'));
+  var figcaption = figure.appendChild(document.createElement('figcaption'));
+  var b = document.createElement('b');
+  b.appendChild(document.createTextNode('world'));
+  figcaption.appendChild(document.createTextNode('Hello, '));
+  figcaption.appendChild(b);
+  video.src = 'http://example.com/video.mp4';
+  t.deepEqual(parse(figure), [{
+    type: 'rich',
+    category: 'video',
+    caption: [
+      { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text' },
+      { bold: true, content: 'world', href: null, italic: false, type: 'text' }
+    ],
+    sources: [{
+      src: 'http://example.com/video.mp4',
+      type: null
+    }]
+  }]);
+  t.end();
+});
