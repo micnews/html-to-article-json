@@ -43,6 +43,7 @@
     "zuul": "^3.5.0"
   },
   "dependencies": {
+    "array-from": "^2.0.2",
     "generate-function": "^2.0.0",
     "virtual-dom": "^2.1.1"
   },
