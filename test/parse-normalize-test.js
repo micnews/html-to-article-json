@@ -18,9 +18,9 @@ createTest(
   require('./fixtures/inline-css.json')
 );
 createTest(
-  'divs',
-  fs.readFileSync(__dirname + '/fixtures/divs.html', 'utf8'),
-  require('./fixtures/divs.json')
+  'blocks',
+  fs.readFileSync(__dirname + '/fixtures/blocks.html', 'utf8'),
+  require('./fixtures/blocks.json')
 );
 createTest(
   'whitespace',

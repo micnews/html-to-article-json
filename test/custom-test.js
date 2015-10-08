@@ -35,7 +35,7 @@ test('custom text formattings: add underline span-type', function (t) {
     '<p>foo<span style="text-decoration: underline">bar</span></p>');
   t.deepEqual(parse(elm1), [
     {
-      type: 'div',
+      type: 'block',
       children: [
         {
           type: 'paragraph',

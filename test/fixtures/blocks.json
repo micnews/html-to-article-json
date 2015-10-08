@@ -35,5 +35,14 @@
       "bold": false,
       "italic": false
     }]
+  }, {
+    "type": "paragraph",
+    "children": [{
+      "type": "text",
+      "content": "Text in a form",
+      "href": null,
+      "bold": false,
+      "italic": false
+    }]
   }
 ]

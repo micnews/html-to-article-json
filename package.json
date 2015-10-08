@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "array-from": "^2.0.2",
+    "block-elements": "^1.1.0",
     "es6-set": "^0.1.2",
     "generate-function": "^2.0.0",
     "virtual-dom": "^2.1.1"

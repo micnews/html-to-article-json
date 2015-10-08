@@ -19,6 +19,19 @@ test('parse() single inline element node', function (t) {
   t.end();
 });
 
+test('parse() text in span', function (t) {
+  var elm = document.createElement('span');
+  elm.innerHTML = 'beep boop';
+  t.deepEqual(parse(elm), [{
+    bold: false,
+    content: 'beep boop',
+    href: null,
+    italic: false,
+    type: 'text'
+  }]);
+  t.end();
+});
+
 test('parse() img', function (t) {
   var img = document.createElement('img');
   img.src = 'http://example.com/image.jpg';
@@ -82,7 +95,10 @@ test('parse() figure + img but no figcaption', function (t) {
 
 test('parse() figure with unkown content', function (t) {
   var figure = document.createElement('figure');
-  t.deepEqual(parse(figure), []);
+  t.deepEqual(parse(figure), [{
+    type: 'block',
+    children: []
+  }]);
   t.end();
 });
 
