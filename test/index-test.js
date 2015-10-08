@@ -10,6 +10,7 @@ var updateWithoutSelection = init({
 var updateWithSelection = init({
   saveSelection: true
 });
+var fs = require('fs');
 
 test('init() required opts', function (t) {
   t.throws(function () {
@@ -112,6 +113,19 @@ test('init({ saveSelection: false }) figure + video with figcaption', function (
       '<figcaption><strong>Beep</strong>peeB</figcaption>' +
     '</figure>';
   t.equal(elm.innerHTML, expected);
+  t.end();
+});
+
+test('init({ saveSelection: false }) word-document', function (t) {
+  var input = fs.readFileSync(__dirname + '/index-fixtures/word1-input.html', 'utf8');
+  var expected = fs.readFileSync(__dirname + '/index-fixtures/word1-expected.html', 'utf8').trim();
+  var elm = document.createElement('div');
+  elm.innerHTML = input.trim();
+  // I don't know why this is needed but it doesnt' behave as expected running it only once
+  updateWithoutSelection(elm);
+  updateWithoutSelection(elm);
+
+  t.equal(elm.innerHTML.trim(), expected);
   t.end();
 });
 

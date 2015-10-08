@@ -19,7 +19,8 @@ module.exports = function (opts) {
   return opts.saveSelection ? updateWithSelection : updateWithoutSelection;
 
   function updateWithoutSelection (elm) {
-    render(elm, normalize(parse(elm)));
+    var normalized = normalize(parse(elm));
+    render(elm, normalized);
   }
 
   function updateWithSelection (elm) {
