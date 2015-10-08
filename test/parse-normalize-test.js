@@ -13,9 +13,9 @@ createTest(
   require('./fixtures/basic.json')
 );
 createTest(
-  'style',
-  fs.readFileSync(__dirname + '/fixtures/style.html', 'utf8'),
-  require('./fixtures/style.json')
+  'inline-css',
+  fs.readFileSync(__dirname + '/fixtures/inline-css.html', 'utf8'),
+  require('./fixtures/inline-css.json')
 );
 createTest(
   'divs',
@@ -36,6 +36,11 @@ createTest(
   'selection-marker',
   fs.readFileSync(__dirname + '/fixtures/selection-marker.html', 'utf8'),
   require('./fixtures/selection-marker.json')
+);
+createTest(
+  'head-elements',
+  fs.readFileSync(__dirname + '/fixtures/head-elements.html', 'utf8'),
+  require('./fixtures/head-elements.json')
 );
 
 function createTest (testName, html, expected) {
