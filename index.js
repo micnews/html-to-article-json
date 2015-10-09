@@ -2,8 +2,8 @@
 
 var setupRender = require('./lib/render');
 var setupParse = require('./lib/parse');
-var saveSelection = require('./lib/save-selection');
-var restoreSelection = require('./lib/restore-selection');
+var saveSelection = require('./lib/selection/save');
+var restoreSelection = require('./lib/selection/restore');
 var setupNormalize = require('./lib/normalize');
 var assert = require('assert');
 
