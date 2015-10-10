@@ -9,38 +9,38 @@ var parse = require('../lib/parse')({});
 
 createTest(
   'basic',
-  fs.readFileSync(__dirname + '/fixtures/basic.html', 'utf8'),
-  require('./fixtures/basic.json')
+  fs.readFileSync(__dirname + '/parse-normalize-fixtures/basic.html', 'utf8'),
+  require('./parse-normalize-fixtures/basic.json')
 );
 createTest(
   'inline-css',
-  fs.readFileSync(__dirname + '/fixtures/inline-css.html', 'utf8'),
-  require('./fixtures/inline-css.json')
+  fs.readFileSync(__dirname + '/parse-normalize-fixtures/inline-css.html', 'utf8'),
+  require('./parse-normalize-fixtures/inline-css.json')
 );
 createTest(
   'blocks',
-  fs.readFileSync(__dirname + '/fixtures/blocks.html', 'utf8'),
-  require('./fixtures/blocks.json')
+  fs.readFileSync(__dirname + '/parse-normalize-fixtures/blocks.html', 'utf8'),
+  require('./parse-normalize-fixtures/blocks.json')
 );
 createTest(
   'whitespace',
-  fs.readFileSync(__dirname + '/fixtures/whitespace.html', 'utf8'),
-  require('./fixtures/whitespace.json')
+  fs.readFileSync(__dirname + '/parse-normalize-fixtures/whitespace.html', 'utf8'),
+  require('./parse-normalize-fixtures/whitespace.json')
 );
 createTest(
   'linebreak',
-  fs.readFileSync(__dirname + '/fixtures/linebreak.html', 'utf8'),
-  require('./fixtures/linebreak.json')
+  fs.readFileSync(__dirname + '/parse-normalize-fixtures/linebreak.html', 'utf8'),
+  require('./parse-normalize-fixtures/linebreak.json')
 );
 createTest(
   'selection-marker',
-  fs.readFileSync(__dirname + '/fixtures/selection-marker.html', 'utf8'),
-  require('./fixtures/selection-marker.json')
+  fs.readFileSync(__dirname + '/parse-normalize-fixtures/selection-marker.html', 'utf8'),
+  require('./parse-normalize-fixtures/selection-marker.json')
 );
 createTest(
   'head-elements',
-  fs.readFileSync(__dirname + '/fixtures/head-elements.html', 'utf8'),
-  require('./fixtures/head-elements.json')
+  fs.readFileSync(__dirname + '/parse-normalize-fixtures/head-elements.html', 'utf8'),
+  require('./parse-normalize-fixtures/head-elements.json')
 );
 
 function createTest (testName, html, expected) {
