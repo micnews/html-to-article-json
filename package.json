@@ -51,7 +51,7 @@
   },
   "browser": {
     "jsdom": false,
-    "./mock-jsdom-browser": false,
-    "../test/mock-jsdom-browser": false
+    "./utils/mock-jsdom-browser": false,
+    "../test/utils/mock-jsdom-browser": false
   }
 }
