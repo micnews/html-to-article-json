@@ -13,19 +13,39 @@ module.exports = function (opts) {
     'required: opts.saveSelection is boolean');
 
   var parse = setupParse(opts);
-  var render = setupRender(opts);
+  var renderWithoutSelection = setupRender(opts);
   var normalize = setupNormalize(opts);
 
-  return opts.saveSelection ? updateWithSelection : updateWithoutSelection;
+  var update = opts.saveSelection
+    ? updateWithSelection : updateWithoutSelection;
+
+  update.parse = opts.saveSelection
+    ? parseWithSelection : parseWithoutSelection;
+
+  update.render = opts.saveSelection
+    ? renderWithSelection : renderWithoutSelection;
+
+  return update;
 
   function updateWithoutSelection (elm) {
-    var normalized = normalize(parse(elm));
-    render(elm, normalized);
+    renderWithoutSelection(elm, parseWithoutSelection(elm));
   }
 
   function updateWithSelection (elm) {
+    renderWithSelection(elm, parseWithSelection(elm));
+  }
+
+  function parseWithSelection (elm) {
     saveSelection(elm);
-    updateWithoutSelection(elm);
+    return parseWithoutSelection(elm);
+  }
+
+  function parseWithoutSelection (elm) {
+    return normalize(parse(elm));
+  }
+
+  function renderWithSelection (elm, json) {
+    renderWithoutSelection(elm, json);
     restoreSelection(elm);
   }
 };

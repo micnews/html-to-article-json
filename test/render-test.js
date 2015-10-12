@@ -2,7 +2,7 @@
 
 require('./utils/mock-jsdom-browser');
 
-var renderToIDom = require('../lib/render')({});
+var renderToIDom = require('../index')({ saveSelection: false }).render;
 var test = require('tape');
 var normalize = require('../lib/normalize')({});
 
