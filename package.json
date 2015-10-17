@@ -2,7 +2,7 @@
   "name": "content-editable-ng",
   "version": "0.0.0",
   "description": "A new take on contenteditable, virtual-dom style",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "benchmark": "node benchmark/benchmark.js",
     "benchmark:browser": "beefy benchmark/benchmark.js --open -- --transform brfs",

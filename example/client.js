@@ -1,6 +1,6 @@
 'use strict';
 
-var update = require('../')({
+var update = require('../lib/index')({
   saveSelection: true
 });
 
