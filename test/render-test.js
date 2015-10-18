@@ -1,4 +1,4 @@
-const renderToIDom = require('../src/index')({ saveSelection: false }).render;
+const renderToIDom = require('../src/index').render({ saveSelection: false });
 const test = require('tape');
 const normalize = require('../src/normalize')({});
 

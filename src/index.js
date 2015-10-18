@@ -1,37 +1,33 @@
-const setupRender = require('./render');
-const setupParse = require('./parse');
+const createRender = require('./render');
+const createParse = require('./parse');
 const saveSelection = require('./selection/save');
 const restoreSelection = require('./selection/restore');
-const setupNormalize = require('./normalize');
+const createNormalize = require('./normalize');
 const assert = require('assert');
 
-module.exports = function (opts) {
+module.exports = setupUpdate;
+module.exports.update = setupUpdate;
+module.exports.parse = setupParse;
+module.exports.render = setupRender;
+
+function setupUpdate (opts) {
+  const render = setupRender(opts);
+  const parse = setupParse(opts);
+
+  return function (elm) {
+    render(elm, parse(elm));
+  };
+}
+
+function setupParse (opts) {
   assert(opts, 'required: opts');
   assert(typeof opts.saveSelection === 'boolean',
     'required: opts.saveSelection is boolean');
 
-  const parse = setupParse(opts);
-  const renderWithoutSelection = setupRender(opts);
-  const normalize = setupNormalize(opts);
+  const parse = createParse(opts);
+  const normalize = createNormalize(opts);
 
-  const update = opts.saveSelection
-    ? updateWithSelection : updateWithoutSelection;
-
-  update.parse = opts.saveSelection
-    ? parseWithSelection : parseWithoutSelection;
-
-  update.render = opts.saveSelection
-    ? renderWithSelection : renderWithoutSelection;
-
-  return update;
-
-  function updateWithoutSelection (elm) {
-    renderWithoutSelection(elm, parseWithoutSelection(elm));
-  }
-
-  function updateWithSelection (elm) {
-    renderWithSelection(elm, parseWithSelection(elm));
-  }
+  return opts.saveSelection ? parseWithSelection : parseWithoutSelection;
 
   function parseWithSelection (elm) {
     saveSelection(elm);
@@ -41,9 +37,20 @@ module.exports = function (opts) {
   function parseWithoutSelection (elm) {
     return normalize(parse(elm));
   }
+}
+
+function setupRender (opts) {
+  assert(opts, 'required: opts');
+  assert(typeof opts.saveSelection === 'boolean',
+    'required: opts.saveSelection is boolean');
+
+  const renderWithoutSelection = createRender(opts);
+
+  return opts.saveSelection ? renderWithSelection : renderWithoutSelection;
 
   function renderWithSelection (elm, json) {
+    console.log('render with selection');
     renderWithoutSelection(elm, json);
     restoreSelection(elm);
   }
-};
+}
