@@ -1,5 +1,3 @@
-'use strict';
-
 var getTextFormattings = require('../text-formattings');
 
 module.exports = function (opts) {

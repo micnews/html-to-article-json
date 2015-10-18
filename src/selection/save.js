@@ -1,5 +1,3 @@
-'use strct';
-
 module.exports = function (elm) {
   var selection = window.getSelection();
 

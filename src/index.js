@@ -1,5 +1,3 @@
-'use strict';
-
 var setupRender = require('./render');
 var setupParse = require('./parse');
 var saveSelection = require('./selection/save');

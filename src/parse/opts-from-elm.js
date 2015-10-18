@@ -1,5 +1,3 @@
-'use strict';
-
 var generateFunction = require('generate-function');
 var getTextFormattings = require('../text-formattings');
 

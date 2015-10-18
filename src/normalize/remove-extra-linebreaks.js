@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = function (tree) {
   tree.forEach(function (row) {
     if (row.children && shouldRemoveLinebreak(row.children)) {

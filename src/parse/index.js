@@ -1,5 +1,3 @@
-'use strict';
-
 var Set = require('es6-set');
 var BLOCK_ELEMENTS = new Set(require('block-elements'));
 var HEAD_NODE_NAMES = new Set([

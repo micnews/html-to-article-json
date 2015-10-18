@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = function (tree) {
   if (tree.length === 0) {
     tree.push({

@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = function (elm) {
   var start = elm.querySelector('.selection-marker-start');
   var end = elm.querySelector('.selection-marker-end');

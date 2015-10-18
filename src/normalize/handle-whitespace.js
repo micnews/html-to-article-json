@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = function handleWhitespace (tree) {
   tree.forEach(function (obj) {
     if (obj.type === 'text') {

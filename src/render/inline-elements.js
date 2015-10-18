@@ -1,5 +1,3 @@
-'use strict';
-
 var setupRenderText = require('./render-text');
 var VNode = require('virtual-dom').VNode;
 

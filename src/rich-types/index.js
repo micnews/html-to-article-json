@@ -1,5 +1,3 @@
-'use strict';
-
 var image = require('./image');
 var video = require('./video');
 var extend = require('xtend/mutable');

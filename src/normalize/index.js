@@ -1,5 +1,3 @@
-'use strict';
-
 var setupMergeTextNodes = require('./merge-text-nodes');
 var flattenTree = require('./flatten-tree');
 var handleWhitespace = require('./handle-whitespace');

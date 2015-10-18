@@ -1,5 +1,3 @@
-'use stirct';
-
 var getTextFormattings = require('../text-formattings');
 var generateFunction = require('generate-function');
 

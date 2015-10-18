@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = function flattenTree (tree) {
   var result = [];
   _flattenTree(tree, result);

@@ -1,5 +1,3 @@
-'use strict';
-
 var setupBlockElements = require('./block-elements');
 var VNode = require('virtual-dom').VNode;
 var diff = require('virtual-dom/diff');

@@ -1,5 +1,3 @@
-'use strict';
-
 var setupOptsFromElm = require('./opts-from-elm');
 var setupRich = require('../rich-types');
 

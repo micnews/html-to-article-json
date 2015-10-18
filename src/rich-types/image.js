@@ -1,5 +1,3 @@
-'use strict';
-
 var VNode = require('virtual-dom').VNode;
 
 module.exports = function () {

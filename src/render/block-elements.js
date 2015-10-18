@@ -1,5 +1,3 @@
-'use strict';
-
 var tags = {
   paragraph: 'P',
   header1: 'H1',
