@@ -1,5 +1,3 @@
-'use strict';
-
 const saveSelection = require('../../src/selection/save');
 const restoreSelection = require('../../src/selection/restore');
 const test = require('tape');

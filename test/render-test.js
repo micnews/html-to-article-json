@@ -1,5 +1,3 @@
-'use strict';
-
 const renderToIDom = require('../src/index')({ saveSelection: false }).render;
 const test = require('tape');
 const normalize = require('../src/normalize')({});

@@ -1,5 +1,3 @@
-'use strict';
-
 const test = require('tape');
 const fs = require('fs');
 const parseAndNormalize = require('../src')({ saveSelection: false }).parse;

@@ -1,5 +1,3 @@
-'use strict';
-
 const test = require('tape');
 const VNode = require('virtual-dom').VNode;
 const setupUpdate = require('../src/index');

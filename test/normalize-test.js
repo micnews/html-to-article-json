@@ -1,5 +1,3 @@
-'use strict';
-
 const normalize = require('../src/normalize')({});
 const test = require('tape');
 

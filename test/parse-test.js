@@ -1,5 +1,3 @@
-'use strict';
-
 const test = require('tape');
 const setupParse = require('../src/parse');
 
