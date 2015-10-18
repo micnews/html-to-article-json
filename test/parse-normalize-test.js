@@ -1,10 +1,8 @@
 'use strict';
 
-require('./utils/mock-jsdom-browser');
-
 var test = require('tape');
 var fs = require('fs');
-var parseAndNormalize = require('../')({ saveSelection: false }).parse;
+var parseAndNormalize = require('../src')({ saveSelection: false }).parse;
 
 createTest(
   'basic',

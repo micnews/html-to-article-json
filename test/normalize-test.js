@@ -1,6 +1,6 @@
 'use strict';
 
-var normalize = require('../lib/normalize')({});
+var normalize = require('../src/normalize')({});
 var test = require('tape');
 
 test('normalize() minimum content', function (t) {

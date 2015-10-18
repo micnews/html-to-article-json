@@ -1,9 +1,7 @@
 'use strict';
 
-require('./utils/mock-jsdom-browser');
-
 var test = require('tape');
-var init = require('../');
+var init = require('../src');
 var updateWithoutSelection = init({
   saveSelection: false
 });

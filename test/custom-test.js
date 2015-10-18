@@ -1,11 +1,9 @@
 'use strict';
 
-require('./utils/mock-jsdom-browser');
-
 var test = require('tape');
 var VNode = require('virtual-dom').VNode;
-var setupUpdate = require('../lib/index');
-var setupParse = require('../lib/parse');
+var setupUpdate = require('../src/index');
+var setupParse = require('../src/parse');
 
 test('custom text formattings: add underline span-type', function (t) {
   var opts1 = {

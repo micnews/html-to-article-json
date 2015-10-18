@@ -1,7 +1,7 @@
 'use strict';
 
-var saveSelection = require('../../lib/selection/save');
-var restoreSelection = require('../../lib/selection/restore');
+var saveSelection = require('../../src/selection/save');
+var restoreSelection = require('../../src/selection/restore');
 var test = require('tape');
 
 test('saveSelection() no current selection', function (t) {

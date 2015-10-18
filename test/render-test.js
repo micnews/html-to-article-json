@@ -1,10 +1,8 @@
 'use strict';
 
-require('./utils/mock-jsdom-browser');
-
-var renderToIDom = require('../lib/index')({ saveSelection: false }).render;
+var renderToIDom = require('../src/index')({ saveSelection: false }).render;
 var test = require('tape');
-var normalize = require('../lib/normalize')({});
+var normalize = require('../src/normalize')({});
 
 test('render minimum', function (t) {
   t.equal(render(normalize([])), expected('<p><br></p>'));

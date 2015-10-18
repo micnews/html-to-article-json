@@ -1,9 +1,7 @@
 'use strict';
 
-require('./utils/mock-jsdom-browser');
-
 var test = require('tape');
-var setupParse = require('../lib/parse');
+var setupParse = require('../src/parse');
 
 var parse = setupParse({});
 
