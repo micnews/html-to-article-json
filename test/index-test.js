@@ -1,14 +1,14 @@
 'use strict';
 
-var test = require('tape');
-var init = require('../src');
-var updateWithoutSelection = init({
+const test = require('tape');
+const init = require('../src');
+const updateWithoutSelection = init({
   saveSelection: false
 });
-var updateWithSelection = init({
+const updateWithSelection = init({
   saveSelection: true
 });
-var fs = require('fs');
+const fs = require('fs');
 
 test('init() required opts', function (t) {
   t.throws(function () {
@@ -26,9 +26,9 @@ test('init() required opts', function (t) {
 });
 
 test('init({ saveSelection: false }) text', function (t) {
-  var elm;
-  var child;
-  var child2;
+  let elm;
+  let child;
+  let child2;
   elm = document.body.appendChild(document.createElement('div'));
   elm.appendChild(document.createTextNode('beep'));
   updateWithoutSelection(elm);
@@ -65,7 +65,7 @@ test('init({ saveSelection: false }) text', function (t) {
 });
 
 test('init({ saveSelection: false }) custom attributes on root div', function (t) {
-  var elm = document.body.appendChild(document.createElement('div'));
+  const elm = document.body.appendChild(document.createElement('div'));
   elm.setAttribute('foo', 'bar');
 
   updateWithoutSelection(elm);
@@ -74,8 +74,8 @@ test('init({ saveSelection: false }) custom attributes on root div', function (t
 });
 
 test('init({ saveSelection: false }) img', function (t) {
-  var elm = document.body.appendChild(document.createElement('div'));
-  var img = elm.appendChild(document.createElement('img'));
+  const elm = document.body.appendChild(document.createElement('div'));
+  const img = elm.appendChild(document.createElement('img'));
   img.setAttribute('src', 'http://example.com/image.jpg');
   updateWithoutSelection(elm);
   t.equal(elm.innerHTML, '<figure><img src="http://example.com/image.jpg"></figure>');
@@ -83,13 +83,13 @@ test('init({ saveSelection: false }) img', function (t) {
 });
 
 test('init({ saveSelection: false }) figure + img with figcaption', function (t) {
-  var elm = document.body.appendChild(document.createElement('div'));
+  const elm = document.body.appendChild(document.createElement('div'));
   elm.innerHTML = '<figure>' +
       '<img src="http://example.com/image.jpg">' +
       '<figcaption><b>Beep</b>peeB</figcaption>' +
     '</figure>';
   updateWithoutSelection(elm);
-  var expected = '<figure>' +
+  const expected = '<figure>' +
       '<img src="http://example.com/image.jpg" alt="BeeppeeB">' +
       '<figcaption><strong>Beep</strong>peeB</figcaption>' +
     '</figure>';
@@ -98,13 +98,13 @@ test('init({ saveSelection: false }) figure + img with figcaption', function (t)
 });
 
 test('init({ saveSelection: false }) figure + video with figcaption', function (t) {
-  var elm = document.createElement('figure');
-  var video = elm.appendChild(document.createElement('video'));
+  const elm = document.createElement('figure');
+  const video = elm.appendChild(document.createElement('video'));
   video.src = 'http://example.com/video.mp4';
-  var figcaption = elm.appendChild(document.createElement('figcaption'));
+  const figcaption = elm.appendChild(document.createElement('figcaption'));
   figcaption.innerHTML = '<strong>Beep</strong>peeB';
   updateWithoutSelection(elm);
-  var expected = '<figure>' +
+  const expected = '<figure>' +
       '<video>' +
         '<source src="http://example.com/video.mp4">' +
       '</video>' +
@@ -115,9 +115,9 @@ test('init({ saveSelection: false }) figure + video with figcaption', function (
 });
 
 test('init({ saveSelection: false }) word-document', function (t) {
-  var input = fs.readFileSync(__dirname + '/index-fixtures/word1-input.html', 'utf8');
-  var expected = fs.readFileSync(__dirname + '/index-fixtures/word1-expected.html', 'utf8').trim();
-  var elm = document.createElement('div');
+  const input = fs.readFileSync(__dirname + '/index-fixtures/word1-input.html', 'utf8');
+  const expected = fs.readFileSync(__dirname + '/index-fixtures/word1-expected.html', 'utf8').trim();
+  const elm = document.createElement('div');
   elm.innerHTML = input.trim();
   // I don't know why this is needed but it doesnt' behave as expected running it only once
   updateWithoutSelection(elm);
@@ -129,13 +129,13 @@ test('init({ saveSelection: false }) word-document', function (t) {
 
 if (process.browser) {
   test('init({ saveSelection: true }) with selection (default)', function (t) {
-    var elm = document.body.appendChild(document.createElement('div'));
+    const elm = document.body.appendChild(document.createElement('div'));
     elm.innerHTML = '<p>Beep</p>';
-    var text = elm.querySelector('p').childNodes[0];
+    const text = elm.querySelector('p').childNodes[0];
 
-    var selection = window.getSelection();
+    const selection = window.getSelection();
     selection.removeAllRanges();
-    var range = document.createRange();
+    const range = document.createRange();
     range.setStart(text, 1);
     range.setEnd(text, 3);
     selection.addRange(range);
@@ -143,7 +143,7 @@ if (process.browser) {
     updateWithSelection(elm);
     elm.normalize();
 
-    var range2 = window.getSelection().getRangeAt(0);
+    const range2 = window.getSelection().getRangeAt(0);
     t.notEqual(range, range2, 'different than the start rante');
     t.equal(range2.startContainer, text, 'range2.startContainer');
     t.equal(range2.startOffset, 1, 'range2.startOffset');

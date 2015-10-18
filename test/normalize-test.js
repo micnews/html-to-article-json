@@ -1,10 +1,10 @@
 'use strict';
 
-var normalize = require('../src/normalize')({});
-var test = require('tape');
+const normalize = require('../src/normalize')({});
+const test = require('tape');
 
 test('normalize() minimum content', function (t) {
-  var expected = [{
+  const expected = [{
     type: 'paragraph',
     children: [{
       type: 'linebreak'
@@ -19,7 +19,7 @@ test('normalize() minimum content', function (t) {
 });
 
 test('normalize() minimum content with selection markers', function (t) {
-  var input = [{
+  const input = [{
     type: 'paragraph',
     children: [
       {
@@ -31,7 +31,7 @@ test('normalize() minimum content with selection markers', function (t) {
       }
     ]
   }];
-  var expected = [{
+  const expected = [{
     type: 'paragraph',
     children: [
       {
@@ -52,14 +52,14 @@ test('normalize() minimum content with selection markers', function (t) {
 });
 
 test('normalize() remove not needed linebreaks', function (t) {
-  var tree = [{
+  const tree = [{
     type: 'paragraph',
     children: [
       { type: 'text', content: 'beep boop' },
       { type: 'linebreak' }
     ]
   }];
-  var tree2 = [{
+  const tree2 = [{
     type: 'paragraph',
     children: [
       { type: 'text', content: 'beep boop' },
@@ -68,13 +68,13 @@ test('normalize() remove not needed linebreaks', function (t) {
       { type: 'linebreak' }
     ]
   }];
-  var expected = [{
+  const expected = [{
     type: 'paragraph',
     children: [
       { type: 'text', content: 'beep boop' }
     ]
   }];
-  var expected2 = [{
+  const expected2 = [{
     type: 'paragraph',
     children: [
       { type: 'text', content: 'beep boop' },
@@ -90,14 +90,14 @@ test('normalize() remove not needed linebreaks', function (t) {
 });
 
 test('normalize() keep needed linebreaks', function (t) {
-  var tree = [{
+  const tree = [{
     type: 'paragraph',
     children: [
       { type: 'linebreak' },
       { type: 'linebreak' }
     ]
   }];
-  var tree2 = [{
+  const tree2 = [{
     type: 'paragraph',
     children: [
       { type: 'selection-marker', start: true },
@@ -106,7 +106,7 @@ test('normalize() keep needed linebreaks', function (t) {
       { type: 'linebreak' }
     ]
   }];
-  var tree3 = [{
+  const tree3 = [{
     type: 'paragraph',
     children: [
       { type: 'text', content: 'beep boop' },
@@ -114,7 +114,7 @@ test('normalize() keep needed linebreaks', function (t) {
       { type: 'linebreak' }
     ]
   }];
-  var tree4 = [{
+  const tree4 = [{
     type: 'paragraph',
     children: [
       { type: 'text', content: 'beep' },
@@ -122,7 +122,7 @@ test('normalize() keep needed linebreaks', function (t) {
       { type: 'text', content: 'boop' }
     ]
   }];
-  var tree5 = [{
+  const tree5 = [{
     type: 'paragraph',
     children: [
       { type: 'selection-marker', start: true },
@@ -130,7 +130,7 @@ test('normalize() keep needed linebreaks', function (t) {
       { type: 'linebreak' }
     ]
   }];
-  var tree6 = [{
+  const tree6 = [{
     type: 'paragraph',
     children: [
       { type: 'selection-marker', start: true },
@@ -138,7 +138,7 @@ test('normalize() keep needed linebreaks', function (t) {
       { type: 'selection-marker', end: true }
     ]
   }];
-  var tree7 = [{
+  const tree7 = [{
     type: 'paragraph',
     children: [
       { type: 'linebreak' },
@@ -158,7 +158,7 @@ test('normalize() keep needed linebreaks', function (t) {
 });
 
 test('normalize() add br-tag to empty text-container', function (t) {
-  var tree = [{
+  const tree = [{
     type: 'paragraph',
     children: []
   }, {
@@ -167,7 +167,7 @@ test('normalize() add br-tag to empty text-container', function (t) {
       { type: 'linebreak' }
     ]
   }];
-  var expected = [{
+  const expected = [{
     type: 'paragraph',
     children: [
       { type: 'linebreak' }

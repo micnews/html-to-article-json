@@ -1,24 +1,24 @@
 'use strict';
 
-var test = require('tape');
-var setupParse = require('../src/parse');
+const test = require('tape');
+const setupParse = require('../src/parse');
 
-var parse = setupParse({});
+const parse = setupParse({});
 
 test('parse() single block element node', function (t) {
-  var elm = document.createElement('p');
+  const elm = document.createElement('p');
   t.deepEqual(parse(elm), [{ type: 'paragraph', children: [] }]);
   t.end();
 });
 
 test('parse() single inline element node', function (t) {
-  var elm = document.createElement('span');
+  const elm = document.createElement('span');
   t.deepEqual(parse(elm), []);
   t.end();
 });
 
 test('parse() text in span', function (t) {
-  var elm = document.createElement('span');
+  const elm = document.createElement('span');
   elm.innerHTML = 'beep boop';
   t.deepEqual(parse(elm), [{
     bold: false,
@@ -31,7 +31,7 @@ test('parse() text in span', function (t) {
 });
 
 test('parse() img', function (t) {
-  var img = document.createElement('img');
+  const img = document.createElement('img');
   img.src = 'http://example.com/image.jpg';
   t.deepEqual(parse(img), [{
     type: 'rich',
@@ -43,7 +43,7 @@ test('parse() img', function (t) {
 });
 
 test('parse() img, with alt-attribute', function (t) {
-  var img = document.createElement('img');
+  const img = document.createElement('img');
   img.src = 'http://example.com/image.jpg';
   img.alt = 'beep boop';
   t.deepEqual(parse(img), [{
@@ -58,11 +58,11 @@ test('parse() img, with alt-attribute', function (t) {
 });
 
 test('parse() figure + img', function (t) {
-  var figure = document.createElement('figure');
-  var img = figure.appendChild(document.createElement('img'));
+  const figure = document.createElement('figure');
+  const img = figure.appendChild(document.createElement('img'));
   img.src = 'http://example.com/image.jpg';
-  var figcaption = figure.appendChild(document.createElement('figcaption'));
-  var b = document.createElement('b');
+  const figcaption = figure.appendChild(document.createElement('figcaption'));
+  const b = document.createElement('b');
   b.appendChild(document.createTextNode('world'));
   figcaption.appendChild(document.createTextNode('Hello, '));
   figcaption.appendChild(b);
@@ -79,8 +79,8 @@ test('parse() figure + img', function (t) {
 });
 
 test('parse() figure + img but no figcaption', function (t) {
-  var figure = document.createElement('figure');
-  var img = figure.appendChild(document.createElement('img'));
+  const figure = document.createElement('figure');
+  const img = figure.appendChild(document.createElement('img'));
   img.src = 'http://example.com/image.jpg';
   t.deepEqual(parse(figure), [{
     type: 'rich',
@@ -92,7 +92,7 @@ test('parse() figure + img but no figcaption', function (t) {
 });
 
 test('parse() figure with unkown content', function (t) {
-  var figure = document.createElement('figure');
+  const figure = document.createElement('figure');
   t.deepEqual(parse(figure), [{
     type: 'block',
     children: []
@@ -101,8 +101,8 @@ test('parse() figure with unkown content', function (t) {
 });
 
 test('parse() figure + img and figcaption with no content', function (t) {
-  var figure = document.createElement('figure');
-  var img = figure.appendChild(document.createElement('img'));
+  const figure = document.createElement('figure');
+  const img = figure.appendChild(document.createElement('img'));
   img.src = 'http://example.com/image.jpg';
   figure.appendChild(document.createElement('figcaption'));
   t.deepEqual(parse(figure), [{
@@ -115,7 +115,7 @@ test('parse() figure + img and figcaption with no content', function (t) {
 });
 
 test('parse() video with src', function (t) {
-  var video = document.createElement('video');
+  const video = document.createElement('video');
   video.src = 'http://example.com/video.mp4';
   t.deepEqual(parse(video), [{
     type: 'rich',
@@ -130,10 +130,10 @@ test('parse() video with src', function (t) {
 });
 
 test('parse() video with sources', function (t) {
-  var video = document.createElement('video');
-  var source1 = video.appendChild(document.createElement('source'));
+  const video = document.createElement('video');
+  const source1 = video.appendChild(document.createElement('source'));
   source1.src = 'http://example.com/video.mp4';
-  var source2 = video.appendChild(document.createElement('source'));
+  const source2 = video.appendChild(document.createElement('source'));
   source2.src = 'http://example.com/video2.mp4';
   source2.type = 'video/mp4';
   t.deepEqual(parse(video), [{
@@ -152,8 +152,8 @@ test('parse() video with sources', function (t) {
 });
 
 test('parse() figure + video with src', function (t) {
-  var figure = document.createElement('figure');
-  var video = figure.appendChild(document.createElement('video'));
+  const figure = document.createElement('figure');
+  const video = figure.appendChild(document.createElement('video'));
   video.src = 'http://example.com/video.mp4';
   t.deepEqual(parse(figure), [{
     type: 'rich',
@@ -168,11 +168,11 @@ test('parse() figure + video with src', function (t) {
 });
 
 test('parse() figure + video with sources', function (t) {
-  var figure = document.createElement('figure');
-  var video = figure.appendChild(document.createElement('video'));
-  var source1 = video.appendChild(document.createElement('source'));
+  const figure = document.createElement('figure');
+  const video = figure.appendChild(document.createElement('video'));
+  const source1 = video.appendChild(document.createElement('source'));
   source1.src = 'http://example.com/video.mp4';
-  var source2 = video.appendChild(document.createElement('source'));
+  const source2 = video.appendChild(document.createElement('source'));
   source2.src = 'http://example.com/video2.mp4';
   source2.type = 'video/mp4';
   t.deepEqual(parse(figure), [{
@@ -191,10 +191,10 @@ test('parse() figure + video with sources', function (t) {
 });
 
 test('parse() figure + video with src & figcaption', function (t) {
-  var figure = document.createElement('figure');
-  var video = figure.appendChild(document.createElement('video'));
-  var figcaption = figure.appendChild(document.createElement('figcaption'));
-  var b = document.createElement('b');
+  const figure = document.createElement('figure');
+  const video = figure.appendChild(document.createElement('video'));
+  const figcaption = figure.appendChild(document.createElement('figcaption'));
+  const b = document.createElement('b');
   b.appendChild(document.createTextNode('world'));
   figcaption.appendChild(document.createTextNode('Hello, '));
   figcaption.appendChild(b);

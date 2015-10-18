@@ -1,8 +1,8 @@
 'use strict';
 
-var test = require('tape');
-var fs = require('fs');
-var parseAndNormalize = require('../src')({ saveSelection: false }).parse;
+const test = require('tape');
+const fs = require('fs');
+const parseAndNormalize = require('../src')({ saveSelection: false }).parse;
 
 createTest(
   'basic',
@@ -42,7 +42,7 @@ createTest(
 
 function createTest (testName, html, expected) {
   test('parseAndNormalize(elm)) ' + testName, function (t) {
-    var elm = document.createElement('div');
+    const elm = document.createElement('div');
     elm.contentEditable = true;
     elm.innerHTML = html.trim();
 
@@ -53,7 +53,7 @@ function createTest (testName, html, expected) {
 }
 
 test('parseAndNormalize(elm)) whitespace \t', function (t) {
-  var elm = document.body.appendChild(document.createElement('p'));
+  const elm = document.body.appendChild(document.createElement('p'));
   elm.appendChild(document.createTextNode('\tbeep\tboop\t'));
   t.deepEqual(parseAndNormalize(elm), [{
     type: 'paragraph',
@@ -69,7 +69,7 @@ test('parseAndNormalize(elm)) whitespace \t', function (t) {
 });
 
 test('parseAndNormalize(elm)) Multiple text nodes', function (t) {
-  var elm = document.body.appendChild(document.createElement('div'));
+  const elm = document.body.appendChild(document.createElement('div'));
   'foobar'.split('').forEach(function (char) {
     elm.appendChild(document.createTextNode(char));
   });
@@ -88,8 +88,8 @@ test('parseAndNormalize(elm)) Multiple text nodes', function (t) {
 });
 
 test('parseAndNormalize(elm)) empty text node', function (t) {
-  var elm = document.body.appendChild(document.createElement('div'));
-  var p = elm.appendChild(document.createElement('p'));
+  const elm = document.body.appendChild(document.createElement('div'));
+  const p = elm.appendChild(document.createElement('p'));
   p.appendChild(document.createTextNode(''));
 
   t.deepEqual(parseAndNormalize(elm), [{

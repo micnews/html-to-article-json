@@ -1,14 +1,14 @@
 'use strict';
 
-var saveSelection = require('../../src/selection/save');
-var restoreSelection = require('../../src/selection/restore');
-var test = require('tape');
+const saveSelection = require('../../src/selection/save');
+const restoreSelection = require('../../src/selection/restore');
+const test = require('tape');
 
 test('saveSelection() no current selection', function (t) {
-  var selection = window.getSelection();
+  const selection = window.getSelection();
   selection.removeAllRanges();
 
-  var elm = document.body.appendChild(document.createElement('div'));
+  const elm = document.body.appendChild(document.createElement('div'));
   elm.contentEditable = 'true';
   elm.setAttribute('contenteditable', 'true');
   elm.innerHTML = '<p>Beep</p>';
@@ -20,14 +20,14 @@ test('saveSelection() no current selection', function (t) {
 });
 
 test('saveSelection() selection', function (t) {
-  var elm = document.body.appendChild(document.createElement('div'));
-  var elm2 = document.body.appendChild(document.createElement('div'));
+  const elm = document.body.appendChild(document.createElement('div'));
+  const elm2 = document.body.appendChild(document.createElement('div'));
   elm.innerHTML = '<p>Beep</p>';
-  var text = elm.querySelector('p').childNodes[0];
+  const text = elm.querySelector('p').childNodes[0];
 
-  var selection = window.getSelection();
+  const selection = window.getSelection();
   selection.removeAllRanges();
-  var range = document.createRange();
+  const range = document.createRange();
   range.setStart(text, 1);
   range.setEnd(text, 3);
   selection.addRange(range);
@@ -50,7 +50,7 @@ test('saveSelection() selection', function (t) {
 });
 
 test('restoreSelection() no markers', function (t) {
-  var elm = document.body.appendChild(document.createElement('div'));
+  const elm = document.body.appendChild(document.createElement('div'));
   elm.innerHTML = '<p>Beep</p>';
   window.getSelection().removeAllRanges();
 
@@ -60,7 +60,7 @@ test('restoreSelection() no markers', function (t) {
 });
 
 test('restoreSelection() markers', function (t) {
-  var elm = document.body.appendChild(document.createElement('div'));
+  const elm = document.body.appendChild(document.createElement('div'));
   elm.innerHTML = '<p>B' +
     '<span class="selection-marker-start"></span>' +
     'ee' +
@@ -71,8 +71,8 @@ test('restoreSelection() markers', function (t) {
   restoreSelection(elm);
   t.equal(window.getSelection().rangeCount, 1, 'One ranges');
   elm.normalize();
-  var text = elm.querySelector('p').childNodes[0];
-  var range = window.getSelection().getRangeAt(0);
+  const text = elm.querySelector('p').childNodes[0];
+  const range = window.getSelection().getRangeAt(0);
   t.equal(range.startContainer, text, 'range.startContainer');
   t.equal(range.startOffset, 1, 'range.startOffset');
   t.equal(range.endContainer, text, 'range.endContainer');

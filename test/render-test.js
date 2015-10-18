@@ -1,8 +1,8 @@
 'use strict';
 
-var renderToIDom = require('../src/index')({ saveSelection: false }).render;
-var test = require('tape');
-var normalize = require('../src/normalize')({});
+const renderToIDom = require('../src/index')({ saveSelection: false }).render;
+const test = require('tape');
+const normalize = require('../src/normalize')({});
 
 test('render minimum', function (t) {
   t.equal(render(normalize([])), expected('<p><br></p>'));
@@ -10,28 +10,28 @@ test('render minimum', function (t) {
 });
 
 test('render() paragraphs & headers', function (t) {
-  var paragraph = {
+  const paragraph = {
     type: 'paragraph',
     children: [{
       type: 'text',
       content: 'beepboop'
     }]
   };
-  var header1 = {
+  const header1 = {
     type: 'header1',
     children: [{
       type: 'text',
       content: 'foo'
     }]
   };
-  var header2 = {
+  const header2 = {
     type: 'header2',
     children: [{
       type: 'text',
       content: 'bar'
     }]
   };
-  var header3 = {
+  const header3 = {
     type: 'header3',
     children: [{
       type: 'text',
@@ -48,7 +48,7 @@ test('render() paragraphs & headers', function (t) {
 });
 
 test('render() text with italic, bold & links', function (t) {
-  var html = render([{
+  const html = render([{
     type: 'paragraph',
     children: [{
       type: 'text',
@@ -67,7 +67,7 @@ test('render() text with italic, bold & links', function (t) {
       href: 'http://mic.com'
     }]
   }]);
-  var html2 = render([{
+  const html2 = render([{
     type: 'paragraph',
     children: [{
       type: 'text',
@@ -129,8 +129,8 @@ test('render() selection-marker', function (t) {
 });
 
 test('render() works with bad dom', function (t) {
-  var elm = document.createElement('div');
-  var input = [{
+  const elm = document.createElement('div');
+  const input = [{
     type: 'paragraph',
     children: [{
       type: 'text',
@@ -152,7 +152,7 @@ test('render() works with bad dom', function (t) {
 });
 
 test('render() works with rich (image)', function (t) {
-  var input = [{
+  const input = [{
     type: 'rich',
     category: 'image',
     src: 'http://example.com/image.jpg',
@@ -167,7 +167,7 @@ test('render() works with rich (image)', function (t) {
 });
 
 test('render() works with rich (image + caption)', function (t) {
-  var input = [{
+  const input = [{
     type: 'rich',
     category: 'image',
     caption: [
@@ -186,7 +186,7 @@ test('render() works with rich (image + caption)', function (t) {
 });
 
 test('render() works with rich (video)', function (t) {
-  var input = [{
+  const input = [{
     type: 'rich',
     category: 'video',
     caption: [],
@@ -210,7 +210,7 @@ test('render() works with rich (video)', function (t) {
 });
 
 test('render() works with rich (video + caption)', function (t) {
-  var input = [{
+  const input = [{
     type: 'rich',
     category: 'video',
     caption: [
@@ -238,7 +238,7 @@ test('render() works with rich (video + caption)', function (t) {
 });
 
 test('render() persist contenteditable === true', function (t) {
-  var div = document.createElement('div');
+  const div = document.createElement('div');
   div.setAttribute('contenteditable', 'true');
   div.contentEditable = 'true';
   t.equal(render(normalize([]), div),
@@ -247,7 +247,7 @@ test('render() persist contenteditable === true', function (t) {
 });
 
 test('render() persist contenteditable === false', function (t) {
-  var div = document.createElement('div');
+  const div = document.createElement('div');
   div.setAttribute('contenteditable', 'false');
   div.contentEditable = 'false';
   t.equal(render(normalize([]), div),

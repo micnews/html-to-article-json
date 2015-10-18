@@ -1,12 +1,12 @@
 'use strict';
 
-var test = require('tape');
-var VNode = require('virtual-dom').VNode;
-var setupUpdate = require('../src/index');
-var setupParse = require('../src/parse');
+const test = require('tape');
+const VNode = require('virtual-dom').VNode;
+const setupUpdate = require('../src/index');
+const setupParse = require('../src/parse');
 
 test('custom text formattings: add underline span-type', function (t) {
-  var opts1 = {
+  const opts1 = {
     saveSelection: false,
     customTextFormattings: [{
       property: 'underline',
@@ -22,14 +22,14 @@ test('custom text formattings: add underline span-type', function (t) {
       }
     }]
   };
-  var update = setupUpdate(opts1);
-  var update2 = setupUpdate({
+  const update = setupUpdate(opts1);
+  const update2 = setupUpdate({
     saveSelection: false
   });
 
-  var parse = setupParse(opts1);
+  const parse = setupParse(opts1);
 
-  var elm1 = createElement(
+  const elm1 = createElement(
     '<p>foo<span style="text-decoration: underline">bar</span></p>');
   t.deepEqual(parse(elm1), [
     {
@@ -65,7 +65,7 @@ test('custom text formattings: add underline span-type', function (t) {
   update2(elm1);
   t.equal(elm1.innerHTML, '<p>foobar</p>');
 
-  var elm2 = createElement(
+  const elm2 = createElement(
     '<p style="text-decoration: underline">some text</p>');
   update(elm2);
   t.equal(elm2.innerHTML,
@@ -75,7 +75,7 @@ test('custom text formattings: add underline span-type', function (t) {
 });
 
 test('custom rich type', function (t) {
-  var opts = {
+  const opts = {
     saveSelection: false,
     customRichTypes: [{
       category: 'foo',
@@ -87,7 +87,7 @@ test('custom rich type', function (t) {
         });
       },
       parse: function (elm) {
-        var foo = elm.getElementsByTagName('foo')[0];
+        const foo = elm.getElementsByTagName('foo')[0];
         return {
           type: 'rich',
           category: 'foo',
@@ -96,11 +96,11 @@ test('custom rich type', function (t) {
       }
     }]
   };
-  var update = setupUpdate(opts);
-  var elm1 = document.body.appendChild(document.createElement('div'));
+  const update = setupUpdate(opts);
+  const elm1 = document.body.appendChild(document.createElement('div'));
   elm1.innerHTML = '<foo bar="bas"></foo>';
   update(elm1);
-  var expected = '<figure>' +
+  const expected = '<figure>' +
       '<foo bar="bas"></foo>' +
     '</figure>';
   t.equal(elm1.innerHTML, expected);
@@ -108,7 +108,7 @@ test('custom rich type', function (t) {
 });
 
 test('custom rich type that extend existing with special render', function (t) {
-  var opts = {
+  const opts = {
     saveSelection: false,
     customRichTypes: [{
       category: 'image',
@@ -124,9 +124,9 @@ test('custom rich type that extend existing with special render', function (t) {
       // no parse needed since the existing parse will be used. Pretty neat!
     }]
   };
-  var update = setupUpdate(opts);
-  var elm = document.body.appendChild(document.createElement('div'));
-  var img = elm.appendChild(document.createElement('img'));
+  const update = setupUpdate(opts);
+  const elm = document.body.appendChild(document.createElement('div'));
+  const img = elm.appendChild(document.createElement('img'));
   img.setAttribute('src', 'http://example.com/image.jpg');
   update(elm);
   t.equal(elm.innerHTML,
@@ -135,7 +135,7 @@ test('custom rich type that extend existing with special render', function (t) {
 });
 
 function createElement (str) {
-  var elm = document.createElement('div');
+  const elm = document.createElement('div');
   elm.innerHTML = str;
   return elm;
 }
