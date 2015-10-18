@@ -4,14 +4,17 @@
   "description": "A new take on contenteditable, virtual-dom style",
   "main": "lib/index.js",
   "scripts": {
-    "benchmark": "node benchmark/benchmark.js",
-    "benchmark:browser": "beefy benchmark/benchmark.js --open -- --transform brfs",
-    "example": "beefy example/client.js --open",
+    "benchmark": "npm run build && node benchmark/benchmark.js",
+    "benchmark:browser": "npm run build && beefy benchmark/benchmark.js --open -- --transform brfs",
+    "example": "npm run build && beefy example/client.js --open",
     "lint": "semistandard | snazzy",
+    "build": "rm -rf lib && babel src --out-dir lib",
+    "prepublish": "npm run build",
+    "postpublish": "rm -rf lib",
     "test": "npm run lint && npm prune && npm run test:node && npm run test:electron && npm run test:coverage",
-    "test:coverage": "browserify test/*-test.js test/browser/*-test.js --transform brfs --transform coverify | testron | coverify",
-    "test:electron": "browserify test/*-test.js test/browser/*-test.js --transform brfs | testron | tap-difflet",
-    "test:node": "tape test/*-test.js | tap-difflet",
+    "test:coverage": "npm run build && browserify test/*-test.js test/browser/*-test.js --transform brfs --transform coverify | testron | coverify",
+    "test:electron": "npm run build && browserify test/*-test.js test/browser/*-test.js --transform brfs | testron | tap-difflet",
+    "test:node": "npm run build && tape test/*-test.js | tap-difflet",
     "test:zuul": "zuul --local 1337 -- ./test/*-test.js"
   },
   "repository": {
@@ -25,6 +28,8 @@
   },
   "homepage": "https://github.com/micnews/content-editable-ng#readme",
   "devDependencies": {
+    "babel": "^5.8.23",
+    "babelify": "^6.3.0",
     "beefy": "^2.1.5",
     "brfs": "^1.4.1",
     "browserify": "^11.2.0",
@@ -53,5 +58,8 @@
     "jsdom": false,
     "./utils/mock-jsdom-browser": false,
     "../test/utils/mock-jsdom-browser": false
-  }
+  },
+  "pre-commit": [
+    "test:coverage"
+  ]
 }
