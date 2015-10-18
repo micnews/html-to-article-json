@@ -1,10 +1,10 @@
-var getTextFormattings = require('../text-formattings');
+const getTextFormattings = require('../text-formattings');
 
 module.exports = function (opts) {
-  var textFormattings = getTextFormattings(opts);
+  const textFormattings = getTextFormattings(opts);
 
   return function renderText (obj, elm) {
-    var child = obj.content;
+    let child = obj.content;
 
     textFormattings.forEach(function (row) {
       if (obj[row.property]) {

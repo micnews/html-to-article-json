@@ -1,4 +1,4 @@
-var VNode = require('virtual-dom').VNode;
+const VNode = require('virtual-dom').VNode;
 
 module.exports = function () {
   return {
@@ -9,10 +9,10 @@ module.exports = function () {
         : new VNode('IMG', { src: obj.src });
     },
     parse: function (elm) {
-      var nodeName = elm.nodeName.toLowerCase();
+      const nodeName = elm.nodeName.toLowerCase();
 
       if (nodeName === 'figure') {
-        var img = elm.getElementsByTagName('img')[0];
+        const img = elm.getElementsByTagName('img')[0];
 
         if (img) {
           return {

@@ -1,9 +1,9 @@
-var Set = require('es6-set');
-var BLOCK_ELEMENTS = new Set(require('block-elements'));
-var HEAD_NODE_NAMES = new Set([
+const Set = require('es6-set');
+const BLOCK_ELEMENTS = new Set(require('block-elements'));
+const HEAD_NODE_NAMES = new Set([
   'TITLE', 'BASE', 'LINK', 'META', 'SCRIPT', 'NOSCRIPT', 'STYLE'
 ]);
-var TEXT_ELEMENTS = {
+const TEXT_ELEMENTS = {
   h1: 'header1',
   h2: 'header2',
   h3: 'header3',
@@ -13,14 +13,14 @@ var TEXT_ELEMENTS = {
   p: 'paragraph'
 };
 
-var setupRich = require('./rich');
-var setupOptsFromElm = require('./opts-from-elm');
+const setupRich = require('./rich');
+const setupOptsFromElm = require('./opts-from-elm');
 
 module.exports = function (opts) {
-  var optsFromElm = setupOptsFromElm(opts);
-  var rich = setupRich(opts);
+  const optsFromElm = setupOptsFromElm(opts);
+  const rich = setupRich(opts);
   return function getResult (elm) {
-    var result = [];
+    const result = [];
 
     parse([elm], {}, result);
 
@@ -28,8 +28,8 @@ module.exports = function (opts) {
   };
 
   function parse (elms, textOpts, result) {
-    for (var i = 0; i < elms.length; i++) {
-      var elm = elms[i];
+    for (let i = 0; i < elms.length; i++) {
+      let elm = elms[i];
 
       // ELEMENT_NODE
       if (elm.nodeType === 1 && !HEAD_NODE_NAMES.has(elm.nodeName)) {
@@ -44,8 +44,8 @@ module.exports = function (opts) {
   }
 
   function elementNode (elm, textOpts, result) {
-    var nodeName = elm.nodeName.toLowerCase();
-    var isBlockElement = BLOCK_ELEMENTS.has(nodeName);
+    const nodeName = elm.nodeName.toLowerCase();
+    const isBlockElement = BLOCK_ELEMENTS.has(nodeName);
 
     if (nodeName === 'br') {
       result.push({ type: 'linebreak' });
@@ -64,7 +64,7 @@ module.exports = function (opts) {
       }
     }
 
-    var richResult = rich(elm);
+    const richResult = rich(elm);
 
     if (richResult) {
       result.push(richResult);
@@ -72,7 +72,7 @@ module.exports = function (opts) {
     }
 
     if (isBlockElement) {
-      var blockElement = {
+      const blockElement = {
         type: TEXT_ELEMENTS[nodeName] || 'block',
         children: []
       };

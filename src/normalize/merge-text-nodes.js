@@ -1,9 +1,9 @@
-var getTextFormattings = require('../text-formattings');
-var generateFunction = require('generate-function');
+const getTextFormattings = require('../text-formattings');
+const generateFunction = require('generate-function');
 
 module.exports = function (opts) {
-  var textFormattings = getTextFormattings(opts);
-  var sameTypeTextNodes = createSameTypeTextNodes(textFormattings);
+  const textFormattings = getTextFormattings(opts);
+  const sameTypeTextNodes = createSameTypeTextNodes(textFormattings);
 
   return function (tree) {
     tree.forEach(function (node) {
@@ -15,8 +15,8 @@ module.exports = function (opts) {
 };
 
 function mergeTextNodes (sameTypeTextNodes, tree) {
-  var textNode;
-  var merged = [];
+  let textNode;
+  const merged = [];
 
   tree.forEach(function (node) {
     if (node.type === 'text') {
@@ -47,7 +47,7 @@ function mergeTextNodes (sameTypeTextNodes, tree) {
 }
 
 function createSameTypeTextNodes (textFormattings) {
-  var fn = generateFunction();
+  let fn = generateFunction();
   fn = fn('function (nodeA, nodeB) {');
 
   fn = fn('return ' + textFormattings

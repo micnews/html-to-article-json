@@ -1,14 +1,14 @@
-var setupMergeTextNodes = require('./merge-text-nodes');
-var flattenTree = require('./flatten-tree');
-var handleWhitespace = require('./handle-whitespace');
-var minimumContent = require('./minimum-content');
-var removeExtraLinkebreaks = require('./remove-extra-linebreaks');
+const setupMergeTextNodes = require('./merge-text-nodes');
+const flattenTree = require('./flatten-tree');
+const handleWhitespace = require('./handle-whitespace');
+const minimumContent = require('./minimum-content');
+const removeExtraLinkebreaks = require('./remove-extra-linebreaks');
 
 module.exports = function (opts) {
-  var mergeTextNodes = setupMergeTextNodes(opts);
+  const mergeTextNodes = setupMergeTextNodes(opts);
 
   return function (input) {
-    var tree = flattenTree(input);
+    const tree = flattenTree(input);
     mergeTextNodes(tree);
     handleWhitespace(tree);
     minimumContent(tree);

@@ -1,10 +1,10 @@
-var setupRenderText = require('./render-text');
-var VNode = require('virtual-dom').VNode;
-var setupRich = require('../rich-types');
+const setupRenderText = require('./render-text');
+const VNode = require('virtual-dom').VNode;
+const setupRich = require('../rich-types');
 
 module.exports = function (opts) {
-  var renderText = setupRenderText(opts);
-  var renderRich = setupRich(opts).reduce(function (obj, rich) {
+  const renderText = setupRenderText(opts);
+  const renderRich = setupRich(opts).reduce(function (obj, rich) {
     obj[rich.category] = rich.render;
     return obj;
   }, {});

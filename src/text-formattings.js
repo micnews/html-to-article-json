@@ -1,7 +1,7 @@
-var VNode = require('virtual-dom').VNode;
-var VText = require('virtual-dom').VText;
+const VNode = require('virtual-dom').VNode;
+const VText = require('virtual-dom').VText;
 
-var defaultTextFormattings = [
+const defaultTextFormattings = [
   {
     property: 'content',
     render: function content (child) {
@@ -32,7 +32,7 @@ var defaultTextFormattings = [
       if (elm.nodeType !== 1) {
         return false;
       }
-      var nodeName = elm.nodeName.toLowerCase();
+      const nodeName = elm.nodeName.toLowerCase();
       return nodeName === 'i' ||
         nodeName === 'em' ||
         elm.style.fontStyle === 'italic';
@@ -47,8 +47,8 @@ var defaultTextFormattings = [
       if (elm.nodeType !== 1) {
         return false;
       }
-      var fontWeight = elm.style.fontWeight;
-      var nodeName = elm.nodeName.toLowerCase();
+      const fontWeight = elm.style.fontWeight;
+      const nodeName = elm.nodeName.toLowerCase();
       return nodeName === 'b' ||
         nodeName === 'strong' ||
         fontWeight === 'bold' ||

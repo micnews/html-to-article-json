@@ -1,12 +1,12 @@
-var setupRenderText = require('./render-text');
-var VNode = require('virtual-dom').VNode;
+const setupRenderText = require('./render-text');
+const VNode = require('virtual-dom').VNode;
 
 module.exports = function (opts) {
-  var renderText = setupRenderText(opts);
+  const renderText = setupRenderText(opts);
   return function renderInline (data) {
     return data.map(function (obj) {
       if (obj.type === 'selection-marker') {
-        var className = 'selection-marker-' + (obj.start ? 'start' : 'end');
+        const className = 'selection-marker-' + (obj.start ? 'start' : 'end');
         return new VNode('SPAN', { className: className });
       }
 

@@ -1,4 +1,4 @@
-var tags = {
+const tags = {
   paragraph: 'P',
   header1: 'H1',
   header2: 'H2',
@@ -7,13 +7,13 @@ var tags = {
   header5: 'H5',
   header6: 'H6'
 };
-var VNode = require('virtual-dom').VNode;
-var setupRenderInline = require('./inline-elements');
-var setupRich = require('./rich');
+const VNode = require('virtual-dom').VNode;
+const setupRenderInline = require('./inline-elements');
+const setupRich = require('./rich');
 
 module.exports = function (opts) {
-  var renderInline = setupRenderInline(opts);
-  var rich = setupRich(opts);
+  const renderInline = setupRenderInline(opts);
+  const rich = setupRich(opts);
 
   return function (data) {
     return data.map(function (obj) {

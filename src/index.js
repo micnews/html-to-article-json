@@ -1,20 +1,20 @@
-var setupRender = require('./render');
-var setupParse = require('./parse');
-var saveSelection = require('./selection/save');
-var restoreSelection = require('./selection/restore');
-var setupNormalize = require('./normalize');
-var assert = require('assert');
+const setupRender = require('./render');
+const setupParse = require('./parse');
+const saveSelection = require('./selection/save');
+const restoreSelection = require('./selection/restore');
+const setupNormalize = require('./normalize');
+const assert = require('assert');
 
 module.exports = function (opts) {
   assert(opts, 'required: opts');
   assert(typeof opts.saveSelection === 'boolean',
     'required: opts.saveSelection is boolean');
 
-  var parse = setupParse(opts);
-  var renderWithoutSelection = setupRender(opts);
-  var normalize = setupNormalize(opts);
+  const parse = setupParse(opts);
+  const renderWithoutSelection = setupRender(opts);
+  const normalize = setupNormalize(opts);
 
-  var update = opts.saveSelection
+  const update = opts.saveSelection
     ? updateWithSelection : updateWithoutSelection;
 
   update.parse = opts.saveSelection

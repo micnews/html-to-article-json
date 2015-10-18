@@ -1,7 +1,7 @@
 module.exports = function (elm) {
-  var start = elm.querySelector('.selection-marker-start');
-  var end = elm.querySelector('.selection-marker-end');
-  var range = document.createRange();
+  const start = elm.querySelector('.selection-marker-start');
+  const end = elm.querySelector('.selection-marker-end');
+  const range = document.createRange();
 
   if (!start || !end) {
     return;

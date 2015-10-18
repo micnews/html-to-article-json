@@ -1,5 +1,5 @@
-var VNode = require('virtual-dom').VNode;
-var arrayFrom = require('array-from');
+const VNode = require('virtual-dom').VNode;
+const arrayFrom = require('array-from');
 
 module.exports = function () {
   return {
@@ -13,7 +13,7 @@ module.exports = function () {
       }));
     },
     parse: function (elm) {
-      var nodeName = elm.nodeName.toLowerCase();
+      let nodeName = elm.nodeName.toLowerCase();
 
       if (nodeName === 'figure') {
         elm = elm.getElementsByTagName('video')[0];
@@ -26,7 +26,7 @@ module.exports = function () {
       }
 
       if (nodeName === 'video') {
-        var sources = elm.getElementsByTagName('source');
+        const sources = elm.getElementsByTagName('source');
 
         if (sources.length) {
           return {

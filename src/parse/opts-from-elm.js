@@ -1,12 +1,12 @@
-var generateFunction = require('generate-function');
-var getTextFormattings = require('../text-formattings');
+const generateFunction = require('generate-function');
+const getTextFormattings = require('../text-formattings');
 
 module.exports = function (opts) {
-  var textFormattings = getTextFormattings(opts);
+  const textFormattings = getTextFormattings(opts);
 
-  var fn = generateFunction();
+  let fn = generateFunction();
 
-  var renderTextOpts = textFormattings.reduce(function (opts, row) {
+  const renderTextOpts = textFormattings.reduce(function (opts, row) {
     opts[row.property] = row.get;
     return opts;
   }, {});

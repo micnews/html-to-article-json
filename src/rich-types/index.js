@@ -1,14 +1,14 @@
-var image = require('./image');
-var video = require('./video');
-var extend = require('xtend/mutable');
+const image = require('./image');
+const video = require('./video');
+const extend = require('xtend/mutable');
 
 module.exports = function (opts) {
-  var basicTypes = {
+  const basicTypes = {
     image: image(),
     video: video()
   };
-  var richTypes = [];
-  var customRichTypes = opts.customRichTypes || [];
+  const richTypes = [];
+  const customRichTypes = opts.customRichTypes || [];
   customRichTypes.forEach(function (type) {
     if (basicTypes[type.category]) {
       extend(basicTypes[type.category], type);

@@ -1,11 +1,11 @@
 module.exports = function flattenTree (tree) {
-  var result = [];
+  const result = [];
   _flattenTree(tree, result);
   return result;
 };
 
 function _flattenTree (tree, result) {
-  var inlineElements;
+  let inlineElements;
 
   tree.forEach(function (child) {
     if (child.type === 'text' || child.type === 'linebreak' || child.type === 'selection-marker') {
