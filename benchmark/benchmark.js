@@ -2,7 +2,7 @@
 
 require('../test/utils/mock-jsdom-browser');
 
-var update = require('../lib/index')({
+var update = require('../src/index')({
   saveSelection: false
 });
 var fs = require('fs');
