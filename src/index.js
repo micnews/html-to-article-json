@@ -20,10 +20,7 @@ function setupUpdate (opts) {
 }
 
 function setupParse (opts) {
-  assert(opts, 'required: opts');
-  assert(typeof opts.saveSelection === 'boolean',
-    'required: opts.saveSelection is boolean');
-
+  validate(opts);
   const parse = createParse(opts);
   const normalize = createNormalize(opts);
 
@@ -40,17 +37,19 @@ function setupParse (opts) {
 }
 
 function setupRender (opts) {
-  assert(opts, 'required: opts');
-  assert(typeof opts.saveSelection === 'boolean',
-    'required: opts.saveSelection is boolean');
-
+  validate(opts);
   const renderWithoutSelection = createRender(opts);
 
   return opts.saveSelection ? renderWithSelection : renderWithoutSelection;
 
   function renderWithSelection (elm, json) {
-    console.log('render with selection');
     renderWithoutSelection(elm, json);
     restoreSelection(elm);
   }
+}
+
+function validate (opts) {
+  assert(opts, 'required: opts');
+  assert(typeof opts.saveSelection === 'boolean',
+    'required: opts.saveSelection is boolean');
 }

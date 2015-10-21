@@ -4,19 +4,13 @@ const VText = require('virtual-dom').VText;
 const defaultTextFormattings = [
   {
     property: 'content',
-    render: function content (child) {
-      return new VText(child);
-    },
-    get: function getContent (elm) {
-      return elm.nodeType === 3 && elm.nodeValue;
-    }
+    render: (child) => new VText(child),
+    get: (elm) => elm.nodeType === 3 && elm.nodeValue
   },
   {
     property: 'href',
-    render: function href (child, obj) {
-      return new VNode('A', { href: obj.href }, [ child ]);
-    },
-    get: function getHref (elm) {
+    render: (child, obj) => new VNode('A', { href: obj.href }, [ child ]),
+    get: (elm) => {
       if (elm.nodeType !== 1) {
         return null;
       }
@@ -25,10 +19,8 @@ const defaultTextFormattings = [
   },
   {
     property: 'italic',
-    render: function italic (child) {
-      return new VNode('EM', {}, [ child ]);
-    },
-    get: function getItalic (elm) {
+    render: (child) => new VNode('EM', {}, [ child ]),
+    get: (elm) => {
       if (elm.nodeType !== 1) {
         return false;
       }
@@ -40,10 +32,8 @@ const defaultTextFormattings = [
   },
   {
     property: 'bold',
-    render: function bold (child) {
-      return new VNode('STRONG', {}, [ child ]);
-    },
-    get: function getBold (elm) {
+    render: (child) => new VNode('STRONG', {}, [ child ]),
+    get: (elm) => {
       if (elm.nodeType !== 1) {
         return false;
       }
@@ -57,7 +47,5 @@ const defaultTextFormattings = [
   }
 ];
 
-module.exports = function (opts) {
-  return opts.customTextFormattings
+module.exports = (opts) => opts.customTextFormattings
     ? defaultTextFormattings.concat(opts.customTextFormattings) : defaultTextFormattings;
-};
