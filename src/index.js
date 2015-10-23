@@ -4,11 +4,13 @@ const saveSelection = require('./selection/save');
 const restoreSelection = require('./selection/restore');
 const createNormalize = require('./normalize');
 const assert = require('assert');
+const renderString = require('./render-string');
 
 module.exports = setupUpdate;
 module.exports.update = setupUpdate;
 module.exports.parse = setupParse;
 module.exports.render = setupRender;
+module.exports.renderString = renderString;
 
 function setupUpdate (opts) {
   const render = setupRender(opts);

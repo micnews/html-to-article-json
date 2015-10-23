@@ -1,12 +1,12 @@
-const setupBlockElements = require('./block-elements');
-const VNode = require('virtual-dom').VNode;
 const diff = require('virtual-dom/diff');
 const patch = require('virtual-dom/patch');
-const toVdom = require('./dom-to-vdom');
+const convertToVdom = require('./dom-to-vdom');
+const setupRenderToVdom = require('./render-to-vdom');
 
 module.exports = function (opts) {
+  const renderToVdom = setupRenderToVdom(opts);
+
   return function (elm, nodes) {
-    const blockElements = setupBlockElements(opts);
     const rootContenteditable = elm.getAttribute('contenteditable') === 'true';
     const divOpts = {};
     if (rootContenteditable) {
@@ -15,8 +15,8 @@ module.exports = function (opts) {
       divOpts.contentEditable = 'true';
     }
 
-    const tree = toVdom(elm);
-    const newTree = new VNode('DIV', divOpts, blockElements(nodes, opts));
+    const tree = convertToVdom(elm);
+    const newTree = renderToVdom(divOpts, nodes);
     patch(elm, diff(tree, newTree));
   };
 };
