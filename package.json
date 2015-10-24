@@ -4,8 +4,8 @@
   "description": "A new take on contenteditable, virtual-dom style",
   "main": "lib/index.js",
   "scripts": {
-    "benchmark": "babel-node benchmark/benchmark.js",
-    "benchmark:browser": "beefy benchmark/benchmark.js --open -- --transform babelify --transform brfs",
+    "benchmark": "babel-node benchmark/node.js",
+    "benchmark:browser": "beefy benchmark/browser.js --open -- --transform babelify --transform brfs",
     "example": "beefy example/client.js --open -- --transform babelify",
     "lint": "semistandard | snazzy",
     "build": "rm -rf lib && babel src --out-dir lib",
@@ -14,7 +14,7 @@
     "test": "npm run lint && npm prune && npm run test:node && npm run test:electron && npm run test:coverage",
     "test:coverage": "browserify test/*-test.js test/browser/*-test.js --transform babelify --transform brfs --transform coverify | testron | coverify",
     "test:electron": "browserify test/*-test.js test/browser/*-test.js --transform babelify --transform brfs | testron | tap-difflet",
-    "test:node": "node test/utils/browser-runner.js test/*-test.js | tap-difflet",
+    "test:node": "babel-tape-runner test/utils/browser-runner.js test/*-test.js | tap-difflet",
     "test:zuul": "zuul --local 1337 -- ./test/*-test.js ./test/browser/*-test.js"
   },
   "repository": {
