@@ -2,7 +2,7 @@ const VNode = require('virtual-dom').VNode;
 const VText = require('virtual-dom').VText;
 
 module.exports = function (elm) {
-  return new VNode('DIV', {}, parse(elm.childNodes));
+  return new VNode(elm.tagName, getAttributes(elm), parse(elm.childNodes));
 };
 
 function parse (childNodes) {

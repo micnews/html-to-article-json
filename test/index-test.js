@@ -96,10 +96,11 @@ test('init({ saveSelection: false }) figure + img with figcaption', function (t)
 });
 
 test('init({ saveSelection: false }) figure + video with figcaption', function (t) {
-  const elm = document.createElement('figure');
-  const video = elm.appendChild(document.createElement('video'));
+  const elm = document.createElement('div');
+  const figure = elm.appendChild(document.createElement('figure'));
+  const video = figure.appendChild(document.createElement('video'));
   video.src = 'http://example.com/video.mp4';
-  const figcaption = elm.appendChild(document.createElement('figcaption'));
+  const figcaption = figure.appendChild(document.createElement('figcaption'));
   figcaption.innerHTML = '<strong>Beep</strong>peeB';
   updateWithoutSelection(elm);
   const expected = '<figure>' +
