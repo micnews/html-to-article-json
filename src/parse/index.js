@@ -14,17 +14,14 @@ const TEXT_ELEMENTS = {
 };
 
 const setupRich = require('./rich');
-const setupOptsFromElm = require('./opts-from-elm');
+const setupText = require('./text');
 
 module.exports = function (opts) {
-  const optsFromElm = setupOptsFromElm(opts);
+  const text = setupText(opts);
   const rich = setupRich(opts);
+
   return function getResult (elm) {
-    const result = [];
-
-    parse([elm], {}, result);
-
-    return result;
+    return parse([elm], {}, []);
   };
 
   function parse (elms, textOpts, result) {
@@ -38,9 +35,10 @@ module.exports = function (opts) {
 
       // TEXT_NODE
       if (elm.nodeType === 3 && elm.nodeValue.length > 0) {
-        result.push(optsFromElm(textOpts, elm));
+        result.push(text(textOpts, elm));
       }
     }
+    return result;
   }
 
   function elementNode (elm, textOpts, result) {
@@ -78,14 +76,14 @@ module.exports = function (opts) {
       };
       result.push(blockElement);
       if (elm.childNodes.length) {
-        parse(elm.childNodes, optsFromElm(textOpts, elm), blockElement.children);
+        parse(elm.childNodes, text(textOpts, elm), blockElement.children);
       }
 
       return;
     }
 
     if (elm.childNodes.length) {
-      parse(elm.childNodes, optsFromElm(textOpts, elm), result);
+      parse(elm.childNodes, text(textOpts, elm), result);
     }
   }
 };

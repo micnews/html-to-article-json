@@ -11,7 +11,7 @@ module.exports = function (opts) {
     return opts;
   }, {});
 
-  fn = fn('function optsFromElm (opts, elm) {')('return {');
+  fn = fn('function text (opts, elm) {')('return {');
   fn = fn('  type: \'text\',');
 
   Object.keys(renderTextOpts).forEach(function (key) {

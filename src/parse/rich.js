@@ -1,9 +1,9 @@
-const setupOptsFromElm = require('./opts-from-elm');
+const setupText = require('./text');
 const setupRich = require('../rich-types');
 
 module.exports = function (opts) {
   const rich = setupRich(opts);
-  const optsFromElm = setupOptsFromElm(opts);
+  const text = setupText(opts);
 
   return function (elm) {
     let obj;
@@ -29,13 +29,13 @@ module.exports = function (opts) {
       // ELEMENT_NODE
       if (elm.nodeType === 1) {
         if (elm.childNodes.length) {
-          visit(elm.childNodes, result, optsFromElm(opts, elm));
+          visit(elm.childNodes, result, text(opts, elm));
         }
       }
 
       // TEXT_NODE
       if (elm.nodeType === 3 && elm.nodeValue.length > 0) {
-        result.push(optsFromElm(opts, elm));
+        result.push(text(opts, elm));
       }
     }
 
