@@ -1,24 +1,17 @@
 const Set = require('es6-set');
-const BLOCK_ELEMENTS = new Set(require('block-elements'));
 const HEAD_NODE_NAMES = new Set([
   'TITLE', 'BASE', 'LINK', 'META', 'SCRIPT', 'NOSCRIPT', 'STYLE'
 ]);
-const TEXT_ELEMENTS = {
-  h1: 'header1',
-  h2: 'header2',
-  h3: 'header3',
-  h4: 'header4',
-  h5: 'header5',
-  h6: 'header6',
-  p: 'paragraph'
-};
 
 const setupRich = require('./rich');
 const setupText = require('./text');
+const selectionMarker = require('./selection-marker');
+const setupBlockElement = require('./block-element');
 
 module.exports = function (opts) {
   const text = setupText(opts);
   const rich = setupRich(opts);
+  const blockElement = setupBlockElement(parse, text);
 
   return function getResult (elm) {
     return parse([elm], {}, []);
@@ -42,43 +35,27 @@ module.exports = function (opts) {
   }
 
   function elementNode (elm, textOpts, result) {
-    const nodeName = elm.nodeName.toLowerCase();
-    const isBlockElement = BLOCK_ELEMENTS.has(nodeName);
-
-    if (nodeName === 'br') {
-      result.push({ type: 'linebreak' });
+    const linebreakResult = linebreak(elm);
+    if (linebreakResult) {
+      result.push(linebreakResult);
       return;
     }
 
-    if (nodeName === 'span') {
-      if (elm.className === 'selection-marker-start') {
-        result.push({ type: 'selection-marker', start: true });
-        return;
-      }
-
-      if (elm.className === 'selection-marker-end') {
-        result.push({ type: 'selection-marker', end: true });
-        return;
-      }
+    const selectionMarkerResult = selectionMarker(elm);
+    if (selectionMarkerResult) {
+      result.push(selectionMarkerResult);
+      return;
     }
 
     const richResult = rich(elm);
-
     if (richResult) {
       result.push(richResult);
       return;
     }
 
-    if (isBlockElement) {
-      const blockElement = {
-        type: TEXT_ELEMENTS[nodeName] || 'block',
-        children: []
-      };
-      result.push(blockElement);
-      if (elm.childNodes.length) {
-        parse(elm.childNodes, text(textOpts, elm), blockElement.children);
-      }
-
+    const blockElementResult = blockElement(elm, textOpts);
+    if (blockElementResult) {
+      result.push(blockElementResult);
       return;
     }
 
@@ -87,3 +64,7 @@ module.exports = function (opts) {
     }
   }
 };
+
+function linebreak (elm) {
+  return elm.nodeName === 'BR' ? { type: 'linebreak' } : null;
+}

@@ -1,10 +1,5 @@
-module.exports = function flattenTree (tree) {
-  const result = [];
-  _flattenTree(tree, result);
-  return result;
-};
-
-function _flattenTree (tree, result) {
+module.exports = function flattenTree (tree, result) {
+  result = result || [];
   let inlineElements;
 
   tree.forEach(function (child) {
@@ -24,7 +19,7 @@ function _flattenTree (tree, result) {
       }
 
       if (child.type === 'block') {
-        _flattenTree(child.children, result);
+        flattenTree(child.children, result);
       } else {
         result.push(child);
       }
@@ -37,7 +32,8 @@ function _flattenTree (tree, result) {
       children: inlineElements
     });
   }
-}
+  return result;
+};
 
 function hasSize (inlineElements) {
   return inlineElements.some(function (row) {
