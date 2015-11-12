@@ -5,17 +5,17 @@ const setupRich = require('../rich-types');
 module.exports = function (opts) {
   const renderText = setupRenderText(opts);
   const renderRich = setupRich(opts).reduce(function (obj, rich) {
-    obj[rich.category] = rich.render;
+    obj[rich.richType] = rich.render;
     return obj;
   }, {});
 
   return function (obj) {
     if (obj.caption.length === 0) {
-      return new VNode('FIGURE', {}, [ renderRich[obj.category](obj) ]);
+      return new VNode('FIGURE', {}, [ renderRich[obj.richType](obj) ]);
     }
 
     return new VNode('FIGURE', {}, [
-      renderRich[obj.category](obj, alt(obj)), figcaption(obj)
+      renderRich[obj.richType](obj, alt(obj)), figcaption(obj)
     ]);
   };
 

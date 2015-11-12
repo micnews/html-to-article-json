@@ -152,7 +152,7 @@ test('render() works with bad dom', function (t) {
 test('render() works with rich (image)', function (t) {
   const input = [{
     type: 'rich',
-    category: 'image',
+    richType: 'image',
     src: 'http://example.com/image.jpg',
     caption: []
   }];
@@ -167,7 +167,7 @@ test('render() works with rich (image)', function (t) {
 test('render() works with rich (image + caption)', function (t) {
   const input = [{
     type: 'rich',
-    category: 'image',
+    richType: 'image',
     caption: [
       { bold: false, content: 'beep', href: null, italic: false, type: 'text' },
       { bold: true, content: 'boop', href: null, italic: false, type: 'text' }
@@ -186,7 +186,7 @@ test('render() works with rich (image + caption)', function (t) {
 test('render() works with rich (video)', function (t) {
   const input = [{
     type: 'rich',
-    category: 'video',
+    richType: 'video',
     caption: [],
     sources: [{
       src: 'http://example.com/video.mp4',
@@ -210,7 +210,7 @@ test('render() works with rich (video)', function (t) {
 test('render() works with rich (video + caption)', function (t) {
   const input = [{
     type: 'rich',
-    category: 'video',
+    richType: 'video',
     caption: [
       { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text' },
       { bold: true, content: 'world', href: null, italic: false, type: 'text' }

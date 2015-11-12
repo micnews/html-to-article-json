@@ -2,7 +2,7 @@ const VNode = require('virtual-dom').VNode;
 
 module.exports = function () {
   return {
-    category: 'image',
+    richType: 'image',
     render: function (obj, alt) {
       return alt
         ? new VNode('IMG', { src: obj.src, alt: alt })
@@ -17,7 +17,7 @@ module.exports = function () {
         if (img) {
           return {
             type: 'rich',
-            category: 'image',
+            richType: 'image',
             src: img.src,
             caption: null
           };
@@ -25,7 +25,7 @@ module.exports = function () {
       } else if (nodeName === 'img') {
         return {
           type: 'rich',
-          category: 'image',
+          richType: 'image',
           src: elm.src,
           caption: elm.alt ? [{ content: elm.alt, type: 'text' }] : null
         };

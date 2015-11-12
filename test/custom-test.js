@@ -76,7 +76,7 @@ test('custom rich type', function (t) {
   const opts = {
     saveSelection: false,
     customRichTypes: [{
-      category: 'foo',
+      richType: 'foo',
       render: function (obj) {
         return new VNode('foo', {
           attributes: {
@@ -88,7 +88,7 @@ test('custom rich type', function (t) {
         const foo = elm.getElementsByTagName('foo')[0];
         return {
           type: 'rich',
-          category: 'foo',
+          richType: 'foo',
           bar: foo.getAttribute('bar')
         };
       }
@@ -109,7 +109,7 @@ test('custom rich type that extend existing with special render', function (t) {
   const opts = {
     saveSelection: false,
     customRichTypes: [{
-      category: 'image',
+      richType: 'image',
       render: function (obj) {
         return new VNode('img', {
           attributes: {

@@ -10,8 +10,8 @@ module.exports = function (opts) {
   const richTypes = [];
   const customRichTypes = opts.customRichTypes || [];
   customRichTypes.forEach(function (type) {
-    if (basicTypes[type.category]) {
-      extend(basicTypes[type.category], type);
+    if (basicTypes[type.richType]) {
+      extend(basicTypes[type.richType], type);
     } else {
       richTypes.push(type);
     }

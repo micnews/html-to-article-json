@@ -3,7 +3,7 @@ const arrayFrom = require('array-from');
 
 module.exports = function () {
   return {
-    category: 'video',
+    richType: 'video',
     render: function (obj, alt) {
       return new VNode('VIDEO', {}, obj.sources.map(function (source) {
         return new VNode('SOURCE', {
@@ -31,7 +31,7 @@ module.exports = function () {
         if (sources.length) {
           return {
             type: 'rich',
-            category: 'video',
+            richType: 'video',
             sources: arrayFrom(sources).map(function (sourceElm) {
               return {
                 src: sourceElm.src,
@@ -43,7 +43,7 @@ module.exports = function () {
 
         return {
           type: 'rich',
-          category: 'video',
+          richType: 'video',
           sources: [{
             src: elm.src,
             type: null
