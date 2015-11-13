@@ -32,10 +32,9 @@ function parse (childNodes) {
 
 function getAttributes (elm) {
   const obj = {};
-  let attr;
   for (let i = 0; i < elm.attributes.length; i++) {
-    attr = elm.attributes[i].name;
-    obj[attr] = elm.getAttribute(attr);
+    let attr = elm.attributes[i];
+    obj[attr.name] = attr.value;
   }
   return obj;
 }
