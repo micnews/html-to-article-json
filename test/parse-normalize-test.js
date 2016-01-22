@@ -28,11 +28,6 @@ createTest(
   require('./parse-normalize-fixtures/linebreak.json')
 );
 createTest(
-  'selection-marker',
-  fs.readFileSync(__dirname + '/parse-normalize-fixtures/selection-marker.html', 'utf8'),
-  require('./parse-normalize-fixtures/selection-marker.json')
-);
-createTest(
   'head-elements',
   fs.readFileSync(__dirname + '/parse-normalize-fixtures/head-elements.html', 'utf8'),
   require('./parse-normalize-fixtures/head-elements.json')
