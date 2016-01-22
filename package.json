@@ -11,7 +11,7 @@
     "prepublish": "npm run build",
     "postpublish": "rm -rf dist",
     "test": "npm run lint && npm prune && npm run test:node && npm run test:coverage",
-    "test:coverage": "nyc babel-tape-runner test/*-test.js",
+    "test:coverage": "nyc babel-tape-runner test/*-test.js && nyc check-coverage --lines 100 --functions 100 --branches 100",
     "test:node": "babel-tape-runner test/*-test.js | tap-difflet"
   },
   "repository": {
