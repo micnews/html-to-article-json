@@ -46,15 +46,15 @@ test('custom text formattings: add underline span-type', function (t) {
   t.end();
 });
 
-test('custom rich type', function (t) {
+test('custom embed type', function (t) {
   const opts = {
-    customRichTypes: [{
-      richType: 'foo',
+    customEmbedTypes: [{
+      embedType: 'foo',
       parse: function (elm) {
         const foo = elm.getElementsByTagName('foo')[0];
         return {
-          type: 'rich',
-          richType: 'foo',
+          type: 'embed',
+          embedType: 'foo',
           bar: foo.getAttribute('bar')
         };
       }
@@ -67,23 +67,23 @@ test('custom rich type', function (t) {
   const expected = [{
     bar: 'bas',
     caption: [],
-    type: 'rich',
-    richType: 'foo'
+    type: 'embed',
+    embedType: 'foo'
   }];
   const actual = parse(elm);
   t.deepEqual(actual, expected);
   t.end();
 });
 
-test('custom rich type extend existing type', function (t) {
+test('custom embed type extend existing type', function (t) {
   const opts = {
-    customRichTypes: [{
-      richType: 'image',
+    customEmbedTypes: [{
+      embedType: 'image',
       parse: function (elm) {
         const img = elm.getElementsByTagName('img')[0];
         return {
-          type: 'rich',
-          richType: 'image',
+          type: 'embed',
+          embedType: 'image',
           bar: img.getAttribute('bar')
         };
       }
@@ -96,8 +96,8 @@ test('custom rich type extend existing type', function (t) {
   const expected = [{
     bar: 'bas',
     caption: [],
-    type: 'rich',
-    richType: 'image'
+    type: 'embed',
+    embedType: 'image'
   }];
   const actual = parse(elm);
   t.deepEqual(actual, expected);

@@ -32,8 +32,8 @@ test('parse() img', function (t) {
   const img = document.createElement('img');
   img.src = 'http://example.com/image.jpg';
   t.deepEqual(parse(img), [{
-    type: 'rich',
-    richType: 'image',
+    type: 'embed',
+    embedType: 'image',
     caption: [],
     src: 'http://example.com/image.jpg'
   }]);
@@ -45,8 +45,8 @@ test('parse() img, with alt-attribute', function (t) {
   img.src = 'http://example.com/image.jpg';
   img.alt = 'beep boop';
   t.deepEqual(parse(img), [{
-    type: 'rich',
-    richType: 'image',
+    type: 'embed',
+    embedType: 'image',
     caption: [
       { content: 'beep boop', type: 'text' }
     ],
@@ -65,8 +65,8 @@ test('parse() figure + img', function (t) {
   figcaption.appendChild(document.createTextNode('Hello, '));
   figcaption.appendChild(b);
   t.deepEqual(parse(figure), [{
-    type: 'rich',
-    richType: 'image',
+    type: 'embed',
+    embedType: 'image',
     caption: [
       { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text' },
       { bold: true, content: 'world', href: null, italic: false, type: 'text' }
@@ -81,8 +81,8 @@ test('parse() figure + img but no figcaption', function (t) {
   const img = figure.appendChild(document.createElement('img'));
   img.src = 'http://example.com/image.jpg';
   t.deepEqual(parse(figure), [{
-    type: 'rich',
-    richType: 'image',
+    type: 'embed',
+    embedType: 'image',
     caption: [],
     src: 'http://example.com/image.jpg'
   }]);
@@ -104,8 +104,8 @@ test('parse() figure + img and figcaption with no content', function (t) {
   img.src = 'http://example.com/image.jpg';
   figure.appendChild(document.createElement('figcaption'));
   t.deepEqual(parse(figure), [{
-    type: 'rich',
-    richType: 'image',
+    type: 'embed',
+    embedType: 'image',
     caption: [],
     src: 'http://example.com/image.jpg'
   }]);
@@ -116,8 +116,8 @@ test('parse() video with src', function (t) {
   const video = document.createElement('video');
   video.src = 'http://example.com/video.mp4';
   t.deepEqual(parse(video), [{
-    type: 'rich',
-    richType: 'video',
+    type: 'embed',
+    embedType: 'video',
     caption: [],
     sources: [{
       src: 'http://example.com/video.mp4',
@@ -135,8 +135,8 @@ test('parse() video with sources', function (t) {
   source2.src = 'http://example.com/video2.mp4';
   source2.type = 'video/mp4';
   t.deepEqual(parse(video), [{
-    type: 'rich',
-    richType: 'video',
+    type: 'embed',
+    embedType: 'video',
     caption: [],
     sources: [{
       src: 'http://example.com/video.mp4',
@@ -154,8 +154,8 @@ test('parse() figure + video with src', function (t) {
   const video = figure.appendChild(document.createElement('video'));
   video.src = 'http://example.com/video.mp4';
   t.deepEqual(parse(figure), [{
-    type: 'rich',
-    richType: 'video',
+    type: 'embed',
+    embedType: 'video',
     caption: [],
     sources: [{
       src: 'http://example.com/video.mp4',
@@ -174,8 +174,8 @@ test('parse() figure + video with sources', function (t) {
   source2.src = 'http://example.com/video2.mp4';
   source2.type = 'video/mp4';
   t.deepEqual(parse(figure), [{
-    type: 'rich',
-    richType: 'video',
+    type: 'embed',
+    embedType: 'video',
     caption: [],
     sources: [{
       src: 'http://example.com/video.mp4',
@@ -198,8 +198,8 @@ test('parse() figure + video with src & figcaption', function (t) {
   figcaption.appendChild(b);
   video.src = 'http://example.com/video.mp4';
   t.deepEqual(parse(figure), [{
-    type: 'rich',
-    richType: 'video',
+    type: 'embed',
+    embedType: 'video',
     caption: [
       { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text' },
       { bold: true, content: 'world', href: null, italic: false, type: 'text' }
