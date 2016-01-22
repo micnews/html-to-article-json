@@ -6,7 +6,7 @@ var input = document.querySelector('.input');
 var result = document.querySelector('.result');
 
 function update () {
-  var articleJson = parse(input);
+  var articleJson = parse(input.outerHTML);
   result.innerHTML = JSON.stringify(articleJson, null, 2);
 }
 

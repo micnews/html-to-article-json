@@ -6,17 +6,16 @@ test('custom text formattings: add underline span-type', function (t) {
     customTextFormattings: [{
       property: 'underline',
       get: function (elm) {
-        return elm.nodeType === 1 && elm.style.textDecoration === 'underline';
+        return elm.tagName && elm.style.textDecoration === 'underline' || false;
       }
     }]
   };
 
   const parse = setupParse(opts);
 
-  const elm1 = createElement(
-    '<p>foo<span style="text-decoration: underline">bar</span></p>');
+  const html = '<p>foo<span style="text-decoration: underline">bar</span></p>';
 
-  const actual = parse(elm1);
+  const actual = parse(html);
   const expected = [
     {
       type: 'paragraph',
@@ -51,7 +50,7 @@ test('custom embed type', function (t) {
     customEmbedTypes: [{
       embedType: 'foo',
       parse: function (elm) {
-        const foo = elm.getElementsByTagName('foo')[0];
+        const foo = elm.childNodes[0];
         return {
           type: 'embed',
           embedType: 'foo',
@@ -60,8 +59,7 @@ test('custom embed type', function (t) {
       }
     }]
   };
-  const elm = document.body.appendChild(document.createElement('div'));
-  elm.innerHTML = '<foo bar="bas"></foo>';
+  const html = '<div><foo bar="bas"></foo></div>';
   const parse = setupParse(opts);
 
   const expected = [{
@@ -70,7 +68,7 @@ test('custom embed type', function (t) {
     type: 'embed',
     embedType: 'foo'
   }];
-  const actual = parse(elm);
+  const actual = parse(html);
   t.deepEqual(actual, expected);
   t.end();
 });
@@ -80,7 +78,7 @@ test('custom embed type extend existing type', function (t) {
     customEmbedTypes: [{
       embedType: 'image',
       parse: function (elm) {
-        const img = elm.getElementsByTagName('img')[0];
+        const img = elm.childNodes[0];
         return {
           type: 'embed',
           embedType: 'image',
@@ -89,8 +87,7 @@ test('custom embed type extend existing type', function (t) {
       }
     }]
   };
-  const elm = document.body.appendChild(document.createElement('div'));
-  elm.innerHTML = '<img bar="bas"></img>';
+  const html = '<div><img bar="bas"></img></div>';
   const parse = setupParse(opts);
 
   const expected = [{
@@ -99,13 +96,7 @@ test('custom embed type extend existing type', function (t) {
     type: 'embed',
     embedType: 'image'
   }];
-  const actual = parse(elm);
+  const actual = parse(html);
   t.deepEqual(actual, expected);
   t.end();
 });
-
-function createElement (str) {
-  const elm = document.createElement('div');
-  elm.innerHTML = str;
-  return elm;
-}

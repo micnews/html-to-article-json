@@ -1,6 +1,8 @@
-const test = require('tape');
+import test from 'tape';
+import setup from '../lib';
 const fs = require('fs');
-const parseAndNormalize = require('../lib')();
+
+const parseAndNormalize = setup();
 
 createTest(
   'basic',
@@ -35,20 +37,14 @@ createTest(
 
 function createTest (testName, html, expected) {
   test('parseAndNormalize(elm)) ' + testName, function (t) {
-    const elm = document.createElement('div');
-    elm.contentEditable = true;
-    elm.innerHTML = html.trim();
-
-    t.deepEqual(parseAndNormalize(elm), expected);
+    t.deepEqual(parseAndNormalize(html.trim()), expected);
 
     t.end();
   });
 }
 
 test('parseAndNormalize(elm)) whitespace \t', function (t) {
-  const elm = document.body.appendChild(document.createElement('p'));
-  elm.appendChild(document.createTextNode('\tbeep\tboop\t'));
-  t.deepEqual(parseAndNormalize(elm), [{
+  t.deepEqual(parseAndNormalize('<p>\tbeep\tboop\t</p>'), [{
     type: 'paragraph',
     children: [{
       type: 'text',
@@ -56,39 +52,6 @@ test('parseAndNormalize(elm)) whitespace \t', function (t) {
       href: null,
       bold: false,
       italic: false
-    }]
-  }]);
-  t.end();
-});
-
-test('parseAndNormalize(elm)) Multiple text nodes', function (t) {
-  const elm = document.body.appendChild(document.createElement('div'));
-  'foobar'.split('').forEach(function (char) {
-    elm.appendChild(document.createTextNode(char));
-  });
-
-  t.deepEqual(parseAndNormalize(elm), [{
-    type: 'paragraph',
-    children: [{
-      type: 'text',
-      content: 'foobar',
-      href: null,
-      bold: false,
-      italic: false
-    }]
-  }]);
-  t.end();
-});
-
-test('parseAndNormalize(elm)) empty text node', function (t) {
-  const elm = document.body.appendChild(document.createElement('div'));
-  const p = elm.appendChild(document.createElement('p'));
-  p.appendChild(document.createTextNode(''));
-
-  t.deepEqual(parseAndNormalize(elm), [{
-    type: 'paragraph',
-    children: [{
-      type: 'linebreak'
     }]
   }]);
   t.end();
