@@ -6,7 +6,7 @@
   "scripts": {
     "benchmark": "babel-node benchmark/node.js",
     "benchmark:browser": "beefy benchmark/browser.js --open -- --transform babelify --transform brfs",
-    "example": "beefy example/client.js --open -- --transform babelify",
+    "example": "beefy example/client.js --index example/index.html --open -- --transform babelify",
     "lint": "semistandard | snazzy",
     "build": "rm -rf dist && babel lib --out-dir dist",
     "prepublish": "npm run build",

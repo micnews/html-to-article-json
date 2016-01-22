@@ -1,29 +1,28 @@
 'use strict';
 
-var update = require('../src/index')({
-  saveSelection: true
-});
+var parse = require('../lib/index')({});
 
-var elm = document.body.appendChild(document.createElement('div'));
-elm.contentEditable = true;
-elm.innerHTML = 'beepboop';
+var input = document.querySelector('.input');
+var result = document.querySelector('.result');
+
+function update () {
+  var articleJson = parse(input);
+  result.innerHTML = JSON.stringify(articleJson, null, 2);
+}
 
 var key = require('keymaster');
 key('backspace, delete, enter, ⌘+b, ctrl+b, ⌘+i, ctrl+i', function () {
   process.nextTick(function () {
-    update(elm);
+    update();
   });
 });
 
-update(elm);
+update();
 
-elm.onpaste = function () {
+input.onpaste = function () {
   process.nextTick(function () {
-    update(elm);
+    update();
   });
 };
 
-window.update = function () {
-  update(elm);
-};
-window.elm = elm;
+window.update = update;
