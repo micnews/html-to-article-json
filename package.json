@@ -12,8 +12,8 @@
     "prepublish": "npm run build",
     "postpublish": "rm -rf lib",
     "test": "npm run lint && npm prune && npm run test:node && npm run test:electron && npm run test:coverage",
-    "test:coverage": "browserify test/*-test.js test/browser/*-test.js --transform babelify --transform brfs --transform coverify | testron | coverify",
-    "test:electron": "browserify test/*-test.js test/browser/*-test.js --transform babelify --transform brfs | testron | tap-difflet",
+    "test:coverage": "browserify test/*-test.js --transform babelify --transform brfs --transform coverify | testron | coverify",
+    "test:electron": "browserify test/*-test.js --transform babelify --transform brfs | testron | tap-difflet",
     "test:node": "babel-tape-runner test/utils/browser-runner.js test/*-test.js | tap-difflet",
     "test:zuul": "zuul --local 1337 -- ./test/*-test.js ./test/browser/*-test.js"
   },
@@ -35,7 +35,7 @@
     "brfs": "^1.4.1",
     "browserify": "^11.2.0",
     "coverify": "^1.4.1",
-    "electron-prebuilt": "^0.33.3",
+    "electron-prebuilt": "^0.36.4",
     "jsdom": "^6.3.0",
     "keymaster": "^1.6.2",
     "pre-commit": "^1.1.1",
@@ -52,9 +52,7 @@
     "array-from": "^2.0.2",
     "block-elements": "^1.1.0",
     "es6-set": "^0.1.2",
-    "generate-function": "^2.0.0",
-    "vdom-to-html": "^2.1.1",
-    "virtual-dom": "^2.1.1"
+    "generate-function": "^2.0.0"
   },
   "pre-commit": [
     "test:coverage"

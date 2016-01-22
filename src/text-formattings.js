@@ -1,15 +1,10 @@
-const VNode = require('virtual-dom').VNode;
-const VText = require('virtual-dom').VText;
-
 const defaultTextFormattings = [
   {
     property: 'content',
-    render: (child) => new VText(child),
     get: (elm) => elm.nodeType === 3 && elm.nodeValue
   },
   {
     property: 'href',
-    render: (child, obj) => new VNode('A', { href: obj.href }, [ child ]),
     get: (elm) => {
       if (elm.nodeType !== 1) {
         return null;
@@ -19,7 +14,6 @@ const defaultTextFormattings = [
   },
   {
     property: 'italic',
-    render: (child) => new VNode('EM', {}, [ child ]),
     get: (elm) => {
       if (elm.nodeType !== 1) {
         return false;
@@ -32,7 +26,6 @@ const defaultTextFormattings = [
   },
   {
     property: 'bold',
-    render: (child) => new VNode('STRONG', {}, [ child ]),
     get: (elm) => {
       if (elm.nodeType !== 1) {
         return false;

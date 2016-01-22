@@ -1,89 +1,55 @@
 const test = require('tape');
-const VNode = require('virtual-dom').VNode;
-const setupUpdate = require('../src/index');
-const setupParse = require('../src/parse');
+const setupParse = require('../src');
 
 test('custom text formattings: add underline span-type', function (t) {
-  const opts1 = {
-    saveSelection: false,
+  const opts = {
     customTextFormattings: [{
       property: 'underline',
       get: function (elm) {
         return elm.nodeType === 1 && elm.style.textDecoration === 'underline';
-      },
-      render: function (child) {
-        return new VNode('span', {
-          attributes: {
-            style: 'text-decoration: underline;'
-          }
-        }, [child]);
       }
     }]
   };
-  const update = setupUpdate(opts1);
-  const update2 = setupUpdate({
-    saveSelection: false
-  });
 
-  const parse = setupParse(opts1);
+  const parse = setupParse(opts);
 
   const elm1 = createElement(
     '<p>foo<span style="text-decoration: underline">bar</span></p>');
-  t.deepEqual(parse(elm1), [
+
+  const actual = parse(elm1);
+  const expected = [
     {
-      type: 'block',
+      type: 'paragraph',
       children: [
         {
-          type: 'paragraph',
-          children: [
-            {
-              type: 'text',
-              content: 'foo',
-              href: null,
-              italic: false,
-              bold: false,
-              underline: false
-            },
-            {
-              type: 'text',
-              content: 'bar',
-              href: null,
-              italic: false,
-              bold: false,
-              underline: true
-            }
-          ]
+          type: 'text',
+          content: 'foo',
+          href: null,
+          italic: false,
+          bold: false,
+          underline: false
+        },
+        {
+          type: 'text',
+          content: 'bar',
+          href: null,
+          italic: false,
+          bold: false,
+          underline: true
         }
       ]
     }
-  ], 'parse()');
-  update(elm1);
-  t.equal(elm1.innerHTML,
-    '<p>foo<span style="text-decoration: underline;">bar</span></p>', 'add underline');
-  update2(elm1);
-  t.equal(elm1.innerHTML, '<p>foobar</p>');
+  ];
 
-  const elm2 = createElement(
-    '<p style="text-decoration: underline">some text</p>');
-  update(elm2);
-  t.equal(elm2.innerHTML,
-    '<p><span style="text-decoration: underline;">some text</span></p>');
+  t.deepEqual(actual, expected, 'parse()');
 
   t.end();
 });
 
 test('custom rich type', function (t) {
   const opts = {
-    saveSelection: false,
     customRichTypes: [{
       richType: 'foo',
-      render: function (obj) {
-        return new VNode('foo', {
-          attributes: {
-            bar: obj.bar
-          }
-        });
-      },
       parse: function (elm) {
         const foo = elm.getElementsByTagName('foo')[0];
         return {
@@ -94,41 +60,47 @@ test('custom rich type', function (t) {
       }
     }]
   };
-  const update = setupUpdate(opts);
-  const elm1 = document.body.appendChild(document.createElement('div'));
-  elm1.innerHTML = '<foo bar="bas"></foo>';
-  update(elm1);
-  const expected = '<figure>' +
-      '<foo bar="bas"></foo>' +
-    '</figure>';
-  t.equal(elm1.innerHTML, expected);
+  const elm = document.body.appendChild(document.createElement('div'));
+  elm.innerHTML = '<foo bar="bas"></foo>';
+  const parse = setupParse(opts);
+
+  const expected = [{
+    bar: 'bas',
+    caption: [],
+    type: 'rich',
+    richType: 'foo'
+  }];
+  const actual = parse(elm);
+  t.deepEqual(actual, expected);
   t.end();
 });
 
-test('custom rich type that extend existing with special render', function (t) {
+test('custom rich type extend existing type', function (t) {
   const opts = {
-    saveSelection: false,
     customRichTypes: [{
       richType: 'image',
-      render: function (obj) {
-        return new VNode('img', {
-          attributes: {
-            src: obj.src,
-            alt: obj.alt,
-            class: 'custom-image-class'
-          }
-        });
+      parse: function (elm) {
+        const img = elm.getElementsByTagName('img')[0];
+        return {
+          type: 'rich',
+          richType: 'image',
+          bar: img.getAttribute('bar')
+        };
       }
-      // no parse needed since the existing parse will be used. Pretty neat!
     }]
   };
-  const update = setupUpdate(opts);
   const elm = document.body.appendChild(document.createElement('div'));
-  const img = elm.appendChild(document.createElement('img'));
-  img.setAttribute('src', 'http://example.com/image.jpg');
-  update(elm);
-  t.equal(elm.innerHTML,
-    '<figure><img src="http://example.com/image.jpg" class="custom-image-class"></figure>');
+  elm.innerHTML = '<img bar="bas"></img>';
+  const parse = setupParse(opts);
+
+  const expected = [{
+    bar: 'bas',
+    caption: [],
+    type: 'rich',
+    richType: 'image'
+  }];
+  const actual = parse(elm);
+  t.deepEqual(actual, expected);
   t.end();
 });
 

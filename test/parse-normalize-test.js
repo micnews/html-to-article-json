@@ -1,6 +1,6 @@
 const test = require('tape');
 const fs = require('fs');
-const parseAndNormalize = require('../src').parse({ saveSelection: false });
+const parseAndNormalize = require('../src')();
 
 createTest(
   'basic',
