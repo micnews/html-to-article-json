@@ -1,5 +1,5 @@
 const test = require('tape');
-const setupParse = require('../src/parse');
+const setupParse = require('../lib/parse');
 
 const parse = setupParse({});
 

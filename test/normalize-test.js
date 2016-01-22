@@ -1,4 +1,4 @@
-const normalize = require('../src/normalize')({});
+const normalize = require('../lib/normalize')({});
 const test = require('tape');
 
 test('normalize() minimum content', function (t) {

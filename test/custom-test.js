@@ -1,5 +1,5 @@
 const test = require('tape');
-const setupParse = require('../src');
+const setupParse = require('../lib');
 
 test('custom text formattings: add underline span-type', function (t) {
   const opts = {

@@ -1,6 +1,6 @@
 const test = require('tape');
 const fs = require('fs');
-const parseAndNormalize = require('../src')();
+const parseAndNormalize = require('../lib')();
 
 createTest(
   'basic',
