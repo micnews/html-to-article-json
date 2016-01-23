@@ -1,28 +1,16 @@
 'use strict';
 
-var parse = require('../lib/index')({});
+import setupParse from '../lib/index';
 
-var input = document.querySelector('.input');
-var result = document.querySelector('.result');
+const parse = setupParse({});
 
-function update () {
-  var articleJson = parse(input.outerHTML);
-  result.innerHTML = JSON.stringify(articleJson, null, 2);
-}
+const input = document.querySelector('.input');
+const result = document.querySelector('.result');
 
-var key = require('keymaster');
-key('backspace, delete, enter, ⌘+b, ctrl+b, ⌘+i, ctrl+i', function () {
-  process.nextTick(function () {
-    update();
-  });
-});
+const update = () => result.innerHTML = JSON.stringify(parse(input.outerHTML), null, 2);
 
 update();
 
-input.onpaste = function () {
-  process.nextTick(function () {
-    update();
-  });
-};
-
 window.update = update;
+
+document.querySelector('.update').onclick = update;
