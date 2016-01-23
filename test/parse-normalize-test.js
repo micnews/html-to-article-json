@@ -1,8 +1,16 @@
 import test from 'tape';
 import setup from '../lib';
-const fs = require('fs');
+import fs from 'fs';
 
 const parseAndNormalize = setup();
+
+const createTest = (testName, html, expected) => {
+  test('parseAndNormalize(elm)) ' + testName, t => {
+    t.deepEqual(parseAndNormalize(html.trim()), expected);
+
+    t.end();
+  });
+};
 
 createTest(
   'basic',
@@ -35,15 +43,7 @@ createTest(
   require('./parse-normalize-fixtures/head-elements.json')
 );
 
-function createTest (testName, html, expected) {
-  test('parseAndNormalize(elm)) ' + testName, function (t) {
-    t.deepEqual(parseAndNormalize(html.trim()), expected);
-
-    t.end();
-  });
-}
-
-test('parseAndNormalize(elm)) whitespace \t', function (t) {
+test('parseAndNormalize(elm)) whitespace', t => {
   t.deepEqual(parseAndNormalize('<p>\tbeep\tboop\t</p>'), [{
     type: 'paragraph',
     children: [{

@@ -1,7 +1,9 @@
-const normalize = require('../lib/normalize')({});
-const test = require('tape');
+import setupNormalize from '../lib/normalize';
+import test from 'tape';
 
-test('normalize() minimum content', function (t) {
+const normalize = setupNormalize({});
+
+test('normalize() minimum content', t => {
   const expected = [{
     type: 'paragraph',
     children: [{
@@ -16,7 +18,7 @@ test('normalize() minimum content', function (t) {
   t.end();
 });
 
-test('normalize() remove not needed linebreaks', function (t) {
+test('normalize() remove not needed linebreaks', t => {
   const tree = [{
     type: 'paragraph',
     children: [
@@ -36,7 +38,7 @@ test('normalize() remove not needed linebreaks', function (t) {
   t.end();
 });
 
-test('normalize() keep needed linebreaks', function (t) {
+test('normalize() keep needed linebreaks', t => {
   const tree = [{
     type: 'paragraph',
     children: [
@@ -67,7 +69,7 @@ test('normalize() keep needed linebreaks', function (t) {
   t.end();
 });
 
-test('normalize() add br-tag to empty text-container', function (t) {
+test('normalize() add br-tag to empty text-container', t => {
   const tree = [{
     type: 'paragraph',
     children: []

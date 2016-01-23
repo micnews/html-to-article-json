@@ -4,21 +4,21 @@ import tsml from 'tsml';
 
 const parse = setupParse({});
 
-test('parse() single block element node', function (t) {
+test('parse() single block element node', t => {
   const actual = parse('<p></p>');
   const expected = [{ type: 'paragraph', children: [] }];
   t.deepEqual(actual, expected);
   t.end();
 });
 
-test('parse() single inline element node', function (t) {
+test('parse() single inline element node', t => {
   const actual = parse('<span></span>');
   const expected = [];
   t.deepEqual(actual, expected);
   t.end();
 });
 
-test('parse() text in span', function (t) {
+test('parse() text in span', t => {
   const actual = parse('<span>beep boop</span>');
   const expected = [{
     bold: false,
@@ -31,7 +31,7 @@ test('parse() text in span', function (t) {
   t.end();
 });
 
-test('parse() img', function (t) {
+test('parse() img', t => {
   const actual = parse('<img src="http://example.com/image.jpg" />');
   const expected = [{
     type: 'embed',
@@ -43,7 +43,7 @@ test('parse() img', function (t) {
   t.end();
 });
 
-test('parse() img, with alt-attribute', function (t) {
+test('parse() img, with alt-attribute', t => {
   const actual = parse('<img src="http://example.com/image.jpg" alt="beep boop" />');
   const expected = [{
     type: 'embed',
@@ -57,7 +57,7 @@ test('parse() img, with alt-attribute', function (t) {
   t.end();
 });
 
-test('parse() figure + img', function (t) {
+test('parse() figure + img', t => {
   const input = tsml`<figure>
     <img src="http://example.com/image.jpg"/>
     <figcaption>Hello, <b>world</b></figcaption>
@@ -77,7 +77,7 @@ test('parse() figure + img', function (t) {
   t.end();
 });
 
-test('parse() figure + img but no figcaption', function (t) {
+test('parse() figure + img but no figcaption', t => {
   const input = tsml`<figure>
     <img src="http://example.com/image.jpg"/>
   </figure>`;
@@ -93,7 +93,7 @@ test('parse() figure + img but no figcaption', function (t) {
   t.end();
 });
 
-test('parse() figure with unkown content', function (t) {
+test('parse() figure with unkown content', t => {
   const input = tsml`<figure></figure>`;
   const actual = parse(input);
   const expected = [{
@@ -104,7 +104,7 @@ test('parse() figure with unkown content', function (t) {
   t.end();
 });
 
-test('parse() figure + img and figcaption with no content', function (t) {
+test('parse() figure + img and figcaption with no content', t => {
   const input = tsml`<figure>
     <img src="http://example.com/image.jpg"/>
     <figcaption></figcaption>
@@ -121,7 +121,7 @@ test('parse() figure + img and figcaption with no content', function (t) {
   t.end();
 });
 
-test('parse() video with src', function (t) {
+test('parse() video with src', t => {
   const input = '<video src="http://example.com/video.mp4" />';
   const actual = parse(input);
   const expected = [{
@@ -137,7 +137,7 @@ test('parse() video with src', function (t) {
   t.end();
 });
 
-test('parse() video with sources', function (t) {
+test('parse() video with sources', t => {
   const input = tsml`<video>
     <source src="http://example.com/video.mp4" />
     <source src="http://example.com/video2.mp4" type="video/mp4"/>
@@ -159,7 +159,7 @@ test('parse() video with sources', function (t) {
   t.end();
 });
 
-test('parse() figure + video with src', function (t) {
+test('parse() figure + video with src', t => {
   const input = '<figure><video src="http://example.com/video.mp4" /></figure>';
   const actual = parse(input);
   const expected = [{
@@ -175,7 +175,7 @@ test('parse() figure + video with src', function (t) {
   t.end();
 });
 
-test('parse() figure + video with sources', function (t) {
+test('parse() figure + video with sources', t => {
   const input = tsml`<figure>
     <video>
       <source src="http://example.com/video.mp4" />
@@ -199,7 +199,7 @@ test('parse() figure + video with sources', function (t) {
   t.end();
 });
 
-test('parse() figure + video with src & figcaption', function (t) {
+test('parse() figure + video with src & figcaption', t => {
   const input = `<figure>
     <video src="http://example.com/video.mp4"></video>
     <figcaption>Hello, <b>world</b></figcaption>
@@ -221,7 +221,7 @@ test('parse() figure + video with src & figcaption', function (t) {
   t.end();
 });
 
-test('parse() tricky link', function (t) {
+test('parse() tricky link', t => {
   const input = '<p><i>This is italic and <a href="http://link4.com/">this is a link</i> foo bar</a></p>';
   const actual = parse(input);
   const expected = [{

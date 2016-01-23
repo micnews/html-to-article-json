@@ -1,13 +1,11 @@
-const test = require('tape');
-const setupParse = require('../lib');
+import test from 'tape';
+import setupParse from '../lib';
 
-test('custom text formattings: add underline span-type', function (t) {
+test('custom text formattings: add underline span-type', t => {
   const opts = {
     customTextFormattings: [{
       property: 'underline',
-      get: function (elm) {
-        return elm.tagName && elm.style.textDecoration === 'underline' || false;
-      }
+      get: elm => elm.tagName && elm.style.textDecoration === 'underline' || false
     }]
   };
 
@@ -45,11 +43,11 @@ test('custom text formattings: add underline span-type', function (t) {
   t.end();
 });
 
-test('custom embed type', function (t) {
+test('custom embed type', t => {
   const opts = {
     customEmbedTypes: [{
       embedType: 'foo',
-      parse: function (elm) {
+      parse: elm => {
         const foo = elm.childNodes[0];
         return {
           type: 'embed',
@@ -73,11 +71,11 @@ test('custom embed type', function (t) {
   t.end();
 });
 
-test('custom embed type extend existing type', function (t) {
+test('custom embed type extend existing type', t => {
   const opts = {
     customEmbedTypes: [{
       embedType: 'image',
-      parse: function (elm) {
+      parse: elm => {
         const img = elm.childNodes[0];
         return {
           type: 'embed',
