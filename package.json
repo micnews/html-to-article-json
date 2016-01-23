@@ -42,7 +42,6 @@
     "xtend": "^4.0.0"
   },
   "dependencies": {
-    "array-from": "^2.0.2",
     "block-elements": "^1.1.0",
     "dom-style-parser": "^1.0.0",
     "es6-set": "^0.1.2",
