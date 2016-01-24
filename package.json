@@ -43,8 +43,10 @@
   "dependencies": {
     "block-elements": "^1.1.0",
     "dom-style-parser": "^1.0.0",
+    "embedly-url": "^1.0.0",
     "es6-set": "^0.1.2",
     "generate-function": "^2.0.0",
+    "get-youtube-id": "^1.0.0",
     "lodash.find": "^4.0.0",
     "parse5": "^2.1.3"
   },

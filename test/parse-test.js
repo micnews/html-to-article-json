@@ -221,6 +221,53 @@ test('parse() figure + video with src & figcaption', t => {
   t.end();
 });
 
+test('parse() youtube iframe', t => {
+  const input = `<iframe src="https://www.youtube.com/embed/pDVmldTurqk"></iframe>`;
+  const actual = parse(input);
+  const expected = [{
+    type: 'embed',
+    embedType: 'youtube',
+    caption: [],
+    youtubeId: 'pDVmldTurqk'
+  }];
+  t.deepEqual(actual, expected);
+  t.end();
+});
+
+test('parse() youtube embedly iframe', t => {
+  const input = `<iframe
+    src="//cdn.embedly.com/widgets/media.html?src=http%3A%2F%2Fwww.youtube.com%2Fembed%2F3rS6mZUo3fg%3Ffeature%3Doembed"
+  ></iframe>`;
+  const actual = parse(input);
+  const expected = [{
+    type: 'embed',
+    embedType: 'youtube',
+    caption: [],
+    youtubeId: '3rS6mZUo3fg'
+  }];
+  t.deepEqual(actual, expected);
+  t.end();
+});
+
+test('parse() figure + youtube iframe', t => {
+  const input = `<figure>
+    <iframe src="https://www.youtube.com/embed/pDVmldTurqk"></iframe>
+    <figcaption>Hello, <b>world</b></figcaption>
+  </figure>`;
+  const actual = parse(input);
+  const expected = [{
+    type: 'embed',
+    embedType: 'youtube',
+    caption: [
+      { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text' },
+      { bold: true, content: 'world', href: null, italic: false, type: 'text' }
+    ],
+    youtubeId: 'pDVmldTurqk'
+  }];
+  t.deepEqual(actual, expected);
+  t.end();
+});
+
 test('parse() tricky link', t => {
   const input = '<p><i>This is italic and <a href="http://link4.com/">this is a link</i> foo bar</a></p>';
   const actual = parse(input);
