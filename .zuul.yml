@@ -1,4 +1,0 @@
-ui: tape
-browserify:
-  - transform: babelify
-  - transform: brfs
