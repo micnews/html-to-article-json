@@ -1,6 +1,6 @@
 {
   "name": "html-to-article-json",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Converting HTML to article-json",
   "main": "dist/index.js",
   "scripts": {
