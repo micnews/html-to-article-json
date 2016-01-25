@@ -2,7 +2,7 @@
 
 **html-to-article-json** parses & normalizes html to a well-structured & easy to use article json format.
 
-The parsing logic is based on real articles - with sometimes very weird html - so please open an issue
+The parsing logic is based on real articles - with sometimes very weird html - so please open an issue if some html doesn't get parsed correctly!
 
 ## Installation
 
