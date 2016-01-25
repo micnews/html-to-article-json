@@ -1,4 +1,4 @@
-# html-to-article-json
+# html-to-article-json[![Build Status](https://travis-ci.org/micnews/html-to-article-json.svg?branch=master)](https://travis-ci.org/micnews/html-to-article-json)
 
 **html-to-article-json** parses & normalizes html to a well-structured & easy to use article json format.
 
