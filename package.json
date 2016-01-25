@@ -1,7 +1,7 @@
 {
   "name": "html-to-article-json",
   "version": "0.1.0",
-  "description": "Convering HTML to article-json",
+  "description": "Converting HTML to article-json",
   "main": "dist/index.js",
   "scripts": {
     "benchmark": "babel-node benchmark/node.js",
@@ -52,5 +52,9 @@
   },
   "pre-commit": [
     "test:coverage"
-  ]
+  ],
+  "directories": {
+    "example": "example",
+    "test": "test"
+  }
 }
