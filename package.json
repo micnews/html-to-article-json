@@ -12,6 +12,7 @@
     "postpublish": "rm -rf dist",
     "test": "npm run lint && npm prune && npm run test:node && npm run test:coverage",
     "test:coverage": "nyc babel-tape-runner test/*-test.js && nyc check-coverage --lines 100 --functions 100 --branches 100",
+    "open-coverage": "npm run test:coverage && nyc report --reporter=lcov && open coverage/lcov-report/index.html",
     "test:node": "babel-tape-runner test/*-test.js | tap-difflet"
   },
   "repository": {
