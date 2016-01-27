@@ -269,7 +269,7 @@ test('parse() figure + youtube iframe', t => {
 });
 
 test('parse() tweet', t => {
-  const input = `<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">GIF vs. JIF… This <a href="https://t.co/qFAHWgdbL6">pic.twitter.com/qFAHWgdbL6</a></p>&mdash; Matt Navarra (@MattNavarra) <a href="https://twitter.com/MattNavarra/status/684690494841028608">January 6, 2016</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>`;
+  const input = `<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">GIF vs. JIF… This <a href="https://t.co/qFAHWgdbL6">pic.twitter.com/qFAHWgdbL6</a></p>&mdash; Matt (foo) Navarra (@MattNavarra) <a href="https://twitter.com/MattNavarra/status/684690494841028608">January 6, 2016</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>`;
   const actual = parse(input);
   const expected = [{
     type: 'embed',
@@ -281,7 +281,11 @@ test('parse() tweet', t => {
     ],
     url: 'https://twitter.com/MattNavarra/status/684690494841028608',
     date: 'January 6, 2016',
-    author: 'Matt Navarra (@MattNavarra)'
+    user: {
+      slug: 'MattNavarra',
+      name: 'Matt (foo) Navarra'
+    },
+    id: '684690494841028608'
   }];
   t.deepEqual(actual, expected);
   t.end();
