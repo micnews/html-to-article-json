@@ -268,6 +268,66 @@ test('parse() figure + youtube iframe', t => {
   t.end();
 });
 
+test('parse() tweet - normal', t => {
+  const input = `<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">GIF vs. JIF… This <a href="https://t.co/qFAHWgdbL6">pic.twitter.com/qFAHWgdbL6</a></p>&mdash; Matt (foo) Navarra (@MattNavarra) <a href="https://twitter.com/MattNavarra/status/684690494841028608">January 6, 2016</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>`;
+  const actual = parse(input);
+  const expected = [{
+    type: 'embed',
+    embedType: 'twitter',
+    caption: [],
+    text: [
+      { content: 'GIF vs. JIF… This ', href: null },
+      { content: 'pic.twitter.com/qFAHWgdbL6', href: 'https://t.co/qFAHWgdbL6' }
+    ],
+    url: 'https://twitter.com/MattNavarra/status/684690494841028608',
+    date: 'January 6, 2016',
+    user: {
+      slug: 'MattNavarra',
+      name: 'Matt (foo) Navarra'
+    },
+    id: '684690494841028608'
+  }];
+  t.deepEqual(actual, expected);
+  t.end();
+});
+
+test('parse() tweet - weird input', t => {
+  const input = `<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">foo bar<beep>boop</beep></p>&mdash; Matt Navarra (@MattNavarra) <a href="https://twitter.com/MattNavarra/status/684690494841028608">January 6, 2016</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>`;
+  const actual = parse(input)[0].text;
+  const expected = [
+    { content: 'foo bar', href: null }
+  ];
+  t.deepEqual(actual, expected);
+  t.end();
+});
+
+test('parse() tweet - no paragraph, no user', t => {
+  const input = `<blockquote class="twitter-tweet" lang="en"><a href="https://twitter.com/MattNavarra/status/684690494841028608">January 6, 2016</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>`;
+  const actual = parse(input);
+  const expected = [{
+    type: 'embed',
+    embedType: 'twitter',
+    caption: [],
+    text: [],
+    url: 'https://twitter.com/MattNavarra/status/684690494841028608',
+    date: 'January 6, 2016',
+    user: {
+      slug: null,
+      name: null
+    },
+    id: '684690494841028608'
+  }];
+  t.deepEqual(actual, expected);
+  t.end();
+});
+
+test('parse() tweet - no id', t => {
+  const input = `<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">GIF vs. JIF… This <a href="https://t.co/qFAHWgdbL6">pic.twitter.com/qFAHWgdbL6</a></p>&mdash; Matt (foo) Navarra (@MattNavarra) </blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>`;
+  const actual = parse(input);
+  t.notEqual(actual[0].type, 'embed');
+  t.end();
+});
+
 test('parse() tricky link', t => {
   const input = '<p><i>This is italic and <a href="http://link4.com/">this is a link</i> foo bar</a></p>';
   const actual = parse(input);
