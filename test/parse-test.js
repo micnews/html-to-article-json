@@ -406,6 +406,20 @@ test('parse() facebook - video', t => {
   t.end();
 });
 
+test('parse() vine', t => {
+  const input = '<iframe src="https://vine.co/v/bjHh0zHdgZT/embed/simple" width="600" height="600" frameborder="0"></iframe><script src="https://platform.vine.co/static/scripts/embed.js"></script>';
+  const actual = parse(input);
+  const expected = [{
+    id: 'bjHh0zHdgZT',
+    caption: [],
+    type: 'embed',
+    embedType: 'vine',
+    url: 'https://vine.co/v/bjHh0zHdgZT/embed/simple'
+  }];
+  t.deepEqual(actual, expected);
+  t.end();
+});
+
 test('parse() tricky link', t => {
   const input = '<p><i>This is italic and <a href="http://link4.com/">this is a link</i> foo bar</a></p>';
   const actual = parse(input);

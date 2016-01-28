@@ -49,6 +49,7 @@
     "generate-function": "^2.0.0",
     "get-youtube-id": "^1.0.0",
     "lodash.find": "^4.0.0",
+    "lodash.startswith": "^3.1.1",
     "lodash.values": "^4.0.0",
     "object-assign": "^4.0.1",
     "parse5": "^2.1.3"
