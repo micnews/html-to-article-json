@@ -291,6 +291,29 @@ test('parse() tweet - normal', t => {
   t.end();
 });
 
+test('parse() tweet - no date', t => {
+  const input = `<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">GIF vs. JIF… This <a href="https://t.co/qFAHWgdbL6">pic.twitter.com/qFAHWgdbL6</a></p>&mdash; Matt (foo) Navarra (@MattNavarra) <a href="https://twitter.com/MattNavarra/status/684690494841028608"></a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>`;
+  const actual = parse(input);
+  const expected = [{
+    type: 'embed',
+    embedType: 'twitter',
+    caption: [],
+    text: [
+      { content: 'GIF vs. JIF… This ', href: null },
+      { content: 'pic.twitter.com/qFAHWgdbL6', href: 'https://t.co/qFAHWgdbL6' }
+    ],
+    url: 'https://twitter.com/MattNavarra/status/684690494841028608',
+    date: '',
+    user: {
+      slug: 'MattNavarra',
+      name: 'Matt (foo) Navarra'
+    },
+    id: '684690494841028608'
+  }];
+  t.deepEqual(actual, expected);
+  t.end();
+});
+
 test('parse() tweet - weird input', t => {
   const input = `<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">foo bar<beep>boop</beep></p>&mdash; Matt Navarra (@MattNavarra) <a href="https://twitter.com/MattNavarra/status/684690494841028608">January 6, 2016</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>`;
   const actual = parse(input)[0].text;
@@ -416,6 +439,36 @@ test('parse() vine', t => {
     embedType: 'vine',
     url: 'https://vine.co/v/bjHh0zHdgZT/embed/simple'
   }];
+  t.deepEqual(actual, expected);
+  t.end();
+});
+
+test('parse() vine embedly', t => {
+  const input = '<iframe class="embedly-embed" src="//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fvine.co%2Fv%2FbjHh0zHdgZT%2Fembed%2Fsimple&amp;url=https%3A%2F%2Fvine.co%2Fv%2FbjHh0zHdgZT%2Fembed%2Fsimple&amp;image=https%3A%2F%2Fv.cdn.vine.co%2Fr%2Fthumbs%2F8B474922-0D0E-49AD-B237-6ED46CE85E8A-118-000000FFCD48A9C5_1.0.6.mp4.jpg%3FversionId%3D5mzXl2DXYBvKvF9rhcp.nvEJC.1N86RG&amp;key=25bf3602073943478e54668402a4f5a8&amp;type=text%2Fhtml&amp;schema=vine" width="600" height="600" scrolling="no" frameborder="0" allowfullscreen=""></iframe>';
+  const actual = parse(input);
+  const expected = [{
+    id: 'bjHh0zHdgZT',
+    caption: [],
+    type: 'embed',
+    embedType: 'vine',
+    url: 'https://vine.co/v/bjHh0zHdgZT/embed/simple'
+  }];
+  t.deepEqual(actual, expected);
+  t.end();
+});
+
+test('parse() vine embedly invalid src', t => {
+  const input = '<iframe class="embedly-embed" src="//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fvine.c%2Fv%2FbjHh0zHdgZT%2Fembed%2Fsimple&amp;url=https%3A%2F%2Fvine.co%2Fv%2FbjHh0zHdgZT%2Fembed%2Fsimple&amp;image=https%3A%2F%2Fv.cdn.vine.co%2Fr%2Fthumbs%2F8B474922-0D0E-49AD-B237-6ED46CE85E8A-118-000000FFCD48A9C5_1.0.6.mp4.jpg%3FversionId%3D5mzXl2DXYBvKvF9rhcp.nvEJC.1N86RG&amp;key=25bf3602073943478e54668402a4f5a8&amp;type=text%2Fhtml&amp;schema=vine" width="600" height="600" scrolling="no" frameborder="0" allowfullscreen=""></iframe>';
+  const actual = parse(input);
+  const expected = [];
+  t.deepEqual(actual, expected);
+  t.end();
+});
+
+test('parse() iframe no src', t => {
+  const input = '<iframe class="embedly-embed" width="600" height="600" scrolling="no" frameborder="0" allowfullscreen=""></iframe>';
+  const actual = parse(input);
+  const expected = [];
   t.deepEqual(actual, expected);
   t.end();
 });
