@@ -6,8 +6,8 @@ const parseAndNormalize = setup();
 
 const createTest = (testName, html, expected) => {
   test('parseAndNormalize(elm)) ' + testName, t => {
-    t.deepEqual(parseAndNormalize(html.trim()), expected);
-
+    const actual = parseAndNormalize(html.trim());
+    t.deepEqual(actual, expected);
     t.end();
   });
 };
@@ -41,6 +41,11 @@ createTest(
   'head-elements',
   fs.readFileSync(__dirname + '/parse-normalize-fixtures/head-elements.html', 'utf8'),
   require('./parse-normalize-fixtures/head-elements.json')
+);
+createTest(
+  'blockquote',
+  fs.readFileSync(__dirname + '/parse-normalize-fixtures/blockquote.html', 'utf8'),
+  require('./parse-normalize-fixtures/blockquote.json')
 );
 
 test('parseAndNormalize(elm)) whitespace', t => {

@@ -1,0 +1,96 @@
+[
+  {
+    "type": "blockquote",
+    "children": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "content": "beep boop",
+            "href": null,
+            "italic": false,
+            "bold": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "blockquote",
+    "children": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "content": "beep boop",
+            "href": null,
+            "italic": false,
+            "bold": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "blockquote",
+    "children": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "content": "this",
+            "href": null,
+            "italic": false,
+            "bold": false
+          },
+          {
+            "type": "text",
+            "content": "is",
+            "href": null,
+            "italic": false,
+            "bold": true
+          },
+          {
+            "type": "text",
+            "content": "styled",
+            "href": null,
+            "italic": false,
+            "bold": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "blockquote",
+    "children": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "content": "this works as well",
+            "href": null,
+            "italic": false,
+            "bold": false
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "content": "as expected",
+            "href": null,
+            "italic": false,
+            "bold": false
+          }
+        ]
+      }
+    ]
+  }
+]
