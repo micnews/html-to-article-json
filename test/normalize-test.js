@@ -18,6 +18,30 @@ test('normalize() minimum content', t => {
   t.end();
 });
 
+test('normalize() minimum content in blockquote', t => {
+  const expected = [{
+    type: 'blockquote',
+    children: [{
+      type: 'paragraph',
+      children: [{
+        type: 'linebreak'
+      }]
+    }]
+  }];
+  t.deepEqual(normalize([{
+    type: 'blockquote',
+    children: []
+  }]), expected);
+  t.deepEqual(normalize([{
+    type: 'blockquote',
+    children: [{
+      type: 'paragraph',
+      children: []
+    }]
+  }]), expected);
+  t.end();
+});
+
 test('normalize() remove not needed linebreaks', t => {
   const tree = [{
     type: 'paragraph',
