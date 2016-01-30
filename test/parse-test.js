@@ -483,18 +483,42 @@ test('parse() vine embedly', t => {
   t.end();
 });
 
-test('parse() vine embedly invalid src', t => {
-  const input = '<iframe class="embedly-embed" src="//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fvine.c%2Fv%2FbjHh0zHdgZT%2Fembed%2Fsimple&amp;url=https%3A%2F%2Fvine.co%2Fv%2FbjHh0zHdgZT%2Fembed%2Fsimple&amp;image=https%3A%2F%2Fv.cdn.vine.co%2Fr%2Fthumbs%2F8B474922-0D0E-49AD-B237-6ED46CE85E8A-118-000000FFCD48A9C5_1.0.6.mp4.jpg%3FversionId%3D5mzXl2DXYBvKvF9rhcp.nvEJC.1N86RG&amp;key=25bf3602073943478e54668402a4f5a8&amp;type=text%2Fhtml&amp;schema=vine" width="600" height="600" scrolling="no" frameborder="0" allowfullscreen=""></iframe>';
+test('parse() iframe no src', t => {
+  const input = '<iframe class="embedly-embed" width="600" height="600" scrolling="no" frameborder="0" allowfullscreen=""></iframe>';
   const actual = parse(input);
   const expected = [];
   t.deepEqual(actual, expected);
   t.end();
 });
 
-test('parse() iframe no src', t => {
-  const input = '<iframe class="embedly-embed" width="600" height="600" scrolling="no" frameborder="0" allowfullscreen=""></iframe>';
+test('parse() custom embed', t => {
+  const input = '<iframe src="http://custom.com" width="600" height="600" frameborder="0"></iframe>';
   const actual = parse(input);
-  const expected = [];
+  const expected = [{
+    type: 'embed',
+    embedType: 'custom',
+    src: 'http://custom.com',
+    width: 600,
+    height: 600,
+    secure: false,
+    caption: []
+  }];
+  t.deepEqual(actual, expected);
+  t.end();
+});
+
+test('parse() custom secure embed', t => {
+  const input = '<iframe src="https://custom.com" width="600" height="600" frameborder="0"></iframe>';
+  const actual = parse(input);
+  const expected = [{
+    type: 'embed',
+    embedType: 'custom',
+    src: 'https://custom.com',
+    width: 600,
+    height: 600,
+    secure: true,
+    caption: []
+  }];
   t.deepEqual(actual, expected);
   t.end();
 });
