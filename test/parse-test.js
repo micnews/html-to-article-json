@@ -37,7 +37,9 @@ test('parse() img', t => {
     type: 'embed',
     embedType: 'image',
     caption: [],
-    src: 'http://example.com/image.jpg'
+    src: 'http://example.com/image.jpg',
+    width: undefined,
+    height: undefined
   }];
   t.deepEqual(actual, expected);
   t.end();
@@ -51,7 +53,9 @@ test('parse() img, with alt-attribute', t => {
     caption: [
       { content: 'beep boop', type: 'text' }
     ],
-    src: 'http://example.com/image.jpg'
+    src: 'http://example.com/image.jpg',
+    width: undefined,
+    height: undefined
   }];
   t.deepEqual(actual, expected);
   t.end();
@@ -70,7 +74,9 @@ test('parse() figure + img', t => {
       { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text' },
       { bold: true, content: 'world', href: null, italic: false, type: 'text' }
     ],
-    src: 'http://example.com/image.jpg'
+    src: 'http://example.com/image.jpg',
+    width: undefined,
+    height: undefined
   }];
 
   t.deepEqual(actual, expected);
@@ -86,7 +92,41 @@ test('parse() figure + img but no figcaption', t => {
     type: 'embed',
     embedType: 'image',
     caption: [],
-    src: 'http://example.com/image.jpg'
+    src: 'http://example.com/image.jpg',
+    width: undefined,
+    height: undefined
+  }];
+
+  t.deepEqual(actual, expected);
+  t.end();
+});
+
+test('parse() img with width & height', t => {
+  const input = tsml`<img src="http://example.com/image.jpg" width="100" height="200" />`;
+  const actual = parse(input);
+  const expected = [{
+    type: 'embed',
+    embedType: 'image',
+    caption: [],
+    src: 'http://example.com/image.jpg',
+    width: 100,
+    height: 200
+  }];
+
+  t.deepEqual(actual, expected);
+  t.end();
+});
+
+test('parse() img with width & height css', t => {
+  const input = tsml`<img src="http://example.com/image.jpg" style="width: 100; height: 200" />`;
+  const actual = parse(input);
+  const expected = [{
+    type: 'embed',
+    embedType: 'image',
+    caption: [],
+    src: 'http://example.com/image.jpg',
+    width: 100,
+    height: 200
   }];
 
   t.deepEqual(actual, expected);
@@ -114,7 +154,9 @@ test('parse() figure + img and figcaption with no content', t => {
     type: 'embed',
     embedType: 'image',
     caption: [],
-    src: 'http://example.com/image.jpg'
+    src: 'http://example.com/image.jpg',
+    width: undefined,
+    height: undefined
   }];
 
   t.deepEqual(actual, expected);
