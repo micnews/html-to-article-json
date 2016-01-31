@@ -173,7 +173,9 @@ test('parse() video with src', t => {
     sources: [{
       src: 'http://example.com/video.mp4',
       type: null
-    }]
+    }],
+    width: undefined,
+    height: undefined
   }];
   t.deepEqual(actual, expected);
   t.end();
@@ -195,7 +197,45 @@ test('parse() video with sources', t => {
     }, {
       src: 'http://example.com/video2.mp4',
       type: 'video/mp4'
-    }]
+    }],
+    width: undefined,
+    height: undefined
+  }];
+  t.deepEqual(actual, expected);
+  t.end();
+});
+
+test('parse() video with width & height', t => {
+  const input = '<video src="http://example.com/video.mp4" width="100" height="200" />';
+  const actual = parse(input);
+  const expected = [{
+    type: 'embed',
+    embedType: 'video',
+    caption: [],
+    sources: [{
+      src: 'http://example.com/video.mp4',
+      type: null
+    }],
+    width: 100,
+    height: 200
+  }];
+  t.deepEqual(actual, expected);
+  t.end();
+});
+
+test('parse() video with width & height css', t => {
+  const input = '<video src="http://example.com/video.mp4" style="width:100;height:200" />';
+  const actual = parse(input);
+  const expected = [{
+    type: 'embed',
+    embedType: 'video',
+    caption: [],
+    sources: [{
+      src: 'http://example.com/video.mp4',
+      type: null
+    }],
+    width: 100,
+    height: 200
   }];
   t.deepEqual(actual, expected);
   t.end();
@@ -211,7 +251,9 @@ test('parse() figure + video with src', t => {
     sources: [{
       src: 'http://example.com/video.mp4',
       type: null
-    }]
+    }],
+    width: undefined,
+    height: undefined
   }];
   t.deepEqual(actual, expected);
   t.end();
@@ -235,7 +277,9 @@ test('parse() figure + video with sources', t => {
     }, {
       src: 'http://example.com/video2.mp4',
       type: 'video/mp4'
-    }]
+    }],
+    width: undefined,
+    height: undefined
   }];
   t.deepEqual(actual, expected);
   t.end();
@@ -257,7 +301,9 @@ test('parse() figure + video with src & figcaption', t => {
     sources: [{
       src: 'http://example.com/video.mp4',
       type: null
-    }]
+    }],
+    width: undefined,
+    height: undefined
   }];
   t.deepEqual(actual, expected);
   t.end();
