@@ -1,4 +1,5 @@
-import test from 'tape';
+import 'babel-core/register';
+import test from 'ava';
 import setup from '../lib';
 import fs from 'fs';
 
@@ -7,8 +8,7 @@ const parseAndNormalize = setup();
 const createTest = (testName, html, expected) => {
   test('parseAndNormalize(elm)) ' + testName, t => {
     const actual = parseAndNormalize(html.trim());
-    t.deepEqual(actual, expected);
-    t.end();
+    t.same(actual, expected);
   });
 };
 
@@ -49,7 +49,7 @@ createTest(
 );
 
 test('parseAndNormalize(elm)) whitespace', t => {
-  t.deepEqual(parseAndNormalize('<p>\tbeep\tboop\t</p>'), [{
+  t.same(parseAndNormalize('<p>\tbeep\tboop\t</p>'), [{
     type: 'paragraph',
     children: [{
       type: 'text',
@@ -59,5 +59,4 @@ test('parseAndNormalize(elm)) whitespace', t => {
       italic: false
     }]
   }]);
-  t.end();
 });
