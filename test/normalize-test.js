@@ -1,5 +1,6 @@
+import 'babel-core/register';
 import setupNormalize from '../lib/normalize';
-import test from 'tape';
+import test from 'ava';
 
 const normalize = setupNormalize({});
 
@@ -11,11 +12,9 @@ test('normalize() minimum content', t => {
     }]
   }];
 
-  t.deepEqual(normalize([]), expected);
-  t.deepEqual(normalize([{ type: 'paragraph', children: [] }]), expected);
-  t.deepEqual(normalize(normalize([])), expected);
-
-  t.end();
+  t.same(normalize([]), expected);
+  t.same(normalize([{ type: 'paragraph', children: [] }]), expected);
+  t.same(normalize(normalize([])), expected);
 });
 
 test('normalize() minimum content in blockquote', t => {
@@ -28,18 +27,17 @@ test('normalize() minimum content in blockquote', t => {
       }]
     }]
   }];
-  t.deepEqual(normalize([{
+  t.same(normalize([{
     type: 'blockquote',
     children: []
   }]), expected);
-  t.deepEqual(normalize([{
+  t.same(normalize([{
     type: 'blockquote',
     children: [{
       type: 'paragraph',
       children: []
     }]
   }]), expected);
-  t.end();
 });
 
 test('normalize() remove not needed linebreaks', t => {
@@ -57,9 +55,7 @@ test('normalize() remove not needed linebreaks', t => {
     ]
   }];
 
-  t.deepEqual(normalize(tree), expected);
-
-  t.end();
+  t.same(normalize(tree), expected);
 });
 
 test('normalize() keep needed linebreaks', t => {
@@ -87,10 +83,9 @@ test('normalize() keep needed linebreaks', t => {
     ]
   }];
 
-  t.deepEqual(normalize(tree), tree);
-  t.deepEqual(normalize(tree2), tree2);
-  t.deepEqual(normalize(tree3), tree3);
-  t.end();
+  t.same(normalize(tree), tree);
+  t.same(normalize(tree2), tree2);
+  t.same(normalize(tree3), tree3);
 });
 
 test('normalize() add br-tag to empty text-container', t => {
@@ -115,6 +110,5 @@ test('normalize() add br-tag to empty text-container', t => {
     ]
   }];
 
-  t.deepEqual(normalize(tree), expected);
-  t.end();
+  t.same(normalize(tree), expected);
 });

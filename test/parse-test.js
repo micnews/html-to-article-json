@@ -1,4 +1,5 @@
-import test from 'tape';
+import 'babel-core/register';
+import test from 'ava';
 import setupParse from '../lib/parse';
 import tsml from 'tsml';
 
@@ -7,15 +8,13 @@ const parse = setupParse({});
 test('parse() single block element node', t => {
   const actual = parse('<p></p>');
   const expected = [{ type: 'paragraph', children: [] }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() single inline element node', t => {
   const actual = parse('<span></span>');
   const expected = [];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() text in span', t => {
@@ -27,8 +26,7 @@ test('parse() text in span', t => {
     italic: false,
     type: 'text'
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() img', t => {
@@ -41,8 +39,7 @@ test('parse() img', t => {
     width: undefined,
     height: undefined
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() img, with alt-attribute', t => {
@@ -57,8 +54,7 @@ test('parse() img, with alt-attribute', t => {
     width: undefined,
     height: undefined
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() figure + img', t => {
@@ -79,8 +75,7 @@ test('parse() figure + img', t => {
     height: undefined
   }];
 
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() figure + img but no figcaption', t => {
@@ -97,8 +92,7 @@ test('parse() figure + img but no figcaption', t => {
     height: undefined
   }];
 
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() img with width & height', t => {
@@ -113,8 +107,7 @@ test('parse() img with width & height', t => {
     height: 200
   }];
 
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() img with width & height css', t => {
@@ -129,8 +122,7 @@ test('parse() img with width & height css', t => {
     height: 200
   }];
 
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() figure with unkown content', t => {
@@ -140,8 +132,7 @@ test('parse() figure with unkown content', t => {
     type: 'block',
     children: []
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() figure + img and figcaption with no content', t => {
@@ -159,8 +150,7 @@ test('parse() figure + img and figcaption with no content', t => {
     height: undefined
   }];
 
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() video with src', t => {
@@ -177,8 +167,7 @@ test('parse() video with src', t => {
     width: undefined,
     height: undefined
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() video with sources', t => {
@@ -201,8 +190,7 @@ test('parse() video with sources', t => {
     width: undefined,
     height: undefined
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() video with width & height', t => {
@@ -219,8 +207,7 @@ test('parse() video with width & height', t => {
     width: 100,
     height: 200
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() video with width & height css', t => {
@@ -237,8 +224,7 @@ test('parse() video with width & height css', t => {
     width: 100,
     height: 200
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() figure + video with src', t => {
@@ -255,8 +241,7 @@ test('parse() figure + video with src', t => {
     width: undefined,
     height: undefined
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() figure + video with sources', t => {
@@ -281,8 +266,7 @@ test('parse() figure + video with sources', t => {
     width: undefined,
     height: undefined
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() figure + video with src & figcaption', t => {
@@ -305,8 +289,7 @@ test('parse() figure + video with src & figcaption', t => {
     width: undefined,
     height: undefined
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() youtube iframe', t => {
@@ -318,8 +301,7 @@ test('parse() youtube iframe', t => {
     caption: [],
     youtubeId: 'pDVmldTurqk'
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() youtube embedly iframe', t => {
@@ -333,8 +315,7 @@ test('parse() youtube embedly iframe', t => {
     caption: [],
     youtubeId: '3rS6mZUo3fg'
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() figure + youtube iframe', t => {
@@ -352,8 +333,7 @@ test('parse() figure + youtube iframe', t => {
     ],
     youtubeId: 'pDVmldTurqk'
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() tweet - normal', t => {
@@ -375,8 +355,7 @@ test('parse() tweet - normal', t => {
     },
     id: '684690494841028608'
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() tweet - no date', t => {
@@ -398,8 +377,7 @@ test('parse() tweet - no date', t => {
     },
     id: '684690494841028608'
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() tweet - weird input', t => {
@@ -408,8 +386,7 @@ test('parse() tweet - weird input', t => {
   const expected = [
     { content: 'foo bar', href: null }
   ];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() tweet - no paragraph, no user', t => {
@@ -428,15 +405,13 @@ test('parse() tweet - no paragraph, no user', t => {
     },
     id: '684690494841028608'
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() tweet - no id', t => {
   const input = `<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">GIF vs. JIF… This <a href="https://t.co/qFAHWgdbL6">pic.twitter.com/qFAHWgdbL6</a></p>&mdash; Matt (foo) Navarra (@MattNavarra) </blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>`;
   const actual = parse(input);
-  t.notEqual(actual[0].type, 'embed');
-  t.end();
+  t.not(actual[0].type, 'embed');
 });
 
 test('parse() instagram - with caption', t => {
@@ -450,8 +425,7 @@ test('parse() instagram - with caption', t => {
     url: 'https://www.instagram.com/p/-7PIhyA6J3/',
     text: 'Reinsta @karinn In Berlin. Feeling awesome.'
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() instagram figure iframe', t => {
@@ -476,8 +450,7 @@ test('parse() instagram figure iframe', t => {
       }]
     }]
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() instagram - without caption', t => {
@@ -491,16 +464,14 @@ test('parse() instagram - without caption', t => {
     url: 'https://www.instagram.com/p/-7PIhyA6J3/',
     text: null
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() instagram - bad input', t => {
   const input = `<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="6" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"></blockquote>`;
   const actual = parse(input);
   const expected = [{ children: [], type: 'blockquote' }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() facebook - post', t => {
@@ -519,8 +490,7 @@ test('parse() facebook - post', t => {
       embedAs: 'post'
     }
   ];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() facebook - video', t => {
@@ -539,8 +509,7 @@ test('parse() facebook - video', t => {
       embedAs: 'video'
     }
   ];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() vine', t => {
@@ -553,8 +522,7 @@ test('parse() vine', t => {
     embedType: 'vine',
     url: 'https://vine.co/v/bjHh0zHdgZT/embed/simple'
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() vine embedly', t => {
@@ -567,16 +535,14 @@ test('parse() vine embedly', t => {
     embedType: 'vine',
     url: 'https://vine.co/v/bjHh0zHdgZT/embed/simple'
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() iframe no src', t => {
   const input = '<iframe class="embedly-embed" width="600" height="600" scrolling="no" frameborder="0" allowfullscreen=""></iframe>';
   const actual = parse(input);
   const expected = [];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() custom embed', t => {
@@ -591,8 +557,7 @@ test('parse() custom embed', t => {
     secure: false,
     caption: []
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() custom secure embed', t => {
@@ -607,8 +572,7 @@ test('parse() custom secure embed', t => {
     secure: true,
     caption: []
   }];
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('parse() tricky link', t => {
@@ -639,10 +603,7 @@ test('parse() tricky link', t => {
         bold: false
       }
     ]
-  }
-];
+  }];
 
-  t.deepEqual(actual, expected);
-
-  t.end();
+  t.same(actual, expected);
 });

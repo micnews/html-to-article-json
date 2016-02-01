@@ -1,4 +1,5 @@
-import test from 'tape';
+import 'babel-core/register';
+import test from 'ava';
 import setupParse from '../lib';
 
 test('custom text formattings: add underline span-type', t => {
@@ -38,9 +39,7 @@ test('custom text formattings: add underline span-type', t => {
     }
   ];
 
-  t.deepEqual(actual, expected, 'parse()');
-
-  t.end();
+  t.same(actual, expected, 'parse()');
 });
 
 test('custom embed type', t => {
@@ -67,8 +66,7 @@ test('custom embed type', t => {
     embedType: 'foo'
   }];
   const actual = parse(html);
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
 
 test('custom embed type extend existing type', t => {
@@ -95,6 +93,5 @@ test('custom embed type extend existing type', t => {
     embedType: 'image'
   }];
   const actual = parse(html);
-  t.deepEqual(actual, expected);
-  t.end();
+  t.same(actual, expected);
 });
