@@ -1,4 +1,4 @@
-import test from 'tape';
+import test from 'tape-catch';
 
 export default (msg, cb) => {
   test(msg, (t) => {

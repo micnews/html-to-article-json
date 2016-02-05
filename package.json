@@ -37,6 +37,7 @@
     "semistandard": "^7.0.2",
     "snazzy": "^2.0.1",
     "tape": "^4.4.0",
+    "tape-catch": "^1.0.4",
     "tsml": "^1.0.1",
     "watchify": "^3.4.0"
   },
