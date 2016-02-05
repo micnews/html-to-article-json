@@ -1,5 +1,4 @@
-import 'babel-core/register';
-import test from 'ava';
+import test from './tape-wrapper';
 import setup from '../lib';
 import fs from 'fs';
 

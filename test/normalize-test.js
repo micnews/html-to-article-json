@@ -1,6 +1,5 @@
-import 'babel-core/register';
 import setupNormalize from '../lib/normalize';
-import test from 'ava';
+import test from './tape-wrapper';
 
 const normalize = setupNormalize({});
 
