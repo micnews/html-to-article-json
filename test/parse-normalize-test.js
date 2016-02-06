@@ -69,23 +69,25 @@ test('parseAndNormalize(elm)) whitespace', t => {
   }]);
 });
 
-test('parseAndNormalize() different input', t => {
-  const elms = parse('<p>flip flop</p>');
-  const actual1 = parseAndNormalize(elms);
-  const actual2 = parseAndNormalize(elms[0]);
-  const expected = [{
-    type: 'paragraph',
-    children: [
-      {
-        type: 'text',
-        content: 'flip flop',
-        href: null,
-        italic: false,
-        bold: false
-      }
-    ]
-  }];
+if (!process.browser) {
+  test('parseAndNormalize() different input', t => {
+    const elms = parse('<p>flip flop</p>');
+    const actual1 = parseAndNormalize(elms);
+    const actual2 = parseAndNormalize(elms[0]);
+    const expected = [{
+      type: 'paragraph',
+      children: [
+        {
+          type: 'text',
+          content: 'flip flop',
+          href: null,
+          italic: false,
+          bold: false
+        }
+      ]
+    }];
 
-  t.same(actual1, expected);
-  t.same(actual2, expected);
-});
+    t.same(actual1, expected);
+    t.same(actual2, expected);
+  });
+}

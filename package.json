@@ -10,7 +10,7 @@
     "build": "rm -rf dist && babel lib --out-dir dist",
     "prepublish": "npm run build",
     "postpublish": "rm -rf dist",
-    "test": "npm run lint && npm prune && npm run test:node && npm run test:coverage && npm run test:check-coverage",
+    "test": "npm run lint && npm prune && npm run test:node && npm run test:coverage && npm run test:check-coverage && npm run test:browser",
     "test:browser": "browserify -t babelify -t brfs -d test/*-test.js | testron",
     "test:coverage": "nyc babel-tape-runner test/*-test.js",
     "test:check-coverage": "nyc check-coverage --lines 100 --functions 100 --branches 100",
