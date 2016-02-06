@@ -1,5 +1,4 @@
-import 'babel-core/register';
-import test from 'ava';
+import test from './tape-wrapper';
 import setupParse from '../lib';
 
 test('custom text formattings: add underline span-type', t => {
