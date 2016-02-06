@@ -1,9 +1,10 @@
 import test from './tape-wrapper';
 import setup from '../lib';
+import parse from 'query-dom';
 
 const fs = require('fs');
 
-const _parseAndNormalize = setup({});
+const _parseAndNormalize = setup();
 const parseAndNormalize = process.browser
   ? (html) => {
     const node = document.createElement('div');
@@ -66,4 +67,25 @@ test('parseAndNormalize(elm)) whitespace', t => {
       italic: false
     }]
   }]);
+});
+
+test('parseAndNormalize() different input', t => {
+  const elms = parse('<p>flip flop</p>');
+  const actual1 = parseAndNormalize(elms);
+  const actual2 = parseAndNormalize(elms[0]);
+  const expected = [{
+    type: 'paragraph',
+    children: [
+      {
+        type: 'text',
+        content: 'flip flop',
+        href: null,
+        italic: false,
+        bold: false
+      }
+    ]
+  }];
+
+  t.same(actual1, expected);
+  t.same(actual2, expected);
 });
