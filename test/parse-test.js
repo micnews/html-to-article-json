@@ -2,7 +2,14 @@ import test from './tape-wrapper';
 import setupParse from '../lib/parse';
 import tsml from 'tsml';
 
-const parse = setupParse({});
+const _parse = setupParse({});
+const parse = process.browser
+  ? (html) => {
+    const node = document.createElement('div');
+    node.innerHTML = html;
+    return _parse(node.childNodes);
+  }
+  : _parse;
 
 test('parse() single block element node', t => {
   const actual = parse('<p></p>');

@@ -1,8 +1,16 @@
 import test from './tape-wrapper';
 import setup from '../lib';
-import fs from 'fs';
 
-const parseAndNormalize = setup();
+const fs = require('fs');
+
+const _parseAndNormalize = setup({});
+const parseAndNormalize = process.browser
+  ? (html) => {
+    const node = document.createElement('div');
+    node.innerHTML = html;
+    return _parseAndNormalize(node.childNodes);
+  }
+  : _parseAndNormalize;
 
 const createTest = (testName, html, expected) => {
   test('parseAndNormalize(elm)) ' + testName, t => {
