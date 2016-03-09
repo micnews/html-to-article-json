@@ -581,6 +581,21 @@ test('parse() custom secure embed', t => {
   t.same(actual, expected);
 });
 
+test('parse() custom secure embed with no protocol', t => {
+  const input = '<iframe src="//custom.com" width="600" height="600" frameborder="0"></iframe>';
+  const actual = parse(input);
+  const expected = [{
+    type: 'embed',
+    embedType: 'custom',
+    src: '//custom.com',
+    width: 600,
+    height: 600,
+    secure: true,
+    caption: []
+  }];
+  t.same(actual, expected);
+});
+
 test('parse() tricky link', t => {
   const input = '<p><i>This is italic and <a href="http://link4.com/">this is a link</i> foo bar</a></p>';
   const actual = parse(input);
