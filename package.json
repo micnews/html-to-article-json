@@ -35,7 +35,7 @@
     "beefy": "^2.1.5",
     "brfs": "^1.4.3",
     "browserify": "^13.0.0",
-    "electron-prebuilt": "^0.36.7",
+    "electron-prebuilt": "^0.37.0",
     "nyc": "^6.0.0",
     "pre-commit": "^1.1.1",
     "semistandard": "^7.0.2",
