@@ -325,10 +325,7 @@ test('parse() youtube embedly iframe', t => {
 });
 
 test('parse() figure + youtube iframe', t => {
-  const input = `<figure>
-    <iframe src="https://www.youtube.com/embed/pDVmldTurqk"></iframe>
-    <figcaption>Hello, <b>world</b></figcaption>
-  </figure>`;
+  const input = `<figure><iframe src="https://www.youtube.com/embed/pDVmldTurqk"></iframe><figcaption>Hello, <b>world</b></figcaption></figure>`;
   const actual = parse(input);
   const expected = [{
     type: 'embed',
@@ -429,7 +426,9 @@ test('parse() instagram - with caption', t => {
     caption: [],
     id: '-7PIhyA6J3',
     url: 'https://www.instagram.com/p/-7PIhyA6J3/',
-    text: 'Reinsta @karinn In Berlin. Feeling awesome.'
+    text: 'Reinsta @karinn In Berlin. Feeling awesome.',
+    date: {string: 'Dec 5, 2015 at 1:40pm PST', utc: '2015-12-05T21:40:53+00:00'},
+    user: {name: 'David Björklund', slug: 'david_bjorklund'}
   }];
   t.same(actual, expected);
 });
@@ -443,18 +442,14 @@ test('parse() instagram figure iframe', t => {
     </figure>`;
   const actual = parse(input);
   const expected = [{
-    type: 'block',
-    children: [{
-      type: 'block',
-      children: [{
-        type: 'embed',
-        embedType: 'instagram',
-        text: '',
-        id: 'fdx1CSuEPV',
-        url: 'http://instagram.com/p/fdx1CSuEPV/embed',
-        caption: []
-      }]
-    }]
+    type: 'embed',
+    embedType: 'instagram',
+    text: '',
+    id: 'fdx1CSuEPV',
+    url: 'https://instagram.com/p/fdx1CSuEPV',
+    caption: [],
+    date: undefined,
+    user: undefined
   }];
   t.same(actual, expected);
 });
@@ -468,7 +463,15 @@ test('parse() instagram - without caption', t => {
     caption: [],
     id: '-7PIhyA6J3',
     url: 'https://www.instagram.com/p/-7PIhyA6J3/',
-    text: null
+    text: null,
+    date: {
+      string: 'Dec 5, 2015 at 1:40pm PST',
+      utc: '2015-12-05T21:40:53+00:00'
+    },
+    user: {
+      name: 'David Björklund',
+      slug: 'david_bjorklund'
+    }
   }];
   t.same(actual, expected);
 });
@@ -493,7 +496,14 @@ test('parse() facebook - post', t => {
       caption: [],
       type: 'embed',
       embedType: 'facebook',
-      embedAs: 'post'
+      embedAs: 'post',
+      date: 'Thursday, January 21, 2016',
+      headline: undefined,
+      text: [{
+        content: 'Hey!So, for the last few weeks I\'ve worked on http://mic.com/ - the new home for mic.com (on desktop) - please take a look :)',
+        href: null
+      }],
+      user: 'David Pop Hipsterson'
     }
   ];
   t.same(actual, expected);
@@ -512,7 +522,14 @@ test('parse() facebook - video', t => {
       caption: [],
       type: 'embed',
       embedType: 'facebook',
-      embedAs: 'video'
+      embedAs: 'video',
+      date: 'Friday, January 15, 2016',
+      headline: 'Why is breastfeeding in public such a big deal?',
+      text: [{
+        content: 'Men and women *both* have nipples — so why do we only shame women for showing theirs... especially when they\'re breastfeeding?',
+        href: null
+      }],
+      user: { name: 'Mic', url: 'https://www.facebook.com/MicMedia/' }
     }
   ];
   t.same(actual, expected);
