@@ -40,3 +40,61 @@ test('custom text formattings: add underline span-type', t => {
 
   t.same(actual, expected, 'parse()');
 });
+
+test('custom embed type', t => {
+  const opts = {
+    customEmbedTypes: [{
+      embedType: 'foo',
+      parse: elm => {
+        console.log(elm);
+        const foo = elm.childNodes[0];
+        console.log(foo);
+        return {
+          type: 'embed',
+          embedType: 'foo',
+          bar: foo.getAttribute('bar'),
+          caption: []
+        };
+      }
+    }]
+  };
+  const html = '<div><foo bar="bas"></foo></div>';
+  const parse = setupParse(opts);
+
+  const expected = [{
+    bar: 'bas',
+    caption: [],
+    type: 'embed',
+    embedType: 'foo'
+  }];
+  const actual = parse(html);
+  t.same(actual, expected);
+});
+
+test('custom embed type extend existing type', t => {
+  const opts = {
+    customEmbedTypes: [{
+      embedType: 'image',
+      parse: elm => {
+        const img = elm.childNodes[0];
+        return {
+          type: 'embed',
+          embedType: 'image',
+          bar: img.getAttribute('bar'),
+          caption: []
+        };
+      }
+    }]
+  };
+  const html = '<div><img bar="bas"></img></div>';
+  const parse = setupParse(opts);
+
+  const expected = [{
+    bar: 'bas',
+    caption: [],
+    type: 'embed',
+    embedType: 'image'
+  }];
+  const actual = parse(html);
+  t.same(actual, expected);
+});
