@@ -131,7 +131,7 @@ test('parse() img with width & height css', t => {
   t.same(actual, expected);
 });
 
-test('parse() figure with unkown content', t => {
+test('parse() figure with no content', t => {
   const input = tsml`<figure></figure>`;
   const actual = parse(input);
   const expected = [{
@@ -140,6 +140,27 @@ test('parse() figure with unkown content', t => {
   }];
   t.same(actual, expected);
 });
+
+test('parse() figure with unknown content', t => {
+  const input = tsml`<figure><div>beep</div></figure>`;
+  const actual = parse(input);
+  console.log(actual[0].children[0]);
+  const expected = [{
+    type: 'block',
+    children: [{
+      type: 'block',
+      children: [{
+        type: 'text',
+        content: 'beep',
+        href: null,
+        italic: false,
+        bold: false
+      }]
+    }]
+  }];
+  t.same(actual, expected);
+});
+
 
 test('parse() figure + img and figcaption with no content', t => {
   const input = tsml`<figure>
