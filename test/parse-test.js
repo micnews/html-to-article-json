@@ -42,8 +42,8 @@ test('parse() img', t => {
     embedType: 'image',
     caption: [],
     src: 'http://example.com/image.jpg',
-    width: undefined,
-    height: undefined
+    width: null,
+    height: null
   }];
   t.same(actual, expected);
 });
@@ -57,8 +57,8 @@ test('parse() img, with alt-attribute', t => {
       { content: 'beep boop', type: 'text' }
     ],
     src: 'http://example.com/image.jpg',
-    width: undefined,
-    height: undefined
+    width: null,
+    height: null
   }];
   t.same(actual, expected);
 });
@@ -77,8 +77,8 @@ test('parse() figure + img', t => {
       { bold: true, content: 'world', href: null, italic: false, type: 'text' }
     ],
     src: 'http://example.com/image.jpg',
-    width: undefined,
-    height: undefined
+    width: null,
+    height: null
   }];
 
   t.same(actual, expected);
@@ -94,8 +94,8 @@ test('parse() figure + img but no figcaption', t => {
     embedType: 'image',
     caption: [],
     src: 'http://example.com/image.jpg',
-    width: undefined,
-    height: undefined
+    width: null,
+    height: null
   }];
 
   t.same(actual, expected);
@@ -173,8 +173,8 @@ test('parse() figure + img and figcaption with no content', t => {
     embedType: 'image',
     caption: [],
     src: 'http://example.com/image.jpg',
-    width: undefined,
-    height: undefined
+    width: null,
+    height: null
   }];
 
   t.same(actual, expected);
@@ -191,8 +191,8 @@ test('parse() video with src', t => {
       src: 'http://example.com/video.mp4',
       type: null
     }],
-    width: undefined,
-    height: undefined
+    width: null,
+    height: null
   }];
   t.same(actual, expected);
 });
@@ -214,8 +214,8 @@ test('parse() video with sources', t => {
       src: 'http://example.com/video2.mp4',
       type: 'video/mp4'
     }],
-    width: undefined,
-    height: undefined
+    width: null,
+    height: null
   }];
   t.same(actual, expected);
 });
@@ -265,8 +265,8 @@ test('parse() figure + video with src', t => {
       src: 'http://example.com/video.mp4',
       type: null
     }],
-    width: undefined,
-    height: undefined
+    width: null,
+    height: null
   }];
   t.same(actual, expected);
 });
@@ -290,8 +290,8 @@ test('parse() figure + video with sources', t => {
       src: 'http://example.com/video2.mp4',
       type: 'video/mp4'
     }],
-    width: undefined,
-    height: undefined
+    width: null,
+    height: null
   }];
   t.same(actual, expected);
 });
@@ -313,8 +313,8 @@ test('parse() figure + video with src & figcaption', t => {
       src: 'http://example.com/video.mp4',
       type: null
     }],
-    width: undefined,
-    height: undefined
+    width: null,
+    height: null
   }];
   t.same(actual, expected);
 });
@@ -469,8 +469,8 @@ test('parse() instagram figure iframe', t => {
     id: 'fdx1CSuEPV',
     url: 'https://instagram.com/p/fdx1CSuEPV',
     caption: [],
-    date: undefined,
-    user: undefined
+    date: null,
+    user: null
   }];
   t.same(actual, expected);
 });
@@ -519,7 +519,7 @@ test('parse() facebook - post', t => {
       embedType: 'facebook',
       embedAs: 'post',
       date: 'Thursday, January 21, 2016',
-      headline: undefined,
+      headline: null,
       text: [{
         content: 'Hey!So, for the last few weeks I\'ve worked on http://mic.com/ - the new home for mic.com (on desktop) - please take a look :)',
         href: null
