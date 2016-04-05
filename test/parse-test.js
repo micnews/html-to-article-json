@@ -144,7 +144,6 @@ test('parse() figure with no content', t => {
 test('parse() figure with unknown content', t => {
   const input = tsml`<figure><div>beep</div></figure>`;
   const actual = parse(input);
-  console.log(actual[0].children[0]);
   const expected = [{
     type: 'block',
     children: [{
