@@ -160,7 +160,6 @@ test('parse() figure with unknown content', t => {
   t.same(actual, expected);
 });
 
-
 test('parse() figure + img and figcaption with no content', t => {
   const input = tsml`<figure>
     <img src="http://example.com/image.jpg"/>
