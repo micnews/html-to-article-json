@@ -50,7 +50,8 @@ test('custom embed type', t => {
         return {
           type: 'embed',
           embedType: 'foo',
-          bar: foo.getAttribute('bar')
+          bar: foo.getAttribute('bar'),
+          caption: []
         };
       }
     }]
@@ -68,6 +69,54 @@ test('custom embed type', t => {
   t.same(actual, expected);
 });
 
+test('multiple custom embeds', t => {
+  const opts = {
+    customEmbedTypes: [{
+      embedType: 'foo',
+      parse: elm => {
+        const foo = elm.childNodes[0];
+        if (foo) {
+          return {
+            type: 'embed',
+            embedType: 'foo',
+            bar: foo.getAttribute('bar'),
+            caption: []
+          };
+        }
+      }
+    }, {
+      embedType: 'bar',
+      parse: elm => {
+        console.log(elm);
+        if (elm.tagName === 'bar') {
+          return {
+            type: 'embed',
+            embedType: 'bar',
+            beep: 'boop',
+            caption: []
+          };
+        }
+      }
+    }]
+  };
+  const html = '<div><foo bar="bas"></foo></div><bar/>';
+  const parse = setupParse(opts);
+
+  const expected = [{
+    bar: 'bas',
+    caption: [],
+    type: 'embed',
+    embedType: 'foo'
+  }, {
+    type: 'embed',
+    embedType: 'bar',
+    beep: 'boop',
+    caption: []
+  }];
+  const actual = parse(html);
+  t.same(actual, expected);
+});
+
 test('custom embed type extend existing type', t => {
   const opts = {
     customEmbedTypes: [{
@@ -77,7 +126,8 @@ test('custom embed type extend existing type', t => {
         return {
           type: 'embed',
           embedType: 'image',
-          bar: img.getAttribute('bar')
+          bar: img.getAttribute('bar'),
+          caption: []
         };
       }
     }]

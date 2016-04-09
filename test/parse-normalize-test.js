@@ -55,6 +55,11 @@ createTest(
   fs.readFileSync(__dirname + '/parse-normalize-fixtures/blockquote.html', 'utf8'),
   require('./parse-normalize-fixtures/blockquote.json')
 );
+createTest(
+  'embeds',
+  fs.readFileSync(__dirname + '/parse-normalize-fixtures/embeds.html', 'utf8'),
+  require('./parse-normalize-fixtures/embeds.json')
+);
 
 test('parseAndNormalize(elm)) whitespace', t => {
   t.same(parseAndNormalize('<p>\tbeep\tboop\t</p>'), [{

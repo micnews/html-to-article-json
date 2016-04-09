@@ -1,0 +1,15 @@
+[{
+  "type": "embed",
+  "embedType": "image",
+  "caption": [],
+  "src": "http://example.com/image.jpg",
+  "width": null,
+  "height": null
+}, {
+  "type": "embed",
+  "embedType": "image",
+  "caption": [],
+  "src": "http://example.com/image2.jpg",
+  "width": null,
+  "height": null
+}]
