@@ -3,6 +3,8 @@
     "type": "header1",
     "children": [{
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "Top header",
       "href": null,
       "bold": false,
@@ -12,6 +14,8 @@
     "type": "header2",
     "children": [{
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "Second level",
       "href": null,
       "bold": false,
@@ -21,6 +25,8 @@
     "type": "paragraph",
     "children": [{
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "beepboop",
       "href": null,
       "bold": false,

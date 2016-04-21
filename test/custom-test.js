@@ -20,6 +20,8 @@ test('custom text formattings: add underline span-type', t => {
       children: [
         {
           type: 'text',
+          mark: false,
+          markClass: '',
           content: 'foo',
           href: null,
           italic: false,
@@ -28,6 +30,8 @@ test('custom text formattings: add underline span-type', t => {
         },
         {
           type: 'text',
+          mark: false,
+          markClass: '',
           content: 'bar',
           href: null,
           italic: false,

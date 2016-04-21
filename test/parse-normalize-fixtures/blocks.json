@@ -3,6 +3,8 @@
     "type": "paragraph",
     "children": [{
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "Divs are also text",
       "href": null,
       "bold": false,
@@ -12,6 +14,8 @@
     "type": "paragraph",
     "children": [{
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "Some text",
       "href": null,
       "bold": false,
@@ -21,6 +25,8 @@
     "type": "paragraph",
     "children": [{
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "Some text in a div",
       "href": null,
       "bold": false,
@@ -30,6 +36,8 @@
     "type": "header1",
     "children": [{
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "And a header",
       "href": null,
       "bold": false,
@@ -39,6 +47,8 @@
     "type": "paragraph",
     "children": [{
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "Text in a form",
       "href": null,
       "bold": false,

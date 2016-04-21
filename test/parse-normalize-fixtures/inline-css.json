@@ -3,24 +3,32 @@
     "type": "paragraph",
     "children": [{
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "This is a link",
       "href": "http://link.com/",
       "bold": false,
       "italic": false
     }, {
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": " ",
       "href": null,
       "bold": false,
       "italic": false
     }, {
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "This is a bold link",
       "href": "http://link2.com/",
       "bold": true,
       "italic": false
     }, {
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "This is also a bold link",
       "href": "http://link3.com/",
       "bold": true,
@@ -30,18 +38,24 @@
     "type": "paragraph",
     "children": [{
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "This is italic and ",
       "href": null,
       "bold": false,
       "italic": true
     }, {
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "this is a link",
       "href": "http://link4.com/",
       "bold": false,
       "italic": true
     }, {
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": " foo bar",
       "href": "http://link4.com/",
       "bold": false,
@@ -51,24 +65,32 @@
     "type": "paragraph",
     "children": [{
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "boldbold2bold3bold4",
       "href": null,
       "bold": true,
       "italic": false
     }, {
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "italic",
       "href": null,
       "bold": false,
       "italic": true
     }, {
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "STRONG",
       "href": null,
       "bold": true,
       "italic": false
     }, {
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "EM",
       "href": null,
       "bold": false,

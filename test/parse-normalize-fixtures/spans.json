@@ -3,6 +3,8 @@
     "type": "paragraph",
     "children": [{
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "beep boop",
       "href": null,
       "bold": false,
@@ -12,6 +14,8 @@
     "type": "paragraph",
     "children": [{
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "foo bar Hello, world!",
       "href": null,
       "bold": false,
