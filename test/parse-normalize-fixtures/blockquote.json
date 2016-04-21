@@ -7,6 +7,8 @@
         "children": [
           {
             "type": "text",
+            "mark": false,
+            "markClass": "",
             "content": "beep boop",
             "href": null,
             "italic": false,
@@ -24,6 +26,8 @@
         "children": [
           {
             "type": "text",
+            "mark": false,
+            "markClass": "",
             "content": "beep boop",
             "href": null,
             "italic": false,
@@ -41,6 +45,8 @@
         "children": [
           {
             "type": "text",
+            "mark": false,
+            "markClass": "",
             "content": "this",
             "href": null,
             "italic": false,
@@ -48,6 +54,8 @@
           },
           {
             "type": "text",
+            "mark": false,
+            "markClass": "",
             "content": "is",
             "href": null,
             "italic": false,
@@ -55,6 +63,8 @@
           },
           {
             "type": "text",
+            "mark": false,
+            "markClass": "",
             "content": "styled",
             "href": null,
             "italic": false,
@@ -72,6 +82,8 @@
         "children": [
           {
             "type": "text",
+            "mark": false,
+            "markClass": "",
             "content": "this works as well",
             "href": null,
             "italic": false,
@@ -84,6 +96,8 @@
         "children": [
           {
             "type": "text",
+            "mark": false,
+            "markClass": "",
             "content": "as expected",
             "href": null,
             "italic": false,

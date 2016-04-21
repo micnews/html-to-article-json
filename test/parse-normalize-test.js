@@ -66,6 +66,8 @@ test('parseAndNormalize(elm)) whitespace', t => {
     type: 'paragraph',
     children: [{
       type: 'text',
+      mark: false,
+      markClass: '',
       content: ' beep boop ',
       href: null,
       bold: false,
@@ -84,6 +86,8 @@ if (!process.browser) {
       children: [
         {
           type: 'text',
+          mark: false,
+          markClass: '',
           content: 'flip flop',
           href: null,
           italic: false,

@@ -4,6 +4,8 @@
     "children": [
       {
         "type": "text",
+        "mark": false,
+        "markClass": "",
         "content": "beep",
         "href": null,
         "bold": false,
@@ -12,6 +14,8 @@
         "type": "linebreak"
       }, {
         "type": "text",
+        "mark": false,
+        "markClass": "",
         "content": "boop",
         "href": null,
         "bold": false,

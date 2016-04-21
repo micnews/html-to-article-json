@@ -3,6 +3,8 @@
     "type": "header1",
     "children": [{
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "Hello, world!",
       "href": null,
       "bold": false,
@@ -13,6 +15,8 @@
     "type": "paragraph",
     "children": [{
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": " beepboop ",
       "href": null,
       "bold": false,
@@ -22,30 +26,40 @@
     "type": "paragraph",
     "children": [{
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": " foo",
       "href": null,
       "bold": false,
       "italic": false
     }, {
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "bar",
       "href": null,
       "bold": true,
       "italic": false
     }, {
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": " ",
       "href": null,
       "bold": false,
       "italic": false
     }, {
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": "bas",
       "href": null,
       "bold": false,
       "italic": true
     }, {
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": " ",
       "href": null,
       "bold": false,
@@ -55,6 +69,8 @@
     "type": "paragraph",
     "children": [{
       "type": "text",
+      "mark": false,
+      "markClass": "",
       "content": " YEAH YEAH YEAHS",
       "href": null,
       "bold": false,
