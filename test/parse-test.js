@@ -689,3 +689,30 @@ test('parse() mark', t => {
   }];
   t.same(actual, expected);
 });
+
+test('parse() empty mark', t => {
+  const input = '<p><mark class="empty-mark-tag"></mark>Text</p>';
+  const actual = parse(input);
+  const expected = [{
+    type: 'paragraph',
+    children: [{
+      bold: false,
+      content: false,
+      href: null,
+      italic: false,
+      mark: true,
+      markClass: 'empty-mark-tag',
+      type: 'text'
+    }, {
+      bold: false,
+      content: 'Text',
+      href: null,
+      italic: false,
+      mark: false,
+      markClass: '',
+      type: 'text'
+    }]
+  }];
+
+  t.same(actual, expected);
+});
