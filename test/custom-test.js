@@ -21,7 +21,7 @@ test('custom text formattings: add underline span-type', t => {
         {
           type: 'text',
           mark: false,
-          markClass: '',
+          markClass: null,
           content: 'foo',
           href: null,
           italic: false,
@@ -31,7 +31,7 @@ test('custom text formattings: add underline span-type', t => {
         {
           type: 'text',
           mark: false,
-          markClass: '',
+          markClass: null,
           content: 'bar',
           href: null,
           italic: false,

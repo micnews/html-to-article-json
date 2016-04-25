@@ -5,7 +5,7 @@
       {
         "type": "text",
         "mark": false,
-        "markClass": "",
+        "markClass": null,
         "content": "beep",
         "href": null,
         "bold": false,
@@ -15,7 +15,7 @@
       }, {
         "type": "text",
         "mark": false,
-        "markClass": "",
+        "markClass": null,
         "content": "boop",
         "href": null,
         "bold": false,

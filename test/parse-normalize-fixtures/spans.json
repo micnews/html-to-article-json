@@ -4,7 +4,7 @@
     "children": [{
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "beep boop",
       "href": null,
       "bold": false,
@@ -15,7 +15,7 @@
     "children": [{
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "foo bar Hello, world!",
       "href": null,
       "bold": false,

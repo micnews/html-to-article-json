@@ -4,7 +4,7 @@
     "children": [{
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "Hello, world!",
       "href": null,
       "bold": false,
@@ -16,7 +16,7 @@
     "children": [{
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": " beepboop ",
       "href": null,
       "bold": false,
@@ -27,7 +27,7 @@
     "children": [{
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": " foo",
       "href": null,
       "bold": false,
@@ -35,7 +35,7 @@
     }, {
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "bar",
       "href": null,
       "bold": true,
@@ -43,7 +43,7 @@
     }, {
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": " ",
       "href": null,
       "bold": false,
@@ -51,7 +51,7 @@
     }, {
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "bas",
       "href": null,
       "bold": false,
@@ -59,7 +59,7 @@
     }, {
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": " ",
       "href": null,
       "bold": false,
@@ -70,7 +70,7 @@
     "children": [{
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": " YEAH YEAH YEAHS",
       "href": null,
       "bold": false,

@@ -8,7 +8,7 @@
           {
             "type": "text",
             "mark": false,
-            "markClass": "",
+            "markClass": null,
             "content": "beep boop",
             "href": null,
             "italic": false,
@@ -27,7 +27,7 @@
           {
             "type": "text",
             "mark": false,
-            "markClass": "",
+            "markClass": null,
             "content": "beep boop",
             "href": null,
             "italic": false,
@@ -46,7 +46,7 @@
           {
             "type": "text",
             "mark": false,
-            "markClass": "",
+            "markClass": null,
             "content": "this",
             "href": null,
             "italic": false,
@@ -55,7 +55,7 @@
           {
             "type": "text",
             "mark": false,
-            "markClass": "",
+            "markClass": null,
             "content": "is",
             "href": null,
             "italic": false,
@@ -64,7 +64,7 @@
           {
             "type": "text",
             "mark": false,
-            "markClass": "",
+            "markClass": null,
             "content": "styled",
             "href": null,
             "italic": false,
@@ -83,7 +83,7 @@
           {
             "type": "text",
             "mark": false,
-            "markClass": "",
+            "markClass": null,
             "content": "this works as well",
             "href": null,
             "italic": false,
@@ -97,7 +97,7 @@
           {
             "type": "text",
             "mark": false,
-            "markClass": "",
+            "markClass": null,
             "content": "as expected",
             "href": null,
             "italic": false,

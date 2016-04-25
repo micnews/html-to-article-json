@@ -4,7 +4,7 @@
     "children": [{
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "Top header",
       "href": null,
       "bold": false,
@@ -15,7 +15,7 @@
     "children": [{
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "Second level",
       "href": null,
       "bold": false,
@@ -26,7 +26,7 @@
     "children": [{
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "beepboop",
       "href": null,
       "bold": false,

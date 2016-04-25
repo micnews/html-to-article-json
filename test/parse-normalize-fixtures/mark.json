@@ -1,0 +1,28 @@
+[{
+  "children": [{
+    "bold": false,
+    "content": null,
+    "href": null,
+    "italic": false,
+    "mark": true,
+    "markClass": "empty-mark-tag",
+    "type": "text"
+  }, {
+    "bold": false,
+    "content": "Text",
+    "href": null,
+    "italic": false,
+    "mark": false,
+    "markClass": null,
+    "type": "text"
+  }, {
+    "bold": false,
+    "content": "markcontent",
+    "href": null,
+    "italic": false,
+    "mark": true,
+    "markClass": "mark-class",
+    "type": "text"
+  }],
+  "type": "paragraph"
+}]
