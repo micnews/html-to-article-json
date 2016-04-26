@@ -124,9 +124,27 @@ test('normalize() keep all empty mark-tags', t => {
   const expected = [{
     type: 'paragraph',
     children: [
+      { type: 'linebreak' },
       { type: 'text', mark: true, markClass: 'mark1', content: null },
-      { type: 'text', mark: true, markClass: 'mark2', content: null },
-      { type: 'linebreak' }
+      { type: 'text', mark: true, markClass: 'mark2', content: null }
+    ]
+  }];
+
+  t.same(normalize(tree), expected);
+});
+
+test('normalize() dont add minimum content linebreak for mark tag with content', t => {
+  const tree = [{
+    type: 'paragraph',
+    children: [
+      { type: 'text', mark: true, markClass: 'mark1', content: 'beep boop' }
+    ]
+  }];
+
+  const expected = [{
+    type: 'paragraph',
+    children: [
+      { type: 'text', mark: true, markClass: 'mark1', content: 'beep boop' }
     ]
   }];
 
