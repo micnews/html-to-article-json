@@ -25,4 +25,38 @@
     "type": "text"
   }],
   "type": "paragraph"
+},
+{
+  "children": [{
+    "bold": false,
+    "content": null,
+    "href": null,
+    "italic": false,
+    "mark": true,
+    "markClass": "mark-start",
+    "type": "text"
+  }, {
+    "bold": false,
+    "content": null,
+    "href": null,
+    "italic": false,
+    "mark": true,
+    "markClass": "mark-end",
+    "type": "text"
+  }, {
+    "type": "linebreak"
+  }],
+  "type": "paragraph"
+},
+{
+  "children": [{
+    "bold": false,
+    "content": "markcontent",
+    "href": null,
+    "italic": false,
+    "mark": true,
+    "markClass": "mark",
+    "type": "text"
+  }],
+  "type": "paragraph"
 }]
