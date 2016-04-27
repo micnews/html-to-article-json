@@ -32,7 +32,7 @@ test('parse() text in span', t => {
     italic: false,
     type: 'text',
     mark: false,
-    markClass: ''
+    markClass: null
   }];
   t.same(actual, expected);
 });
@@ -75,8 +75,8 @@ test('parse() figure + img', t => {
     type: 'embed',
     embedType: 'image',
     caption: [
-      { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text', mark: false, markClass: '' },
-      { bold: true, content: 'world', href: null, italic: false, type: 'text', mark: false, markClass: '' }
+      { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text', mark: false, markClass: null },
+      { bold: true, content: 'world', href: null, italic: false, type: 'text', mark: false, markClass: null }
     ],
     src: 'http://example.com/image.jpg',
     width: null,
@@ -153,7 +153,7 @@ test('parse() figure with unknown content', t => {
       children: [{
         type: 'text',
         mark: false,
-        markClass: '',
+        markClass: null,
         content: 'beep',
         href: null,
         italic: false,
@@ -308,8 +308,8 @@ test('parse() figure + video with src & figcaption', t => {
     type: 'embed',
     embedType: 'video',
     caption: [
-      { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text', mark: false, markClass: '' },
-      { bold: true, content: 'world', href: null, italic: false, type: 'text', mark: false, markClass: '' }
+      { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text', mark: false, markClass: null },
+      { bold: true, content: 'world', href: null, italic: false, type: 'text', mark: false, markClass: null }
     ],
     sources: [{
       src: 'http://example.com/video.mp4',
@@ -354,8 +354,8 @@ test('parse() figure + youtube iframe', t => {
     type: 'embed',
     embedType: 'youtube',
     caption: [
-      { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text', mark: false, markClass: '' },
-      { bold: true, content: 'world', href: null, italic: false, type: 'text', mark: false, markClass: '' }
+      { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text', mark: false, markClass: null },
+      { bold: true, content: 'world', href: null, italic: false, type: 'text', mark: false, markClass: null }
     ],
     youtubeId: 'pDVmldTurqk'
   }];
@@ -645,7 +645,7 @@ test('parse() tricky link', t => {
       {
         type: 'text',
         mark: false,
-        markClass: '',
+        markClass: null,
         content: 'This is italic and ',
         href: null,
         italic: true,
@@ -654,7 +654,7 @@ test('parse() tricky link', t => {
       {
         type: 'text',
         mark: false,
-        markClass: '',
+        markClass: null,
         content: 'this is a link',
         href: 'http://link4.com/',
         italic: true,
@@ -663,7 +663,7 @@ test('parse() tricky link', t => {
       {
         type: 'text',
         mark: false,
-        markClass: '',
+        markClass: null,
         content: ' foo bar',
         href: 'http://link4.com/',
         italic: false,
@@ -697,7 +697,7 @@ test('parse() empty mark', t => {
     type: 'paragraph',
     children: [{
       bold: false,
-      content: false,
+      content: null,
       href: null,
       italic: false,
       mark: true,
@@ -709,7 +709,7 @@ test('parse() empty mark', t => {
       href: null,
       italic: false,
       mark: false,
-      markClass: '',
+      markClass: null,
       type: 'text'
     }]
   }];

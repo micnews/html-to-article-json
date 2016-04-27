@@ -111,3 +111,74 @@ test('normalize() add br-tag to empty text-container', t => {
 
   t.same(normalize(tree), expected);
 });
+
+test('normalize() keep all empty mark-tags', t => {
+  const tree = [{
+    type: 'paragraph',
+    children: [
+      { type: 'text', mark: true, markClass: 'mark1', content: null },
+      { type: 'text', mark: true, markClass: 'mark2', content: null }
+    ]
+  }];
+
+  const expected = [{
+    type: 'paragraph',
+    children: [
+      { type: 'linebreak' },
+      { type: 'text', mark: true, markClass: 'mark1', content: null },
+      { type: 'text', mark: true, markClass: 'mark2', content: null }
+    ]
+  }];
+
+  t.same(normalize(tree), expected);
+});
+
+test('normalize() dont add minimum content linebreak for mark tag with content', t => {
+  const tree = [{
+    type: 'paragraph',
+    children: [
+      { type: 'text', mark: true, markClass: 'mark1', content: 'beep boop' }
+    ]
+  }];
+
+  const expected = [{
+    type: 'paragraph',
+    children: [
+      { type: 'text', mark: true, markClass: 'mark1', content: 'beep boop' }
+    ]
+  }];
+
+  t.same(normalize(tree), expected);
+});
+
+test('normalize() don\'t remove br tags in-between mark with content', t => {
+  const tree = [{
+    type: 'paragraph',
+    children: [{
+      type: 'text',
+      content: 'foo bar'
+    }, {
+      type: 'linebreak'
+    }, {
+      type: 'text',
+      mark: true,
+      content: 'beep boop'
+    }]
+  }];
+  const expected = [{
+    type: 'paragraph',
+    children: [{
+      type: 'text',
+      content: 'foo bar'
+    }, {
+      type: 'linebreak'
+    }, {
+      type: 'text',
+      mark: true,
+      content: 'beep boop'
+    }]
+  }];
+  const actual = normalize(tree);
+
+  t.same(actual, expected);
+});

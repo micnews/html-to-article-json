@@ -4,7 +4,7 @@
     "children": [{
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "Divs are also text",
       "href": null,
       "bold": false,
@@ -15,7 +15,7 @@
     "children": [{
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "Some text",
       "href": null,
       "bold": false,
@@ -26,7 +26,7 @@
     "children": [{
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "Some text in a div",
       "href": null,
       "bold": false,
@@ -37,7 +37,7 @@
     "children": [{
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "And a header",
       "href": null,
       "bold": false,
@@ -48,7 +48,7 @@
     "children": [{
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "Text in a form",
       "href": null,
       "bold": false,

@@ -4,7 +4,7 @@
     "children": [{
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "This is a link",
       "href": "http://link.com/",
       "bold": false,
@@ -12,7 +12,7 @@
     }, {
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": " ",
       "href": null,
       "bold": false,
@@ -20,7 +20,7 @@
     }, {
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "This is a bold link",
       "href": "http://link2.com/",
       "bold": true,
@@ -28,7 +28,7 @@
     }, {
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "This is also a bold link",
       "href": "http://link3.com/",
       "bold": true,
@@ -39,7 +39,7 @@
     "children": [{
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "This is italic and ",
       "href": null,
       "bold": false,
@@ -47,7 +47,7 @@
     }, {
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "this is a link",
       "href": "http://link4.com/",
       "bold": false,
@@ -55,7 +55,7 @@
     }, {
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": " foo bar",
       "href": "http://link4.com/",
       "bold": false,
@@ -66,7 +66,7 @@
     "children": [{
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "boldbold2bold3bold4",
       "href": null,
       "bold": true,
@@ -74,7 +74,7 @@
     }, {
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "italic",
       "href": null,
       "bold": false,
@@ -82,7 +82,7 @@
     }, {
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "STRONG",
       "href": null,
       "bold": true,
@@ -90,7 +90,7 @@
     }, {
       "type": "text",
       "mark": false,
-      "markClass": "",
+      "markClass": null,
       "content": "EM",
       "href": null,
       "bold": false,

@@ -60,6 +60,11 @@ createTest(
   fs.readFileSync(__dirname + '/parse-normalize-fixtures/embeds.html', 'utf8'),
   require('./parse-normalize-fixtures/embeds.json')
 );
+createTest(
+  'mark',
+  fs.readFileSync(__dirname + '/parse-normalize-fixtures/mark.html', 'utf8'),
+  require('./parse-normalize-fixtures/mark.json')
+);
 
 test('parseAndNormalize(elm)) whitespace', t => {
   t.same(parseAndNormalize('<p>\tbeep\tboop\t</p>'), [{
@@ -67,7 +72,7 @@ test('parseAndNormalize(elm)) whitespace', t => {
     children: [{
       type: 'text',
       mark: false,
-      markClass: '',
+      markClass: null,
       content: ' beep boop ',
       href: null,
       bold: false,
@@ -87,7 +92,7 @@ if (!process.browser) {
         {
           type: 'text',
           mark: false,
-          markClass: '',
+          markClass: null,
           content: 'flip flop',
           href: null,
           italic: false,
