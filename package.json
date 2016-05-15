@@ -40,7 +40,7 @@
     "nyc": "^6.0.0",
     "pre-commit": "^1.1.1",
     "semistandard": "^7.0.2",
-    "snazzy": "^3.0.0",
+    "snazzy": "^4.0.0",
     "tape": "^4.4.0",
     "tape-catch": "^1.0.4",
     "testron": "^1.2.0",
