@@ -2,9 +2,10 @@
 
 import setup from '../lib';
 import fs from 'fs';
+import {join} from 'path';
 
 const parse = setup();
-const text = fs.readFileSync(__dirname + '/text.html', 'utf8');
+const text = fs.readFileSync(join(__dirname, '/text.html'), 'utf8');
 
 const start = Date.now();
 let count = 0;
