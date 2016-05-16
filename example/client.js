@@ -7,7 +7,9 @@ const parse = setupParse({});
 const input = document.querySelector('.input');
 const result = document.querySelector('.result');
 
-const update = () => result.innerHTML = JSON.stringify(parse(input.outerHTML), null, 2);
+const update = () => {
+  result.innerHTML = JSON.stringify(parse(input.outerHTML), null, 2);
+};
 
 update();
 

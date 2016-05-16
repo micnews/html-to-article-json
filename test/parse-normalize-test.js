@@ -1,8 +1,8 @@
 import test from './tape-wrapper';
 import setup from '../lib';
 import parse from 'query-dom';
-
-const fs = require('fs');
+import {join} from 'path';
+import {readFileSync} from 'fs';
 
 const _parseAndNormalize = setup();
 const parseAndNormalize = process.browser
@@ -22,47 +22,47 @@ const createTest = (testName, html, expected) => {
 
 createTest(
   'basic',
-  fs.readFileSync(__dirname + '/parse-normalize-fixtures/basic.html', 'utf8'),
+  readFileSync(join(__dirname, '/parse-normalize-fixtures/basic.html'), 'utf8'),
   require('./parse-normalize-fixtures/basic.json')
 );
 createTest(
   'inline-css',
-  fs.readFileSync(__dirname + '/parse-normalize-fixtures/inline-css.html', 'utf8'),
+  readFileSync(join(__dirname, '/parse-normalize-fixtures/inline-css.html'), 'utf8'),
   require('./parse-normalize-fixtures/inline-css.json')
 );
 createTest(
   'blocks',
-  fs.readFileSync(__dirname + '/parse-normalize-fixtures/blocks.html', 'utf8'),
+  readFileSync(join(__dirname, '/parse-normalize-fixtures/blocks.html'), 'utf8'),
   require('./parse-normalize-fixtures/blocks.json')
 );
 createTest(
   'whitespace',
-  fs.readFileSync(__dirname + '/parse-normalize-fixtures/whitespace.html', 'utf8'),
+  readFileSync(join(__dirname, '/parse-normalize-fixtures/whitespace.html'), 'utf8'),
   require('./parse-normalize-fixtures/whitespace.json')
 );
 createTest(
   'linebreak',
-  fs.readFileSync(__dirname + '/parse-normalize-fixtures/linebreak.html', 'utf8'),
+  readFileSync(join(__dirname, '/parse-normalize-fixtures/linebreak.html'), 'utf8'),
   require('./parse-normalize-fixtures/linebreak.json')
 );
 createTest(
   'head-elements',
-  fs.readFileSync(__dirname + '/parse-normalize-fixtures/head-elements.html', 'utf8'),
+  readFileSync(join(__dirname, '/parse-normalize-fixtures/head-elements.html'), 'utf8'),
   require('./parse-normalize-fixtures/head-elements.json')
 );
 createTest(
   'blockquote',
-  fs.readFileSync(__dirname + '/parse-normalize-fixtures/blockquote.html', 'utf8'),
+  readFileSync(join(__dirname, '/parse-normalize-fixtures/blockquote.html'), 'utf8'),
   require('./parse-normalize-fixtures/blockquote.json')
 );
 createTest(
   'embeds',
-  fs.readFileSync(__dirname + '/parse-normalize-fixtures/embeds.html', 'utf8'),
+  readFileSync(join(__dirname, '/parse-normalize-fixtures/embeds.html'), 'utf8'),
   require('./parse-normalize-fixtures/embeds.json')
 );
 createTest(
   'mark',
-  fs.readFileSync(__dirname + '/parse-normalize-fixtures/mark.html', 'utf8'),
+  readFileSync(join(__dirname, '/parse-normalize-fixtures/mark.html'), 'utf8'),
   require('./parse-normalize-fixtures/mark.json')
 );
 
