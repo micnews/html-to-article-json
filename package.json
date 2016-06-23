@@ -35,7 +35,7 @@
     "babelify": "^7.2.0",
     "beefy": "^2.1.5",
     "browserify": "^13.0.0",
-    "electron-prebuilt": "^0.37.2",
+    "electron-prebuilt": "^1.2.5",
     "faucet": "0.0.1",
     "nyc": "^6.0.0",
     "pre-commit": "^1.1.1",
