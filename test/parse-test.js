@@ -86,6 +86,28 @@ test('parse() figure + img', t => {
   t.same(actual, expected);
 });
 
+test('parse() figure + img + multiple figcaptions', t => {
+  const input = tsml`<figure>
+    <img src="http://example.com/image.jpg"/>
+    <figcaption>Hello,</figcaption>
+    <figcaption><b>world</b></figcaption>
+  </figure>`;
+  const actual = parse(input);
+  const expected = [{
+    type: 'embed',
+    embedType: 'image',
+    caption: [
+      { bold: false, content: 'Hello,', href: null, italic: false, type: 'text', mark: false, markClass: null },
+      { bold: true, content: 'world', href: null, italic: false, type: 'text', mark: false, markClass: null }
+    ],
+    src: 'http://example.com/image.jpg',
+    width: null,
+    height: null
+  }];
+
+  t.same(actual, expected);
+});
+
 test('parse() figure + img but no figcaption', t => {
   const input = tsml`<figure>
     <img src="http://example.com/image.jpg"/>
