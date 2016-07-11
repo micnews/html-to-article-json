@@ -2,6 +2,7 @@
   "type": "embed",
   "embedType": "image",
   "caption": [],
+  "attribution": [],
   "src": "http://example.com/image.jpg",
   "width": null,
   "height": null
@@ -9,6 +10,7 @@
   "type": "embed",
   "embedType": "image",
   "caption": [],
+  "attribution": [],
   "src": "http://example.com/image2.jpg",
   "width": null,
   "height": null
