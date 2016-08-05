@@ -141,7 +141,7 @@ test('parse() img with width & height', t => {
 });
 
 test('parse() img with width & height css', t => {
-  const input = tsml`<img src="http://example.com/image.jpg" style="width: 100; height: 200" />`;
+  const input = tsml`<img src="http://example.com/image.jpg" style="width: 100px; height: 200px" />`;
   const actual = parse(input);
   const expected = [{
     type: 'embed',
@@ -262,7 +262,7 @@ test('parse() video with width & height', t => {
 });
 
 test('parse() video with width & height css', t => {
-  const input = '<video src="http://example.com/video.mp4" style="width:100;height:200" />';
+  const input = '<video src="http://example.com/video.mp4" style="width:100px;height:200px" />';
   const actual = parse(input);
   const expected = [{
     type: 'embed',
