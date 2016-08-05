@@ -43,6 +43,7 @@ test('parse() img', t => {
     type: 'embed',
     embedType: 'image',
     caption: [],
+    attribution: [],
     src: 'http://example.com/image.jpg',
     width: null,
     height: null
@@ -58,6 +59,7 @@ test('parse() img, with alt-attribute', t => {
     caption: [
       { content: 'beep boop', type: 'text' }
     ],
+    attribution: [],
     src: 'http://example.com/image.jpg',
     width: null,
     height: null
@@ -78,6 +80,7 @@ test('parse() figure + img', t => {
       { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text', mark: false, markClass: null },
       { bold: true, content: 'world', href: null, italic: false, type: 'text', mark: false, markClass: null }
     ],
+    attribution: [],
     src: 'http://example.com/image.jpg',
     width: null,
     height: null
@@ -100,6 +103,53 @@ test('parse() figure + img + multiple figcaptions', t => {
       { bold: false, content: 'Hello,', href: null, italic: false, type: 'text', mark: false, markClass: null },
       { bold: true, content: 'world', href: null, italic: false, type: 'text', mark: false, markClass: null }
     ],
+    attribution: [],
+    src: 'http://example.com/image.jpg',
+    width: null,
+    height: null
+  }];
+
+  t.same(actual, expected);
+});
+
+test('parse() figure + img + figcaption + cite', t => {
+  const input = tsml`<figure>
+    <img src="http://example.com/image.jpg"/>
+    <figcaption>Hello, world<cite><a href="http://example.com">author</a></cite></figcaption>
+  </figure>`;
+  const actual = parse(input);
+  const expected = [{
+    type: 'embed',
+    embedType: 'image',
+    caption: [
+      { bold: false, content: 'Hello, world', href: null, italic: false, type: 'text', mark: false, markClass: null }
+    ],
+    attribution: [
+      { bold: false, content: 'author', href: 'http://example.com', italic: false, type: 'text', mark: false, markClass: null }
+    ],
+    src: 'http://example.com/image.jpg',
+    width: null,
+    height: null
+  }];
+
+  t.same(actual, expected);
+});
+
+test('parse() figure + img + figcaption + cite without anchor tag', t => {
+  const input = tsml`<figure>
+    <img src="http://example.com/image.jpg"/>
+    <figcaption>Hello, world<cite>author</a></figcaption>
+  </figure>`;
+  const actual = parse(input);
+  const expected = [{
+    type: 'embed',
+    embedType: 'image',
+    caption: [
+      { bold: false, content: 'Hello, world', href: null, italic: false, type: 'text', mark: false, markClass: null }
+    ],
+    attribution: [
+      { bold: false, content: 'author', href: null, italic: false, type: 'text', mark: false, markClass: null }
+    ],
     src: 'http://example.com/image.jpg',
     width: null,
     height: null
@@ -117,6 +167,7 @@ test('parse() figure + img but no figcaption', t => {
     type: 'embed',
     embedType: 'image',
     caption: [],
+    attribution: [],
     src: 'http://example.com/image.jpg',
     width: null,
     height: null
@@ -132,6 +183,7 @@ test('parse() img with width & height', t => {
     type: 'embed',
     embedType: 'image',
     caption: [],
+    attribution: [],
     src: 'http://example.com/image.jpg',
     width: 100,
     height: 200
@@ -147,6 +199,7 @@ test('parse() img with width & height css', t => {
     type: 'embed',
     embedType: 'image',
     caption: [],
+    attribution: [],
     src: 'http://example.com/image.jpg',
     width: 100,
     height: 200
@@ -196,6 +249,7 @@ test('parse() figure + img and figcaption with no content', t => {
     type: 'embed',
     embedType: 'image',
     caption: [],
+    attribution: [],
     src: 'http://example.com/image.jpg',
     width: null,
     height: null
@@ -211,6 +265,7 @@ test('parse() video with src', t => {
     type: 'embed',
     embedType: 'video',
     caption: [],
+    attribution: [],
     sources: [{
       src: 'http://example.com/video.mp4',
       type: null
@@ -231,6 +286,7 @@ test('parse() video with sources', t => {
     type: 'embed',
     embedType: 'video',
     caption: [],
+    attribution: [],
     sources: [{
       src: 'http://example.com/video.mp4',
       type: null
@@ -251,6 +307,7 @@ test('parse() video with width & height', t => {
     type: 'embed',
     embedType: 'video',
     caption: [],
+    attribution: [],
     sources: [{
       src: 'http://example.com/video.mp4',
       type: null
@@ -268,6 +325,7 @@ test('parse() video with width & height css', t => {
     type: 'embed',
     embedType: 'video',
     caption: [],
+    attribution: [],
     sources: [{
       src: 'http://example.com/video.mp4',
       type: null
@@ -285,6 +343,7 @@ test('parse() figure + video with src', t => {
     type: 'embed',
     embedType: 'video',
     caption: [],
+    attribution: [],
     sources: [{
       src: 'http://example.com/video.mp4',
       type: null
@@ -307,6 +366,7 @@ test('parse() figure + video with sources', t => {
     type: 'embed',
     embedType: 'video',
     caption: [],
+    attribution: [],
     sources: [{
       src: 'http://example.com/video.mp4',
       type: null
@@ -333,6 +393,7 @@ test('parse() figure + video with src & figcaption', t => {
       { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text', mark: false, markClass: null },
       { bold: true, content: 'world', href: null, italic: false, type: 'text', mark: false, markClass: null }
     ],
+    attribution: [],
     sources: [{
       src: 'http://example.com/video.mp4',
       type: null
@@ -350,6 +411,7 @@ test('parse() youtube iframe', t => {
     type: 'embed',
     embedType: 'youtube',
     caption: [],
+    attribution: [],
     youtubeId: 'pDVmldTurqk'
   }];
   t.same(actual, expected);
@@ -364,6 +426,7 @@ test('parse() youtube embedly iframe', t => {
     type: 'embed',
     embedType: 'youtube',
     caption: [],
+    attribution: [],
     youtubeId: '3rS6mZUo3fg'
   }];
   t.same(actual, expected);
@@ -379,6 +442,7 @@ test('parse() figure + youtube iframe', t => {
       { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text', mark: false, markClass: null },
       { bold: true, content: 'world', href: null, italic: false, type: 'text', mark: false, markClass: null }
     ],
+    attribution: [],
     youtubeId: 'pDVmldTurqk'
   }];
   t.same(actual, expected);
@@ -392,6 +456,7 @@ test('parse() tweet - normal', t => {
     embedType: 'twitter',
     embedAs: 'tweet',
     caption: [],
+    attribution: [],
     text: [
       { content: 'GIF vs. JIF… This ', href: null },
       { content: 'pic.twitter.com/qFAHWgdbL6', href: 'https://t.co/qFAHWgdbL6' }
@@ -415,6 +480,7 @@ test('parse() tweet - video', t => {
     embedType: 'twitter',
     embedAs: 'video',
     caption: [],
+    attribution: [],
     text: [
       { content: 'GIF vs. JIF… This ', href: null },
       { content: 'pic.twitter.com/qFAHWgdbL6', href: 'https://t.co/qFAHWgdbL6' }
@@ -438,6 +504,7 @@ test('parse() tweet - no date', t => {
     embedType: 'twitter',
     embedAs: 'tweet',
     caption: [],
+    attribution: [],
     text: [
       { content: 'GIF vs. JIF… This ', href: null },
       { content: 'pic.twitter.com/qFAHWgdbL6', href: 'https://t.co/qFAHWgdbL6' }
@@ -470,6 +537,7 @@ test('parse() tweet - no paragraph, no user', t => {
     embedType: 'twitter',
     embedAs: 'tweet',
     caption: [],
+    attribution: [],
     text: [],
     url: 'https://twitter.com/MattNavarra/status/684690494841028608',
     date: 'January 6, 2016',
@@ -495,6 +563,7 @@ test('parse() instagram - with caption', t => {
     type: 'embed',
     embedType: 'instagram',
     caption: [],
+    attribution: [],
     id: '-7PIhyA6J3',
     url: 'https://www.instagram.com/p/-7PIhyA6J3/',
     text: 'Reinsta @karinn In Berlin. Feeling awesome.',
@@ -519,6 +588,7 @@ test('parse() instagram figure iframe', t => {
     id: 'fdx1CSuEPV',
     url: 'https://instagram.com/p/fdx1CSuEPV',
     caption: [],
+    attribution: [],
     date: null,
     user: null
   }];
@@ -532,6 +602,7 @@ test('parse() instagram - without caption', t => {
     type: 'embed',
     embedType: 'instagram',
     caption: [],
+    attribution: [],
     id: '-7PIhyA6J3',
     url: 'https://www.instagram.com/p/-7PIhyA6J3/',
     text: null,
@@ -565,6 +636,7 @@ test('parse() facebook - post', t => {
     {
       url: 'https://www.facebook.com/david.bjorklund/posts/10153809692501070',
       caption: [],
+      attribution: [],
       type: 'embed',
       embedType: 'facebook',
       embedAs: 'post',
@@ -591,6 +663,7 @@ test('parse() facebook - video', t => {
     {
       url: 'https://www.facebook.com/MicMedia/videos/1060315987324524/',
       caption: [],
+      attribution: [],
       type: 'embed',
       embedType: 'facebook',
       embedAs: 'video',
@@ -612,6 +685,7 @@ test('parse() vine', t => {
   const expected = [{
     id: 'bjHh0zHdgZT',
     caption: [],
+    attribution: [],
     type: 'embed',
     embedType: 'vine',
     url: 'https://vine.co/v/bjHh0zHdgZT/embed/simple'
@@ -625,6 +699,7 @@ test('parse() spotify', t => {
   const expected = [{
     spotifyUri: 'spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf',
     caption: [],
+    attribution: [],
     width: 200,
     height: 100,
     type: 'embed',
@@ -640,6 +715,7 @@ test('parse() vine embedly', t => {
   const expected = [{
     id: 'bjHh0zHdgZT',
     caption: [],
+    attribution: [],
     type: 'embed',
     embedType: 'vine',
     url: 'https://vine.co/v/bjHh0zHdgZT/embed/simple'
@@ -681,7 +757,8 @@ test('parse() custom embed', t => {
     width: 600,
     height: 600,
     secure: false,
-    caption: []
+    caption: [],
+    attribution: []
   }];
   t.same(actual, expected);
 });
@@ -696,7 +773,8 @@ test('parse() custom secure embed', t => {
     width: 600,
     height: 600,
     secure: true,
-    caption: []
+    caption: [],
+    attribution: []
   }];
   t.same(actual, expected);
 });
@@ -711,7 +789,8 @@ test('parse() custom secure embed with no protocol', t => {
     width: 600,
     height: 600,
     secure: true,
-    caption: []
+    caption: [],
+    attribution: []
   }];
   t.same(actual, expected);
 });
