@@ -36,7 +36,7 @@
     "beefy": "^2.1.5",
     "browserify": "^13.0.0",
     "faucet": "0.0.1",
-    "nyc": "^7.0.0",
+    "nyc": "^8.1.0",
     "pre-commit": "^1.1.1",
     "semistandard": "^8.0.0",
     "snazzy": "^4.0.0",
