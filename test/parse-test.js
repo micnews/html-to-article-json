@@ -747,6 +747,19 @@ test('parse() tumblr post', t => {
   t.same(actual, expected);
 });
 
+test('parse() tidal video', t => {
+  const input = '<div class="tidal-embed" data-type="v" data-id="63196259"></div><script src="https://embed.tidal.com/tidal-embed.js"></script>';
+  const actual = parse(input);
+  const expected = [{
+    caption: [],
+    type: 'embed',
+    embedType: 'tidal',
+    dataId: '63196259',
+    dataType: 'v'
+  }];
+  t.same(actual, expected);
+});
+
 test('parse() custom embed', t => {
   const input = '<iframe src="http://custom.com" width="600" height="600" frameborder="0"></iframe>';
   const actual = parse(input);
