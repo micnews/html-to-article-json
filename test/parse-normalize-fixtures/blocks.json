@@ -8,7 +8,8 @@
       "content": "Divs are also text",
       "href": null,
       "bold": false,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }]
   }, {
     "type": "paragraph",
@@ -19,7 +20,8 @@
       "content": "Some text",
       "href": null,
       "bold": false,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }]
   }, {
     "type": "paragraph",
@@ -30,7 +32,8 @@
       "content": "Some text in a div",
       "href": null,
       "bold": false,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }]
   }, {
     "type": "header1",
@@ -41,7 +44,8 @@
       "content": "And a header",
       "href": null,
       "bold": false,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }]
   }, {
     "type": "paragraph",
@@ -52,7 +56,8 @@
       "content": "Text in a form",
       "href": null,
       "bold": false,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }]
   }
 ]

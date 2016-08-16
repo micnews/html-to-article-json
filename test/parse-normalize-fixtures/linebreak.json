@@ -9,7 +9,8 @@
         "content": "beep",
         "href": null,
         "bold": false,
-        "italic": false
+        "italic": false,
+        "strikethrough": false
       }, {
         "type": "linebreak"
       }, {
@@ -19,7 +20,8 @@
         "content": "boop",
         "href": null,
         "bold": false,
-        "italic": false
+        "italic": false,
+        "strikethrough": false
       }
     ]
   }, {

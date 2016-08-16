@@ -8,7 +8,8 @@
       "content": "This is a link",
       "href": "http://link.com/",
       "bold": false,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }, {
       "type": "text",
       "mark": false,
@@ -16,7 +17,8 @@
       "content": " ",
       "href": null,
       "bold": false,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }, {
       "type": "text",
       "mark": false,
@@ -24,7 +26,8 @@
       "content": "This is a bold link",
       "href": "http://link2.com/",
       "bold": true,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }, {
       "type": "text",
       "mark": false,
@@ -32,7 +35,8 @@
       "content": "This is also a bold link",
       "href": "http://link3.com/",
       "bold": true,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }]
   }, {
     "type": "paragraph",
@@ -43,7 +47,8 @@
       "content": "This is italic and ",
       "href": null,
       "bold": false,
-      "italic": true
+      "italic": true,
+      "strikethrough": false
     }, {
       "type": "text",
       "mark": false,
@@ -51,7 +56,8 @@
       "content": "this is a link",
       "href": "http://link4.com/",
       "bold": false,
-      "italic": true
+      "italic": true,
+      "strikethrough": false
     }, {
       "type": "text",
       "mark": false,
@@ -59,7 +65,8 @@
       "content": " foo bar",
       "href": "http://link4.com/",
       "bold": false,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }]
   }, {
     "type": "paragraph",
@@ -70,7 +77,8 @@
       "content": "boldbold2bold3bold4",
       "href": null,
       "bold": true,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }, {
       "type": "text",
       "mark": false,
@@ -78,7 +86,8 @@
       "content": "italic",
       "href": null,
       "bold": false,
-      "italic": true
+      "italic": true,
+      "strikethrough": false
     }, {
       "type": "text",
       "mark": false,
@@ -86,7 +95,8 @@
       "content": "STRONG",
       "href": null,
       "bold": true,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }, {
       "type": "text",
       "mark": false,
@@ -94,7 +104,8 @@
       "content": "EM",
       "href": null,
       "bold": false,
-      "italic": true
+      "italic": true,
+      "strikethrough": false
     }]
   }
 ]

@@ -12,7 +12,8 @@
             "content": "beep boop",
             "href": null,
             "italic": false,
-            "bold": false
+            "bold": false,
+            "strikethrough": false
           }
         ]
       }
@@ -31,7 +32,8 @@
             "content": "beep boop",
             "href": null,
             "italic": false,
-            "bold": false
+            "bold": false,
+            "strikethrough": false
           }
         ]
       }
@@ -50,7 +52,8 @@
             "content": "this",
             "href": null,
             "italic": false,
-            "bold": false
+            "bold": false,
+            "strikethrough": false
           },
           {
             "type": "text",
@@ -59,7 +62,8 @@
             "content": "is",
             "href": null,
             "italic": false,
-            "bold": true
+            "bold": true,
+            "strikethrough": false
           },
           {
             "type": "text",
@@ -68,7 +72,8 @@
             "content": "styled",
             "href": null,
             "italic": false,
-            "bold": false
+            "bold": false,
+            "strikethrough": false
           }
         ]
       }
@@ -87,7 +92,8 @@
             "content": "this works as well",
             "href": null,
             "italic": false,
-            "bold": false
+            "bold": false,
+            "strikethrough": false
           }
         ]
       },
@@ -101,7 +107,8 @@
             "content": "as expected",
             "href": null,
             "italic": false,
-            "bold": false
+            "bold": false,
+            "strikethrough": false
           }
         ]
       }

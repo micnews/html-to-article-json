@@ -32,7 +32,8 @@ test('parse() text in span', t => {
     italic: false,
     type: 'text',
     mark: false,
-    markClass: null
+    markClass: null,
+    strikethrough: false
   }];
   t.same(actual, expected);
 });
@@ -77,8 +78,8 @@ test('parse() figure + img', t => {
     type: 'embed',
     embedType: 'image',
     caption: [
-      { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text', mark: false, markClass: null },
-      { bold: true, content: 'world', href: null, italic: false, type: 'text', mark: false, markClass: null }
+      { bold: false, content: 'Hello, ', href: null, italic: false, strikethrough: false, type: 'text', mark: false, markClass: null },
+      { bold: true, content: 'world', href: null, italic: false, strikethrough: false, type: 'text', mark: false, markClass: null }
     ],
     attribution: [],
     src: 'http://example.com/image.jpg',
@@ -100,8 +101,8 @@ test('parse() figure + img + multiple figcaptions', t => {
     type: 'embed',
     embedType: 'image',
     caption: [
-      { bold: false, content: 'Hello,', href: null, italic: false, type: 'text', mark: false, markClass: null },
-      { bold: true, content: 'world', href: null, italic: false, type: 'text', mark: false, markClass: null }
+      { bold: false, content: 'Hello,', href: null, italic: false, strikethrough: false, type: 'text', mark: false, markClass: null },
+      { bold: true, content: 'world', href: null, italic: false, strikethrough: false, type: 'text', mark: false, markClass: null }
     ],
     attribution: [],
     src: 'http://example.com/image.jpg',
@@ -122,10 +123,10 @@ test('parse() figure + img + figcaption + cite', t => {
     type: 'embed',
     embedType: 'image',
     caption: [
-      { bold: false, content: 'Hello, world', href: null, italic: false, type: 'text', mark: false, markClass: null }
+      { bold: false, content: 'Hello, world', href: null, italic: false, strikethrough: false, type: 'text', mark: false, markClass: null }
     ],
     attribution: [
-      { bold: false, content: 'author', href: 'http://example.com', italic: false, type: 'text', mark: false, markClass: null }
+      { bold: false, content: 'author', href: 'http://example.com', italic: false, strikethrough: false, type: 'text', mark: false, markClass: null }
     ],
     src: 'http://example.com/image.jpg',
     width: null,
@@ -145,10 +146,10 @@ test('parse() figure + img + figcaption + cite without anchor tag', t => {
     type: 'embed',
     embedType: 'image',
     caption: [
-      { bold: false, content: 'Hello, world', href: null, italic: false, type: 'text', mark: false, markClass: null }
+      { bold: false, content: 'Hello, world', href: null, italic: false, strikethrough: false, type: 'text', mark: false, markClass: null }
     ],
     attribution: [
-      { bold: false, content: 'author', href: null, italic: false, type: 'text', mark: false, markClass: null }
+      { bold: false, content: 'author', href: null, italic: false, strikethrough: false, type: 'text', mark: false, markClass: null }
     ],
     src: 'http://example.com/image.jpg',
     width: null,
@@ -232,6 +233,7 @@ test('parse() figure with unknown content', t => {
         content: 'beep',
         href: null,
         italic: false,
+        strikethrough: false,
         bold: false
       }]
     }]
@@ -390,8 +392,8 @@ test('parse() figure + video with src & figcaption', t => {
     type: 'embed',
     embedType: 'video',
     caption: [
-      { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text', mark: false, markClass: null },
-      { bold: true, content: 'world', href: null, italic: false, type: 'text', mark: false, markClass: null }
+      { bold: false, content: 'Hello, ', href: null, italic: false, strikethrough: false, type: 'text', mark: false, markClass: null },
+      { bold: true, content: 'world', href: null, italic: false, strikethrough: false, type: 'text', mark: false, markClass: null }
     ],
     attribution: [],
     sources: [{
@@ -439,8 +441,8 @@ test('parse() figure + youtube iframe', t => {
     type: 'embed',
     embedType: 'youtube',
     caption: [
-      { bold: false, content: 'Hello, ', href: null, italic: false, type: 'text', mark: false, markClass: null },
-      { bold: true, content: 'world', href: null, italic: false, type: 'text', mark: false, markClass: null }
+      { bold: false, content: 'Hello, ', href: null, italic: false, strikethrough: false, type: 'text', mark: false, markClass: null },
+      { bold: true, content: 'world', href: null, italic: false, strikethrough: false, type: 'text', mark: false, markClass: null }
     ],
     attribution: [],
     youtubeId: 'pDVmldTurqk'
@@ -808,7 +810,8 @@ test('parse() tricky link', t => {
         content: 'This is italic and ',
         href: null,
         italic: true,
-        bold: false
+        bold: false,
+        strikethrough: false
       },
       {
         type: 'text',
@@ -817,7 +820,8 @@ test('parse() tricky link', t => {
         content: 'this is a link',
         href: 'http://link4.com/',
         italic: true,
-        bold: false
+        bold: false,
+        strikethrough: false
       },
       {
         type: 'text',
@@ -826,7 +830,8 @@ test('parse() tricky link', t => {
         content: ' foo bar',
         href: 'http://link4.com/',
         italic: false,
-        bold: false
+        bold: false,
+        strikethrough: false
       }
     ]
   }];
@@ -844,7 +849,8 @@ test('parse() mark', t => {
     italic: false,
     type: 'text',
     mark: true,
-    markClass: 'markclass'
+    markClass: 'markclass',
+    strikethrough: false
   }];
   t.same(actual, expected);
 });
@@ -859,6 +865,7 @@ test('parse() empty mark', t => {
       content: null,
       href: null,
       italic: false,
+      strikethrough: false,
       mark: true,
       markClass: 'empty-mark-tag',
       type: 'text'
@@ -867,6 +874,7 @@ test('parse() empty mark', t => {
       content: 'Text',
       href: null,
       italic: false,
+      strikethrough: false,
       mark: false,
       markClass: null,
       type: 'text'
@@ -874,4 +882,29 @@ test('parse() empty mark', t => {
   }];
 
   t.same(actual, expected);
+});
+
+test('parse() strikethrough', t => {
+  const inputs = [
+    '<p><s>text</s></p>',
+    '<p><strike>text</strike></p>'
+  ];
+  const expected = [{
+    type: 'paragraph',
+    children: [{
+      bold: false,
+      content: 'text',
+      href: null,
+      italic: false,
+      mark: false,
+      markClass: null,
+      type: 'text',
+      strikethrough: true
+    }]
+  }];
+
+  inputs.forEach(input => {
+    const actual = parse(input);
+    t.same(actual, expected);
+  });
 });
