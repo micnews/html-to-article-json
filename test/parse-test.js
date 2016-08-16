@@ -887,7 +887,8 @@ test('parse() empty mark', t => {
 test('parse() strikethrough', t => {
   const inputs = [
     '<p><s>text</s></p>',
-    '<p><strike>text</strike></p>'
+    '<p><strike>text</strike></p>',
+    '<p><del>text</del></p>'
   ];
   const expected = [{
     type: 'paragraph',
