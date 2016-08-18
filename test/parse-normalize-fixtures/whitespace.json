@@ -8,8 +8,8 @@
       "content": "Hello, world!",
       "href": null,
       "bold": false,
-      "italic": false
-
+      "italic": false,
+      "strikethrough": false
     }]
   }, {
     "type": "paragraph",
@@ -20,7 +20,8 @@
       "content": " beepboop ",
       "href": null,
       "bold": false,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }]
   }, {
     "type": "paragraph",
@@ -31,7 +32,8 @@
       "content": " foo",
       "href": null,
       "bold": false,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }, {
       "type": "text",
       "mark": false,
@@ -39,7 +41,8 @@
       "content": "bar",
       "href": null,
       "bold": true,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }, {
       "type": "text",
       "mark": false,
@@ -47,7 +50,8 @@
       "content": " ",
       "href": null,
       "bold": false,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }, {
       "type": "text",
       "mark": false,
@@ -55,7 +59,8 @@
       "content": "bas",
       "href": null,
       "bold": false,
-      "italic": true
+      "italic": true,
+      "strikethrough": false
     }, {
       "type": "text",
       "mark": false,
@@ -63,7 +68,8 @@
       "content": " ",
       "href": null,
       "bold": false,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }]
   }, {
     "type": "paragraph",
@@ -74,7 +80,8 @@
       "content": " YEAH YEAH YEAHS",
       "href": null,
       "bold": false,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }]
   }
 ]

@@ -6,7 +6,8 @@
     "italic": false,
     "mark": true,
     "markClass": "empty-mark-tag",
-    "type": "text"
+    "type": "text",
+    "strikethrough": false
   }, {
     "bold": false,
     "content": "Text",
@@ -14,7 +15,8 @@
     "italic": false,
     "mark": false,
     "markClass": null,
-    "type": "text"
+    "type": "text",
+    "strikethrough": false
   }, {
     "bold": false,
     "content": "markcontent",
@@ -22,7 +24,8 @@
     "italic": false,
     "mark": true,
     "markClass": "mark-class",
-    "type": "text"
+    "type": "text",
+    "strikethrough": false
   }],
   "type": "paragraph"
 },
@@ -34,7 +37,8 @@
     "italic": false,
     "mark": true,
     "markClass": "mark-start",
-    "type": "text"
+    "type": "text",
+    "strikethrough": false
   }, {
     "bold": false,
     "content": null,
@@ -42,7 +46,8 @@
     "italic": false,
     "mark": true,
     "markClass": "mark-end",
-    "type": "text"
+    "type": "text",
+    "strikethrough": false
   }, {
     "type": "linebreak"
   }],
@@ -56,7 +61,8 @@
     "italic": false,
     "mark": true,
     "markClass": "mark",
-    "type": "text"
+    "type": "text",
+    "strikethrough": false
   }],
   "type": "paragraph"
 }]

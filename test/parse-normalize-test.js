@@ -76,7 +76,8 @@ test('parseAndNormalize(elm)) whitespace', t => {
       content: ' beep boop ',
       href: null,
       bold: false,
-      italic: false
+      italic: false,
+      strikethrough: false
     }]
   }]);
 });
@@ -96,7 +97,8 @@ if (!process.browser) {
           content: 'flip flop',
           href: null,
           italic: false,
-          bold: false
+          bold: false,
+          strikethrough: false
         }
       ]
     }];

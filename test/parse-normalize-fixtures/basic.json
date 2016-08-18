@@ -8,7 +8,8 @@
       "content": "Top header",
       "href": null,
       "bold": false,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }]
   }, {
     "type": "header2",
@@ -19,7 +20,8 @@
       "content": "Second level",
       "href": null,
       "bold": false,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }]
   }, {
     "type": "paragraph",
@@ -30,7 +32,8 @@
       "content": "beepboop",
       "href": null,
       "bold": false,
-      "italic": false
+      "italic": false,
+      "strikethrough": false
     }]
   }
 ]

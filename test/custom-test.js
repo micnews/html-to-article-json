@@ -26,6 +26,7 @@ test('custom text formattings: add underline span-type', t => {
           href: null,
           italic: false,
           bold: false,
+          strikethrough: false,
           underline: false
         },
         {
@@ -36,6 +37,7 @@ test('custom text formattings: add underline span-type', t => {
           href: null,
           italic: false,
           bold: false,
+          strikethrough: false,
           underline: true
         }
       ]
