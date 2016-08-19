@@ -922,3 +922,32 @@ test('parse() strikethrough', t => {
     t.same(actual, expected);
   });
 });
+
+if (process.browser) {
+  test('parse() empty mark with empty text node', t => {
+    const emptyTextNode = document.createTextNode('');
+    const emptyMark = document.createElement('mark');
+    const paragraph = document.createElement('p');
+
+    emptyMark.appendChild(emptyTextNode);
+    paragraph.appendChild(emptyMark);
+    document.body.appendChild(paragraph);
+
+    const actual = _parse(paragraph);
+    const expected = [{
+      type: 'paragraph',
+      children: [{
+        type: 'text',
+        content: null,
+        href: null,
+        italic: false,
+        bold: false,
+        mark: true,
+        markClass: null,
+        strikethrough: false
+      }]
+    }];
+
+    t.same(actual, expected);
+  });
+}
