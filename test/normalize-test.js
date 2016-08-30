@@ -182,3 +182,14 @@ test('normalize() don\'t remove br tags in-between mark with content', t => {
 
   t.same(actual, expected);
 });
+
+test('normalize() content = null in block child', t => {
+  const tree = [{
+    type: 'block',
+    children: [{
+      type: 'text',
+      content: null
+    }]
+  }];
+  t.doesNotThrow(() => normalize(tree));
+});
