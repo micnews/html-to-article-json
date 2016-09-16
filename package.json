@@ -39,7 +39,7 @@
     "nyc": "^8.1.0",
     "pre-commit": "^1.1.1",
     "semistandard": "^9.0.0",
-    "snazzy": "^4.0.0",
+    "snazzy": "^5.0.0",
     "tape": "^4.4.0",
     "tape-catch": "^1.0.4",
     "tape-run": "^2.1.4",
