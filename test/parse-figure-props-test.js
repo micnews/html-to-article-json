@@ -50,3 +50,23 @@ test('parse() parseFigureProps, only return specified attribute', t => {
 
   t.same(actual, expected);
 });
+
+test('parse() parseFigureProps, no match but other attributes on element', t => {
+  const opts = {parseFigureProps: ['class']};
+  const parse = setupParse(opts);
+
+  const input = '<figure id="boop"><img src="http://example.com/image.jpg"/></figure>';
+  const actual = parse(input);
+  const expected = [{
+    type: 'embed',
+    embedType: 'image',
+    caption: [],
+    attribution: [],
+    src: 'http://example.com/image.jpg',
+    width: null,
+    height: null,
+    figureProps: {}
+  }];
+
+  t.same(actual, expected);
+});
