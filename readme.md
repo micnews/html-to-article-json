@@ -15,7 +15,7 @@ npm install html-to-article-json
 ### node.js
 
 ```js
-var htmlToArticleJson = require('html-to-article-json')(opts);
+var htmlToArticleJson = require('html-to-article-json')();
 var htmlString = '<p>Foo<b>bar</b></p>';
 var articleJson = htmlToArticleJson(htmlString);
 ```
@@ -25,7 +25,7 @@ var articleJson = htmlToArticleJson(htmlString);
 Using browseriy html-to-article-json can also use DOM as input in the browser!
 
 ```js
-var htmlToArticleJson = require('html-to-article-json')(opts);
+var htmlToArticleJson = require('html-to-article-json')();
 var domElement = document.querySelector('article');
 var articleJson = htmlToArticleJson(domElement);
 ```
