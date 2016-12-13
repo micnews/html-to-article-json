@@ -46,8 +46,8 @@ test('parse() img', t => {
     caption: [],
     attribution: [],
     src: 'http://example.com/image.jpg',
-    width: null,
-    height: null
+    width: '',
+    height: ''
   }];
   t.same(actual, expected);
 });
@@ -62,8 +62,8 @@ test('parse() img, with alt-attribute', t => {
     ],
     attribution: [],
     src: 'http://example.com/image.jpg',
-    width: null,
-    height: null
+    width: '',
+    height: ''
   }];
   t.same(actual, expected);
 });
@@ -83,8 +83,8 @@ test('parse() figure + img', t => {
     ],
     attribution: [],
     src: 'http://example.com/image.jpg',
-    width: null,
-    height: null
+    width: '',
+    height: ''
   }];
 
   t.same(actual, expected);
@@ -106,8 +106,8 @@ test('parse() figure + img + multiple figcaptions', t => {
     ],
     attribution: [],
     src: 'http://example.com/image.jpg',
-    width: null,
-    height: null
+    width: '',
+    height: ''
   }];
 
   t.same(actual, expected);
@@ -129,8 +129,8 @@ test('parse() figure + img + figcaption + cite', t => {
       { bold: false, content: 'author', href: 'http://example.com', italic: false, strikethrough: false, type: 'text', mark: false, markClass: null }
     ],
     src: 'http://example.com/image.jpg',
-    width: null,
-    height: null
+    width: '',
+    height: ''
   }];
 
   t.same(actual, expected);
@@ -152,8 +152,8 @@ test('parse() figure + img + figcaption + cite without anchor tag', t => {
       { bold: false, content: 'author', href: null, italic: false, strikethrough: false, type: 'text', mark: false, markClass: null }
     ],
     src: 'http://example.com/image.jpg',
-    width: null,
-    height: null
+    width: '',
+    height: ''
   }];
 
   t.same(actual, expected);
@@ -170,8 +170,8 @@ test('parse() figure + img but no figcaption', t => {
     caption: [],
     attribution: [],
     src: 'http://example.com/image.jpg',
-    width: null,
-    height: null
+    width: '',
+    height: ''
   }];
 
   t.same(actual, expected);
@@ -253,8 +253,8 @@ test('parse() figure + img and figcaption with no content', t => {
     caption: [],
     attribution: [],
     src: 'http://example.com/image.jpg',
-    width: null,
-    height: null
+    width: '',
+    height: ''
   }];
 
   t.same(actual, expected);
@@ -272,8 +272,8 @@ test('parse() video with src', t => {
       src: 'http://example.com/video.mp4',
       type: null
     }],
-    width: null,
-    height: null
+    width: '',
+    height: ''
   }];
   t.same(actual, expected);
 });
@@ -296,8 +296,8 @@ test('parse() video with sources', t => {
       src: 'http://example.com/video2.mp4',
       type: 'video/mp4'
     }],
-    width: null,
-    height: null
+    width: '',
+    height: ''
   }];
   t.same(actual, expected);
 });
@@ -350,8 +350,8 @@ test('parse() figure + video with src', t => {
       src: 'http://example.com/video.mp4',
       type: null
     }],
-    width: null,
-    height: null
+    width: '',
+    height: ''
   }];
   t.same(actual, expected);
 });
@@ -376,8 +376,8 @@ test('parse() figure + video with sources', t => {
       src: 'http://example.com/video2.mp4',
       type: 'video/mp4'
     }],
-    width: null,
-    height: null
+    width: '',
+    height: ''
   }];
   t.same(actual, expected);
 });
@@ -400,8 +400,8 @@ test('parse() figure + video with src & figcaption', t => {
       src: 'http://example.com/video.mp4',
       type: null
     }],
-    width: null,
-    height: null
+    width: '',
+    height: ''
   }];
   t.same(actual, expected);
 });
@@ -591,8 +591,8 @@ test('parse() instagram figure iframe', t => {
     url: 'https://instagram.com/p/fdx1CSuEPV',
     caption: [],
     attribution: [],
-    date: null,
-    user: null
+    date: '',
+    user: ''
   }];
   t.same(actual, expected);
 });
@@ -643,7 +643,7 @@ test('parse() facebook - post', t => {
       embedType: 'facebook',
       embedAs: 'post',
       date: 'Thursday, January 21, 2016',
-      headline: null,
+      headline: '',
       text: [{
         content: 'Hey!So, for the last few weeks I\'ve worked on http://mic.com/ - the new home for mic.com (on desktop) - please take a look :)',
         href: null

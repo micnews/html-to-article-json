@@ -19,8 +19,8 @@ test('parse() parseFigureProps, no match', t => {
     caption: [],
     attribution: [],
     src: 'http://example.com/image.jpg',
-    width: null,
-    height: null,
+    width: '',
+    height: '',
     figureProps: {}
   }];
 
@@ -41,8 +41,8 @@ test('parse() parseFigureProps, only return specified attribute', t => {
     caption: [],
     attribution: [],
     src: 'http://example.com/image.jpg',
-    width: null,
-    height: null,
+    width: '',
+    height: '',
     figureProps: {
       class: 'beep'
     }
@@ -63,8 +63,8 @@ test('parse() parseFigureProps, no match but other attributes on element', t => 
     caption: [],
     attribution: [],
     src: 'http://example.com/image.jpg',
-    width: null,
-    height: null,
+    width: '',
+    height: '',
     figureProps: {}
   }];
 
