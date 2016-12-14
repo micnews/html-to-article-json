@@ -1,6 +1,7 @@
 [
   {
     "type": "blockquote",
+    "pullQuote": false,
     "children": [
       {
         "type": "paragraph",
@@ -21,6 +22,7 @@
   },
   {
     "type": "blockquote",
+    "pullQuote": false,
     "children": [
       {
         "type": "paragraph",
@@ -41,6 +43,7 @@
   },
   {
     "type": "blockquote",
+    "pullQuote": false,
     "children": [
       {
         "type": "paragraph",
@@ -81,6 +84,7 @@
   },
   {
     "type": "blockquote",
+    "pullQuote": false,
     "children": [
       {
         "type": "paragraph",
@@ -105,6 +109,27 @@
             "mark": false,
             "markClass": null,
             "content": "as expected",
+            "href": null,
+            "italic": false,
+            "bold": false,
+            "strikethrough": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "blockquote",
+    "pullQuote": true,
+    "children": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "mark": false,
+            "markClass": null,
+            "content": "this is a pull quote",
             "href": null,
             "italic": false,
             "bold": false,
