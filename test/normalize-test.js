@@ -19,6 +19,7 @@ test('normalize() minimum content', t => {
 test('normalize() minimum content in blockquote', t => {
   const expected = [{
     type: 'blockquote',
+    pullQuote: false,
     children: [{
       type: 'paragraph',
       children: [{
