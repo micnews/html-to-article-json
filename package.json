@@ -42,7 +42,7 @@
     "snazzy": "^5.0.0",
     "tape": "^4.4.0",
     "tape-catch": "^1.0.4",
-    "tape-run": "^2.1.4",
+    "tape-run": "^2.1.5",
     "testron": "^1.2.0",
     "tsml": "^1.0.1",
     "watchify": "^3.4.0"
