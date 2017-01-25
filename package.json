@@ -45,7 +45,7 @@
     "tape-run": "^2.1.4",
     "testron": "^1.2.0",
     "tsml": "^1.0.1",
-    "watchify": "^3.4.0"
+    "watchify": "^3.9.0"
   },
   "dependencies": {
     "block-elements": "^1.1.0",
