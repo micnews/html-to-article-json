@@ -48,7 +48,7 @@
     "watchify": "^3.4.0"
   },
   "dependencies": {
-    "block-elements": "^1.1.0",
+    "block-elements": "^1.2.0",
     "embedly-url": "^1.0.0",
     "embeds": "^2.6.0",
     "es6-set": "^0.1.2",
